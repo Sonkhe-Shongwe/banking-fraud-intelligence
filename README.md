@@ -4,7 +4,7 @@ A portfolio case study on prioritising potentially fraudulent card transactions 
 
 **Current checkpoint (13 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The September review queues and local reporting export reconcile. The publication scope for dataset-derived artefacts is open. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md)
 
-**Open the data locally:** Pull this repository and double-click **Prepare Transactions.cmd** on Windows. It downloads the pinned source if needed and produces one CSV. [Instructions](data/README.md)
+Use the existing validated `data/processed/transactions.csv` if you already have it. For a fresh checkout, follow the Windows setup in the [local data guide](data/README.md#prepare-one-csv).
 
 ## Start here
 
@@ -20,13 +20,14 @@ A portfolio case study on prioritising potentially fraudulent card transactions 
 | Build and inspect the model inputs | [Feature engineering notebook](notebooks/02_fraud_feature_engineering.ipynb) · [Local setup](data/README.md#run-the-feature-engineering-notebook) |
 | Fit the first model and compare August review queues | [Modelling notebook](notebooks/03_fraud_model_validation.ipynb) · [Local setup](data/README.md#run-the-modelling-notebook) |
 | Evaluate the frozen model on September | [Held-out evaluation notebook](notebooks/04_fraud_holdout_evaluation.ipynb) · [Local setup](data/README.md#run-the-held-out-evaluation) |
+| Save notebook results and pull updates cleanly | [Local notebook workflow](data/README.md#save-notebook-runs-locally) |
 | Model evaluation and investigation policy | [Methodology](docs/methodology.md) |
 
 ## Intended deliverable
 
 A reproducible Python pipeline using pandas for ingestion, validation and feature preparation and scikit-learn for offline modelling. The evaluation compares a model with an amount-based baseline on chronological held-out data. Report fraud caught, legitimate transactions sent for review, and fraud-labelled transaction value captured under the same daily review limits.
 
-The approved P5 platform is Power BI Desktop. The validated data and held-out results will determine which questions the report can answer and which views the owner reviews for approval. Candidate interactions include changing daily review capacity, comparing policies, inspecting the queue and drilling through to a transaction. Each needs a verified Python output and a data source suitable for the intended audience. [Evidence for the dashboard](docs/methodology.md#evidence-for-the-dashboard)
+Power BI Desktop is the approved P5 platform. The September rank export supports a policy comparison at the verified daily review capacities. The report pages, filters and publication scope are open decisions. [P5 scope](docs/SESSION_HANDOFF_CURRENT.md#p5-scope-for-review)
 
 The data source is the Fraud Detection Handbook's simulated transactions. The September evaluation and its limitations are documented in [Findings](docs/findings.md). Fraud-labelled transaction value is reported as exposure under review.
 

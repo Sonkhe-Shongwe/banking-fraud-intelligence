@@ -1,8 +1,10 @@
-# Data acquisition
+# Local data and notebook workflow
 
 The leading source for local feasibility work is the Fraud Detection Handbook's [raw-data revision `6e67dbd`](https://github.com/Fraud-Detection-Handbook/simulated-data-raw/tree/6e67dbd0a3bfe0d7ec33abc4bce5f37cd4ff0d6a). It provides 183 daily pickle files in its `data/` directory. Use the pinned revision and check the manifest against the [recorded audit](../docs/data_sources.md#source-and-audit-evidence).
 
 ## Prepare one CSV
+
+If `data/processed/transactions.csv` already exists and passed validation, use that copy for the notebooks. If you already have the combined `transactions.csv.zip`, extract its `transactions.csv` into `data/processed/`.
 
 Pull the repository and double-click **Prepare Transactions.cmd** at the repo root. The first run needs an internet connection and Python 3.12 or a compatible Python 3.9–3.13 installation available on PATH. The launcher sets up pandas in the repo's `.venv`, downloads the pinned ZIP into `data/raw/`, and opens `data/processed/` when the CSV is ready.
 
@@ -14,19 +16,19 @@ To use your own copy of the pinned ZIP, run the following in an environment with
 python src/convert_transactions.py --archive "path\to\source.zip"
 ```
 
-The full CSV exceeds Excel's worksheet row limit. Use pandas to inspect all rows. This is the combined source table. The Power BI reporting export comes from the later analysis and evaluation phases.
+The full CSV exceeds Excel's worksheet row limit. Use pandas to inspect all rows. The [held-out notebook](#run-the-held-out-evaluation) generates the separate September rank export for Power BI.
 
 The source's reuse status and the boundary for publishing derived artefacts are recorded in the [feasibility audit](../docs/data_sources.md#publication-scope).
 
 ## Run the exploratory notebook
 
-Generate the local CSV first. Use Python 3.12 for the notebook environment. From the repository root, install the notebook dependencies in the virtual environment created by the Windows launcher.
+Use the Python 3.12 kernel that already runs the project notebooks. For a fresh setup, generate the local CSV first. From the repository root, install the notebook dependencies in the virtual environment created by the Windows launcher.
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements-notebook.txt
 ```
 
-Open [01_fraud_investigation_eda.ipynb](../notebooks/01_fraud_investigation_eda.ipynb) in VS Code with its Jupyter extension, select the `.venv` Python kernel and choose **Run All**. The notebook finds the CSV relative to the checkout and generates the tables and figures locally. The committed notebook has empty outputs while publication scope is open.
+Open [01_fraud_investigation_eda.ipynb](../notebooks/01_fraud_investigation_eda.ipynb) in VS Code with its Jupyter extension. Use your working Python 3.12 kernel or the `.venv` kernel from the fresh setup. Choose **Run All**. The notebook finds the CSV relative to the checkout and generates the tables and figures locally. [Keep a saved run without blocking pulls](#save-notebook-runs-locally).
 
 ## Validate the CSV for the pipeline
 
@@ -57,3 +59,30 @@ Choose **Run All** to rebuild the feature inputs, fit the model and display the 
 ## Run the held-out evaluation
 
 Open [04_fraud_holdout_evaluation.ipynb](../notebooks/04_fraud_holdout_evaluation.ipynb) with the same Python 3.12 kernel as the modelling notebook and choose **Run All**. It rebuilds the April–July fit, compares the September queues, and reconciles the aggregate metrics to the rows selected by each rank. It writes `data/processed/september_review_ranks.csv` after those checks pass. The export is local and ignored by Git. [Rank fields and grain](../docs/data_model.md#september-review-rank-export)
+
+## Save notebook runs locally
+
+The files under `notebooks/` are tracked source files. Running a notebook can add outputs and execution counts. Saving those changes can block a pull when the same notebook has an incoming update. A white dot on a VS Code tab indicates unsaved editor changes. Git's `M` marks changes already saved to disk.
+
+To keep tables and charts, pull first and copy the notebook you want to run to `data/processed/notebook-runs/`. For example, run these PowerShell commands from the repo root to copy P4. The timestamp gives each run its own file.
+
+```powershell
+$runDir = '.\data\processed\notebook-runs'
+New-Item -ItemType Directory -Path $runDir -Force | Out-Null
+$stamp = Get-Date -Format 'yyyyMMdd-HHmmss-fff'
+Copy-Item -LiteralPath '.\notebooks\04_fraud_holdout_evaluation.ipynb' `
+  -Destination (Join-Path $runDir "04_fraud_holdout_evaluation-$stamp.ipynb")
+```
+
+Open the copy in VS Code, select your working Python 3.12 kernel, then run and save it there. All four notebooks can locate the repo from that folder. For links to project docs embedded in notebook text, use the original notebook under `notebooks/`. For a new run after another pull, make a fresh copy from the updated source. If you only need the CSV from P4, you can run the tracked notebook and close it without saving the notebook outputs.
+
+### Recover a pull blocked by a notebook
+
+1. Close the affected tab in VS Code before pulling. If it has unsaved edits or outputs you want to keep, save them first so Git can preserve them. For unsaved outputs you do not need, choose **Don't Save**.
+2. If Git still reports the notebook as modified and blocks the pull, stash only the named file. For P4, run the following from the repo root.
+
+   ```powershell
+   git stash push -m "Local P4 notebook run" -- notebooks/04_fraud_holdout_evaluation.ipynb
+   ```
+
+3. Click **Pull origin** and reopen the updated source from Explorer. Leave the old run in the stash to keep the updated notebook clean. Your local rank CSV is outside the stash. If other notebooks are marked `M`, they can stay in place until a pull touches those same files.

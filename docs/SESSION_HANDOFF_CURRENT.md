@@ -10,28 +10,37 @@
 
 | Area | Evidence |
 |---|---|
-| Repository baseline | The preceding planning checkpoint was [`d7d2726`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/d7d27267768123a30c25472b5d8730a73ab1e5e8). |
 | Scope | Python for data preparation, modelling and evaluation. The owner approved Power BI Desktop as the single P5 dashboard platform. |
 | Data | The pinned Handbook raw snapshot was profiled across 183 daily files. It contains 1,754,155 simulated transactions and 14,681 fraud labels. [Audit](data_sources.md) |
-| Local CSV | Converted the uploaded pinned ZIP and verified one CSV with 1,754,155 transactions, nine source columns and 14,681 fraud labels. Use **Prepare Transactions.cmd** after pulling. The Python converter was exercised in Linux. The Windows launcher awaits a Windows run. [Conversion commit `aeb7816`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/aeb7816000692455468330c8628312665ea11910) · [Instructions](../data/README.md#prepare-one-csv) |
+| Local CSV | The pinned archive was converted in Linux and the extracted CSV passed validation in Windows with Anaconda Python 3.12.7. Use the existing validated CSV or follow the fresh setup instructions. The Windows launcher still awaits a Windows run. [Instructions](../data/README.md#prepare-one-csv) |
 | Exploratory notebook | Executed on the verified CSV in IPython. The owner also confirmed a successful Windows VS Code run using Python 3.12.7 and the extracted CSV. The notebook audits the input, compares illustrative review budgets and checks sensitivity to the amount rule. [Notebook](../notebooks/01_fraud_investigation_eda.ipynb) · [Run instructions](../data/README.md#run-the-exploratory-notebook) |
 | P2 input validation | Ran the validator on the full CSV with pandas 2.2.3. It accepted all 1,754,155 rows, kept 42 zero-amount rows and left the CSV byte-identical. The regression suite checks malformed inputs and retention of valid same-time transactions. [Validation instructions](../data/README.md#validate-the-csv-for-the-pipeline) |
 | P2 feature engineering | Executed the [feature notebook](../notebooks/02_fraud_feature_engineering.ipynb) on the full CSV in IPython. Verified one feature row per transaction and full coverage of the chronological split. Training-period features matched exactly when rebuilt from April–July alone. Eight regression tests passed. [Run instructions](../data/README.md#run-the-feature-engineering-notebook) |
 | P3 baseline and model | Executed the [modelling notebook](../notebooks/03_fraud_model_validation.ipynb) in IPython. Fitted logistic regression with April–July only. Compared both August policies at both budgets in the full and restricted cohorts. Ten regression tests passed. [Frozen protocol](methodology.md#frozen-model-and-review-protocol) |
-| P4 held-out evaluation | Executed the [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) in IPython. All eight September comparisons reconcile to the selected transaction ranks. Ten regression tests passed. The owner confirmed the notebook completed in Windows VS Code and saved 287,873 rows to the [local reporting export](data_model.md#september-review-rank-export). |
+| P4 held-out evaluation | The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reconciled all eight September comparisons. Ten regression tests passed. The owner confirmed the notebook saved 287,873 rows in Windows. The [export path fix](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/1a56a16a383f6d0b4181082b778ca1d12287c5a3) reproduced the same CSV byte for byte. |
 | Key risk | The simulator labels all amounts above 220 as fraud. The raw files lack label-confirmation timestamps. [Evaluation implications](data_sources.md#evaluation-implications) |
 | Delivery state | P1 is at 80%, P2 through P4 are at 100%, and overall progress is 72%. The P5 report scope awaits owner approval. |
 
 ## Owner working agreement
 
-Work in small increments with a visible checkpoint. Show what changed, why it matters, what was verified, and what the owner can open or try after pulling. Power BI Desktop is approved as the platform. Data availability, analytical findings and publication scope determine the proposed dashboard content. Dashboard design and other major changes require separate owner approval. The implementation start date has yet to be revised from the earlier 2027 plan.
+Work in small increments with a visible checkpoint. Show what changed, what was verified, and what the owner can open after pulling. Keep executed notebooks in the [local notebook runs folder](../data/README.md#save-notebook-runs-locally) so the tracked sources can receive updates. Dashboard scope, publication scope and other major changes require owner approval.
 
 ## Resume here
 
-1. Confirm the intended public artefacts and the applicable reuse terms. The source repository does not supply a separate raw-data licence. Keep raw files, row-level extracts and scored transaction records local while their publication rights are unresolved. [Publication scope](data_sources.md#publication-scope)
-2. Run the [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) in the Python 3.12 kernel to reproduce the September results and generate the local rank CSV.
-3. Use the verified September outputs to propose the P5 report pages, measures and interactions for owner approval. Reconcile the approved Power BI report with Python using representative capacities and date filters. [Evidence for the dashboard](methodology.md#evidence-for-the-dashboard)
-4. Update this handoff and the scorecard as each gate is closed.
+1. Use the existing `data/processed/september_review_ranks.csv` for the September comparison. To regenerate it, [run the held-out notebook](../data/README.md#run-the-held-out-evaluation) in the working Python 3.12 kernel.
+2. Review the [proposed P5 scope](#p5-scope-for-review). After scope approval, build the local Power BI report and reconcile its measures and filters against Python.
+3. Confirm which artefacts can be shared before publishing portfolio outputs. Keep raw data, transaction-level ranks, and reports that embed those rows local while publication terms are unresolved. [Publication scope](data_sources.md#publication-scope)
+
+## P5 scope for review
+
+The proposed first version has two dark-theme report pages. Power BI Desktop is approved. The page scope is a proposal, and the dark concept is a preview.
+
+| Page | Proposed content | Verified input |
+|---|---|---|
+| Fraud overview | Simulated transaction volume, fraud count and rate, date trend, and fraud-labelled value. Label the selected period and amount units. | Validated source CSV |
+| Review policy comparison | September holdout, 50 or 100 reviews per day, full or at-or-below-220 cohort, and side-by-side fraud caught, legitimate reviews, precision, recall and fraud-labelled value selected. | Local September rank CSV |
+
+Transaction-level queue and drillthrough are optional follow-up views. An August comparison would require a matching August reporting export and separate validation labeling. For the September page, reconcile all eight policy, cohort and capacity combinations and a representative date selection against Python. [Rank contract](data_model.md#september-review-rank-export) · [Evidence for the dashboard](methodology.md#evidence-for-the-dashboard)
 
 ## Checkpoint history
 
@@ -50,3 +59,4 @@ Work in small increments with a visible checkpoint. Show what changed, why it ma
 | 13 November 2026 | Completed P2 with a notebook walkthrough, reusable feature code, verified chronological partitions and timestamp leakage checks on the pinned data. |
 | 13 November 2026 | Completed P3 with the amount baseline, logistic regression challenger, August validation notebook and frozen September evaluation protocol. |
 | 13 November 2026 | Completed P4 with the frozen September evaluation, eight reconciled queue comparisons and a local rank export for the proposed Power BI report. |
+| 13 November 2026 | Recorded Windows confirmation for P4, documented the local notebook-run workflow, and captured the proposed P5 scope for review. |

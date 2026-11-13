@@ -60,6 +60,8 @@ Read `data/README.md` and `docs/data_sources.md` before working with data. Use t
 
 Keep raw files, processed extracts and scored transaction records outside Git. Before publishing any additional dataset-derived files, outputs or a report containing them, confirm source terms and the owner-approved publication scope. Record what was verified and what remains unresolved. A public source link establishes availability. Publication permission requires its own evidence.
 
+Use the [local notebook-run workflow](../data/README.md#save-notebook-runs-locally) when saving executed notebooks. Keep tracked notebook sources free of local outputs so updates can be pulled. If a pull is blocked, preserve the affected notebook using the documented file-specific recovery steps.
+
 ## 8. Analytical and reporting standards
 
 - Keep the unit of analysis at one simulated transaction. Verify schema, keys, date range and outcomes against the source audit. Use explicit handling for equal timestamps and the available label history.

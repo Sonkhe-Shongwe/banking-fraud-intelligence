@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next decision:** Approve the P5 report scope and confirm which dataset-derived artefacts may be published. [Current handoff](SESSION_HANDOFF_CURRENT.md)
+**Next decision:** Review the proposed two-page Power BI report and confirm which dataset-derived artefacts may be published. [P5 scope](SESSION_HANDOFF_CURRENT.md#p5-scope-for-review)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
@@ -49,7 +49,7 @@ The [modelling notebook](../notebooks/03_fraud_model_validation.ipynb) ran on th
 
 ## P4 evidence
 
-The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduced the April–July fit and evaluated both policies across all 30 September days. It reconciled review counts, fraud caught, legitimate reviews and fraud-labelled value to the rows selected by rank for all eight policy, cohort and capacity combinations. It generated the [local reporting export](data_model.md#september-review-rank-export). All ten regression tests passed.
+The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduced the April–July fit and evaluated both policies across all 30 September days. It reconciled review counts, fraud caught, legitimate reviews and fraud-labelled value to the rows selected by rank for all eight policy, cohort and capacity combinations. All ten regression tests passed. The owner confirmed the [local reporting export](data_model.md#september-review-rank-export) was generated in Windows VS Code.
 
 Update this scorecard and the handoff together when evidence changes. P4 is complete when its evaluation is reproducible and reported, even if the model shows little or no lift.
 

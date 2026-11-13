@@ -6,7 +6,8 @@
 | [Current project status](PROJECT_STATUS_CURRENT.md) | P1–P6 weights, progress, acceptance criteria and open gates |
 | [Current session handoff](SESSION_HANDOFF_CURRENT.md) | Latest verified checkpoint, owner decisions, limits and exact next action |
 | [Data source feasibility and audit](data_sources.md) | Pinned source, file evidence, dataset quality, leakage and publication scope |
-| [Acquisition and validation notes](../data/README.md) | Local data location, source verification and pipeline input checks |
+| [Local data and notebook workflow](../data/README.md) | Acquisition, validation, reproducible notebook runs and pull recovery |
+| [P5 scope for review](SESSION_HANDOFF_CURRENT.md#p5-scope-for-review) | Candidate pages, verified inputs and open decisions |
 | [Exploratory notebook](../notebooks/01_fraud_investigation_eda.ipynb) | Reproducible source audit, monthly fraud prevalence, review queue comparison and amount-rule sensitivity |
 | [Feature engineering notebook](../notebooks/02_fraud_feature_engineering.ipynb) | Worked timestamp example, full feature build and chronological split verification |
 | [Modelling notebook](../notebooks/03_fraud_model_validation.ipynb) | Training, August validation, daily queue comparison and simulator sensitivity |
