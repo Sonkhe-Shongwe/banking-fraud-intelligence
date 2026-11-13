@@ -9,7 +9,7 @@
 | [Project audit, 13 November 2026](PROJECT_AUDIT_2026-11-13.md) | Repository/documentation audit, findings, risks and remediation |
 | [Data source feasibility and audit](data_sources.md) | Pinned source, file evidence, dataset quality, leakage and publication scope |
 | [Local data and notebook workflow](../data/README.md) | Acquisition, validation, reproducible notebook runs and pull recovery |
-| [P5 page scope](SESSION_HANDOFF_CURRENT.md#p5-scope-for-review) | Approved pages, verified inputs and outstanding design decisions |
+| [P5 page scope](SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate) | Approved pages, verified inputs and outstanding design decisions |
 | [Exploratory notebook](../notebooks/01_fraud_investigation_eda.ipynb) | Reproducible source audit, monthly fraud prevalence, review queue comparison and amount-rule sensitivity |
 | [Feature engineering notebook](../notebooks/02_fraud_feature_engineering.ipynb) | Worked timestamp example, full feature build and chronological split verification |
 | [Modelling notebook](../notebooks/03_fraud_model_validation.ipynb) | Training, August validation, daily queue comparison and simulator sensitivity |

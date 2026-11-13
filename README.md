@@ -18,7 +18,7 @@ Use the existing validated data/processed/transactions.csv if you already have i
 | Repository, continuity and P5 readiness review | [Project audit, 13 November 2026](docs/PROJECT_AUDIT_2026-11-13.md) |
 | Dataset revision, audit results and limitations | [Data source and feasibility audit](docs/data_sources.md) |
 | Local data and notebook workflow | [Local data guide](data/README.md) |
-| P5 page scope and verified inputs | [Current session handoff](docs/SESSION_HANDOFF_CURRENT.md#p5-scope-for-review) |
+| P5 page scope and verified inputs | [Current session handoff](docs/SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate) |
 | Exploratory analysis | [Exploratory notebook](notebooks/01_fraud_investigation_eda.ipynb) |
 | Feature engineering | [Feature engineering notebook](notebooks/02_fraud_feature_engineering.ipynb) |
 | Model validation | [Modelling notebook](notebooks/03_fraud_model_validation.ipynb) |

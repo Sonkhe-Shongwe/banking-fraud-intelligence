@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next decision:** Review the proposed P5 design tokens and page wireframes. The owner has approved the two-page scope and Premium Banking Intelligence direction, but not the detailed visual specification. Publication scope remains a separate open gate. [Design system](POWER_BI_DESIGN_SYSTEM.md) · [P5 handoff](SESSION_HANDOFF_CURRENT.md#p5-scope-for-review)
+**Next decision:** Review the proposed P5 design tokens and page wireframes. The owner has approved the two-page scope and Premium Banking Intelligence direction, but not the detailed visual specification. Publication scope remains a separate open gate. [Design system](POWER_BI_DESIGN_SYSTEM.md) · [P5 handoff](SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
