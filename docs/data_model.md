@@ -1,16 +1,25 @@
-# Analytical model — proposed, not implemented
+# Analytical data model
 
-## Primary grain
-Transaction-level record: one candidate decision at a known transaction time. Exact keys, event times and admissible features must be established from the selected dataset.
+## Grain and input
 
-## Proposed layers
-1. **Raw/landing data:** immutable source files outside Git unless legally and technically appropriate.
-2. **SQL preparation:** validated transactions, quality flags, permitted prediction-time columns.
-3. **Python modelling tables:** chronological training/validation/test partitions; engineered features computed without future information.
-4. **Evaluation outputs:** transaction ID, held-out fraud label, predicted risk score, transaction amount, observation time and review-policy rank.
-5. **Streamlit application:** precomputed/evaluated outputs for lightweight investigation-capacity simulations and explanatory charts.
+One record represents one simulated transaction at its event time. The [source audit](data_sources.md) verified nine fields and a unique `TRANSACTION_ID` across the pinned data.
 
-## Mandatory checks
-One row per scored transaction; no duplicate joins; consistent event ordering; no future label/chargeback columns used as predictors; reconciliation of queue counts and monetary exposure.
+| Fields | Role |
+|---|---|
+| `TRANSACTION_ID` | Unique row key for validation, reconciliation and investigation detail. |
+| `TX_DATETIME` | Event time for chronology and time-based features. |
+| `CUSTOMER_ID`, `TERMINAL_ID` | Keys for grouping earlier transactions. |
+| `TX_AMOUNT` | Observed transaction amount and ranking baseline input. |
+| `TX_TIME_SECONDS`, `TX_TIME_DAYS` | Source elapsed-time fields. Both are derivable from the timestamp. |
+| `TX_FRAUD` | Outcome for model fitting and evaluation subject to label timing. |
+| `TX_FRAUD_SCENARIO` | Evaluation diagnostic describing the simulator outcome. Excluded from prediction inputs. |
 
-**A relational/star schema is not required unless the actual data and analysis justify it.**
+## Planned Python outputs
+
+1. Validated transactions with consistent types and documented treatment of zero amounts.
+2. Feature rows calculated using information available at each transaction's scoring time, with explicit rules for equal timestamps and any label feedback delay.
+3. Chronological training, validation and test partitions.
+4. Held-out scores keyed by transaction ID with event time, amount and evaluation outcome. Daily review ranks are calculated from those scores.
+5. Streamlit consumes the precomputed output for queue inspection and review-capacity simulation, subject to the approved publication scope.
+
+P2 verifies one row per transaction, unique keys, chronological boundaries and historical feature availability. P4 reconciles queue counts and monetary exposure to the held-out rows. [Methodology](methodology.md)

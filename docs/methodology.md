@@ -1,23 +1,12 @@
-# Planned methodology — Banking Fraud Intelligence
+# Banking Fraud Intelligence methodology
 
-**Stage:** Research design only. No empirical measurements or working app are asserted.
+The decision is which transactions an investigator should review when daily review capacity is limited. The unit of analysis is one transaction at its scoring time. The source has been [profiled](data_sources.md). Model results are pending.
 
-## Decision problem
-Prioritise transactions for an analyst review queue given a fixed investigation budget. Explore the trade-offs between fraud captured, false investigations and exposure represented by flagged transactions.
+1. **Prepare in Python.** Validate transaction keys, timestamps and amounts. Build features from information available at scoring time. Define how equal timestamps and any simulated label delay affect the available history.
+2. **Partition chronologically.** Use earlier data for training, later data for validation and the latest held-out period for final evaluation. Use validation for model selection and freeze the protocol before scoring the holdout.
+3. **Establish the baseline.** Rank by transaction amount within each day and compare at least one scikit-learn model. Use a consistent tie-break and record it before evaluation.
+4. **Evaluate at the same daily review capacity.** Rank each day's eligible transactions under both policies and compare the same top-N limit. Report fraud caught, legitimate transactions reviewed and the sum of amounts on reviewed fraud-labelled transactions. Use precision, recall and PR-AUC to support interpretation.
+5. **Check the simulator effect.** Report a sensitivity comparison on transactions with amounts at or below 220. Document whether any lift persists when the deterministic high-amount group is excluded. Use the scenario field for retrospective breakdowns.
+6. **Demonstrate the investigation workflow.** After design approval, use precomputed scores in Streamlit. The reviewer can change capacity, inspect the resulting queue and open individual transaction detail.
 
-## Unit of analysis
-**One transaction at the time a detection decision would be made.** Confirm event timestamps, feature availability and label delay in the selected data before implementation.
-
-## Research plan
-1. **Data profiling:** fraud prevalence, amounts, missingness, duplication, timestamps and potential label leakage.
-2. **Training design:** chronological train/validation/test with holdout never used for model selection. Preserve customers/terminal effects when required.
-3. **Baselines:** simple score/rules and relevant classification baselines; avoid adding models without a hypothesis.
-4. **Model quality:** PR-AUC, precision, recall, calibration and uncertainty where supportable. Accuracy alone is not the primary criterion.
-5. **Operational decisions:** compare fixed top-N or fixed percentage review policies; report false positives, discovered fraud counts and *fraud-labelled transaction amounts under review*. Any financial-loss model must clearly state its assumptions.
-6. **App layer:** offline-trained artefacts feed a lightweight Streamlit dashboard showing risk distributions, investigator queues and review-capacity scenarios; no exposed personal banking records.
-7. **Checks:** leakage tests, temporal splits, deterministic reproduction, metric reconciliation and limitations.
-
-## Non-claims
-A simulated improvement is not a bank-tested fraud-prevention system. Flagged amount is neither recovered nor prevented loss; synthetic dataset evaluation cannot demonstrate real-world effectiveness.
-
-**Final output:** reproducible analytical pipeline, validation report and Streamlit demonstration.
+Report the captured amount as fraud-labelled transaction value. Estimates of savings, prevented losses or production performance require separate evidence.
