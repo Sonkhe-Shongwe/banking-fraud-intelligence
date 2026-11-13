@@ -39,3 +39,7 @@ python src/validate_transactions.py
 Use `--input "path\to\transactions.csv"` to validate a different copy. The default is `data/processed/transactions.csv`. The report shows rows read, ready and dropped, date coverage, fraud labels and retained zero amounts. The verified CSV passed with 1,754,155 rows ready, zero rows dropped and 42 zero-amount rows retained.
 
 The validator parses timestamps and numeric types, checks the schema, missing fields, ID integrity, amount validity, chronological order, elapsed-time fields and fraud label consistency. It exits with an error on invalid input and leaves the source file intact. The converter and source audit establish provenance and expected snapshot totals. [Source audit](../docs/data_sources.md#source-and-audit-evidence)
+
+## Run the feature engineering notebook
+
+Open [02_fraud_feature_engineering.ipynb](../notebooks/02_fraud_feature_engineering.ipynb) in VS Code, select the same Python 3.12 kernel that ran the exploratory notebook, and choose **Run All**. It validates the local CSV, builds the history features in memory, and displays a synthetic example, a missing-history summary and a chronological split table. [Feature definitions and split rules](../docs/data_model.md#scoring-time-features-and-partitions)

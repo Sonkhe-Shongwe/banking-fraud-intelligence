@@ -2,7 +2,7 @@
 
 A portfolio case study on prioritising potentially fraudulent card transactions when investigators can review only a fixed number each day. The main question is whether a risk model helps investigators find more fraud than an amount-based baseline at the same review capacity.
 
-**Current checkpoint (13 November 2026): P1 at 80% · P2 at 25% · 17% overall.** The P2 input validator passed on the verified CSV. The publication scope for dataset-derived artefacts is open. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md)
+**Current checkpoint (13 November 2026): P1 at 80% · P2 at 100% · 32% overall.** The feature engineering notebook verified scoring-time features and chronological splits on the full CSV. The publication scope for dataset-derived artefacts is open. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md)
 
 **Open the data locally:** Pull this repository and double-click **Prepare Transactions.cmd** on Windows. It downloads the pinned source if needed and produces one CSV. [Instructions](data/README.md)
 
@@ -17,6 +17,7 @@ A portfolio case study on prioritising potentially fraudulent card transactions 
 | Dataset revision, audit results and limitations | [Data source and feasibility audit](docs/data_sources.md) |
 | Run the first fraud investigation | [Exploratory notebook](notebooks/01_fraud_investigation_eda.ipynb) · [Local setup](data/README.md#run-the-exploratory-notebook) |
 | Check the CSV before feature preparation | [Pipeline validation](data/README.md#validate-the-csv-for-the-pipeline) |
+| Build and inspect the model inputs | [Feature engineering notebook](notebooks/02_fraud_feature_engineering.ipynb) · [Local setup](data/README.md#run-the-feature-engineering-notebook) |
 | Model evaluation and investigation policy | [Methodology](docs/methodology.md) |
 
 ## Intended deliverable

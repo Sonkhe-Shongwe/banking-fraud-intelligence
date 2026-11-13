@@ -8,6 +8,7 @@
 | [Data source feasibility and audit](data_sources.md) | Pinned source, file evidence, dataset quality, leakage and publication scope |
 | [Acquisition and validation notes](../data/README.md) | Local data location, source verification and pipeline input checks |
 | [Exploratory notebook](../notebooks/01_fraud_investigation_eda.ipynb) | Reproducible source audit, monthly fraud prevalence, review queue comparison and amount-rule sensitivity |
+| [Feature engineering notebook](../notebooks/02_fraud_feature_engineering.ipynb) | Worked timestamp example, full feature build and chronological split verification |
 | [Analytical data model](data_model.md) | Transaction grain, admissible fields and planned Python outputs |
 | [Methodology](methodology.md) | Chronological evaluation, daily review limits and the evidence required for dashboard views |
 | [Findings](findings.md) | Held-out results and interpretation when available |

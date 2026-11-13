@@ -16,8 +16,9 @@
 | Local CSV | Converted the uploaded pinned ZIP and verified one CSV with 1,754,155 transactions, nine source columns and 14,681 fraud labels. Use **Prepare Transactions.cmd** after pulling. The Python converter was exercised in Linux. The Windows launcher awaits a Windows run. [Conversion commit `aeb7816`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/aeb7816000692455468330c8628312665ea11910) · [Instructions](../data/README.md#prepare-one-csv) |
 | Exploratory notebook | Executed on the verified CSV in IPython. The owner also confirmed a successful Windows VS Code run using Python 3.12.7 and the extracted CSV. The notebook audits the input, compares illustrative review budgets and checks sensitivity to the amount rule. [Notebook](../notebooks/01_fraud_investigation_eda.ipynb) · [Run instructions](../data/README.md#run-the-exploratory-notebook) |
 | P2 input validation | Ran the validator on the full CSV with pandas 2.2.3. It accepted all 1,754,155 rows, kept 42 zero-amount rows and left the CSV byte-identical. The regression suite checks malformed inputs and retention of valid same-time transactions. [Validation instructions](../data/README.md#validate-the-csv-for-the-pipeline) |
+| P2 feature engineering | Executed the [feature notebook](../notebooks/02_fraud_feature_engineering.ipynb) on the full CSV in IPython. Verified one feature row per transaction and full coverage of the chronological split. Training-period features matched exactly when rebuilt from April–July alone. Eight regression tests passed. [Run instructions](../data/README.md#run-the-feature-engineering-notebook) |
 | Key risk | The simulator labels all amounts above 220 as fraud. The raw files lack label-confirmation timestamps. [Evaluation implications](data_sources.md#evaluation-implications) |
-| Delivery state | P1 is at 80%, P2 is at 25% and overall progress is 17%. Scoring-time feature preparation, chronological splits, model evaluation and the Power BI report are pending. |
+| Delivery state | P1 is at 80%, P2 is at 100% and overall progress is 32%. Model fitting, evaluation and the Power BI report are pending. |
 
 ## Owner working agreement
 
@@ -26,7 +27,7 @@ Work in small increments with a visible checkpoint. Show what changed, why it ma
 ## Resume here
 
 1. Confirm the intended public artefacts and the applicable reuse terms. The source repository does not supply a separate raw-data licence. Keep raw files, row-level extracts and scored transaction records local while their publication rights are unresolved. [Publication scope](data_sources.md#publication-scope)
-2. Build strictly prior customer and terminal features using the validated loader. Exclude equal timestamps from each transaction's history. The proposed chronological split uses April–July for training, August for validation and September for testing. Verify leakage and partition checks before fitting a model.
+2. Open the feature notebook and run it using the same Python 3.12 kernel as the exploratory notebook. For P3, fit the first model and any learned preprocessing on April–July, then compare August rankings with the amount-based baseline at identical daily review limits. Reserve September for the frozen evaluation protocol.
 3. As P2–P4 produce evidence, record which business questions the data supports and what the analysis shows. Use those outputs to propose the P5 dashboard scope for owner approval. [Evidence for the dashboard](methodology.md#evidence-for-the-dashboard)
 4. Update this handoff and the scorecard as each gate is closed.
 
@@ -44,3 +45,4 @@ Work in small increments with a visible checkpoint. Show what changed, why it ma
 | 13 November 2026 | Owner confirmed the notebook ran in Windows. Verified the first P2 checkpoint by running the input validator on the full CSV and testing invalid inputs. |
 | 13 November 2026 | Addressed pandas type diagnostics reported in VS Code. Rechecked the validator and notebook cells with Pyright and reran both on the full CSV. |
 | 13 November 2026 | Owner confirmed the validator passed on Windows in Anaconda Python 3.12.7. Matched the CSV dtype mapping annotation to the pandas type signature flagged by Pylance. |
+| 13 November 2026 | Completed P2 with a notebook walkthrough, reusable feature code, verified chronological partitions and timestamp leakage checks on the pinned data. |
