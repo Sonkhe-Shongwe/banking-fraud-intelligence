@@ -18,7 +18,7 @@
 
 Phase percentages track accepted evidence. Overall progress is the sum of each phase weight multiplied by its completion fraction. The current score is `15 × 0.80 = 12` points.
 
-The [local CSV conversion](../data/README.md#prepare-one-csv) is verified on the pinned input. P2's phase score is pending scoring-time feature preparation and chronological partition evidence.
+The [local CSV conversion](../data/README.md#prepare-one-csv) is verified on the pinned input. The [exploratory notebook](../notebooks/01_fraud_investigation_eda.ipynb) ran against the full CSV and checked source integrity, monthly prevalence, daily review workload and sensitivity to the simulator's amount rule. P2's phase score is pending scoring-time feature preparation and chronological partition evidence.
 
 ## P1 checks
 

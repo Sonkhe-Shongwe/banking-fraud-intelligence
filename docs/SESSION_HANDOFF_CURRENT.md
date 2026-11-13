@@ -14,6 +14,7 @@
 | Scope | Python for data preparation, modelling and evaluation. The owner approved Power BI Desktop as the single P5 dashboard platform. |
 | Data | The pinned Handbook raw snapshot was profiled across 183 daily files. It contains 1,754,155 simulated transactions and 14,681 fraud labels. [Audit](data_sources.md) |
 | Local CSV | Converted the uploaded pinned ZIP and verified one CSV with 1,754,155 transactions, nine source columns and 14,681 fraud labels. Use **Prepare Transactions.cmd** after pulling. The Python converter was exercised in Linux. The Windows launcher awaits a Windows run. [Conversion commit `aeb7816`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/aeb7816000692455468330c8628312665ea11910) · [Instructions](../data/README.md#prepare-one-csv) |
+| Exploratory notebook | Executed all cells in order in a fresh IPython process on Python 3.12 using the verified CSV. It audits the input, compares illustrative review budgets and checks sensitivity to the amount rule. Its full-snapshot outputs describe the simulation retrospectively. The committed notebook regenerates the results locally. [Notebook](../notebooks/01_fraud_investigation_eda.ipynb) · [Run instructions](../data/README.md#run-the-exploratory-notebook) |
 | Key risk | The simulator labels all amounts above 220 as fraud. The raw files lack label-confirmation timestamps. [Evaluation implications](data_sources.md#evaluation-implications) |
 | Delivery state | P1 is at 80%. The local conversion is available. Scoring-time feature preparation, chronological splits, model evaluation and the Power BI report are pending. |
 
@@ -24,7 +25,7 @@ Work in small increments with a visible checkpoint. Show what changed, why it ma
 ## Resume here
 
 1. Confirm the intended public artefacts and the applicable reuse terms. The source repository does not supply a separate raw-data licence. Keep raw files, row-level extracts and scored transaction records local while their publication rights are unresolved. [Publication scope](data_sources.md#publication-scope)
-2. The owner can pull and run **Prepare Transactions.cmd** to check the local CSV. For the next analytical increment, propose scoring-time feature preparation and chronological splits with acceptance checks.
+2. Pull and open the exploratory notebook. The [local run instructions](../data/README.md#run-the-exploratory-notebook) cover rebuilding its tables and charts. For the next analytical increment, propose strictly prior customer and terminal features, handling for equal timestamps, and chronological splits with acceptance checks.
 3. As P2–P4 produce evidence, record which business questions the data supports and what the analysis shows. Use those outputs to propose the P5 dashboard scope for owner approval. [Evidence for the dashboard](methodology.md#evidence-for-the-dashboard)
 4. Update this handoff and the scorecard as each gate is closed.
 
@@ -38,3 +39,4 @@ Work in small increments with a visible checkpoint. Show what changed, why it ma
 | 13 November 2026 | Owner directed that data availability and analysis determine the project outline and proposed Power BI views. |
 | 13 November 2026 | Converted and checked the uploaded archive. Added a pull-and-run launcher for local CSV generation. |
 | 13 November 2026 | Added a reusable continuation prompt linked from the README, project instructions, documentation index and current status records. |
+| 13 November 2026 | Ran the first exploratory notebook on the verified CSV and recorded the exact local reproduction steps. |

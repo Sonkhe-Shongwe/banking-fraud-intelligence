@@ -17,3 +17,13 @@ python src/convert_transactions.py --archive "path\to\source.zip"
 The full CSV exceeds Excel's worksheet row limit. Use pandas to inspect all rows. This is the combined source table. The Power BI reporting export comes from the later analysis and evaluation phases.
 
 The source's reuse status and the boundary for publishing derived artefacts are recorded in the [feasibility audit](../docs/data_sources.md#publication-scope).
+
+## Run the exploratory notebook
+
+Generate the local CSV first. Use Python 3.12 for the notebook environment. From the repository root, install the notebook dependencies in the virtual environment created by the Windows launcher.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-notebook.txt
+```
+
+Open [01_fraud_investigation_eda.ipynb](../notebooks/01_fraud_investigation_eda.ipynb) in VS Code with its Jupyter extension, select the `.venv` Python kernel and choose **Run All**. The notebook finds the CSV relative to the checkout and generates the tables and figures locally. The committed notebook has empty outputs while publication scope is open.
