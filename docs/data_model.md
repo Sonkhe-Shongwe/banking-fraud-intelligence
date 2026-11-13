@@ -20,6 +20,6 @@ One record represents one simulated transaction at its event time. The [source a
 2. Feature rows calculated using information available at each transaction's scoring time, with explicit rules for equal timestamps and any label feedback delay.
 3. Chronological training, validation and test partitions.
 4. A held-out reporting export keyed by transaction ID, with event time, amount, evaluation outcome, model score and a precomputed daily rank for each policy. Use the same daily population for both ranks and resolve ties consistently.
-5. Power BI imports the export. The review-capacity selection filters by the appropriate daily rank and drives queue counts, policy comparisons and transaction drillthrough. Transaction-level exports and reports containing them stay local pending publication clearance.
+5. The export can support a Power BI capacity comparison and, when suitable transaction-level detail is available to the intended audience, a review queue and drillthrough. Use the validated export and publication scope to propose the report views for owner approval. Transaction-level exports and reports containing them stay local pending publication clearance.
 
 P2 verifies one row per transaction, unique keys, chronological boundaries and historical feature availability. P4 reconciles queue counts and monetary exposure to the held-out rows. [Methodology](methodology.md)

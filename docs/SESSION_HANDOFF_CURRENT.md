@@ -18,13 +18,14 @@
 
 ## Owner working agreement
 
-Work in small increments with a visible checkpoint. Show what changed, why it matters, what was verified, and what the owner can open or try after pulling. The planned report lets the owner or reviewer change review capacity, compare policies and inspect transactions. The platform decision is approved. Dashboard design and other major changes require separate owner approval. The implementation start date has yet to be revised from the earlier 2027 plan.
+Work in small increments with a visible checkpoint. Show what changed, why it matters, what was verified, and what the owner can open or try after pulling. Power BI Desktop is approved as the platform. Data availability, analytical findings and publication scope determine the proposed dashboard content. Dashboard design and other major changes require separate owner approval. The implementation start date has yet to be revised from the earlier 2027 plan.
 
 ## Resume here
 
 1. Confirm the intended public artefacts and the applicable reuse terms. The source repository does not supply a separate raw-data licence. Keep raw files, row-level extracts and scored transaction records local while their publication rights are unresolved. [Publication scope](data_sources.md#publication-scope)
 2. Bring the owner a concrete P2 first increment for approval, with inputs, outputs and acceptance checks. The first proposed increment is reproducible loading and validation of the pinned daily files.
-3. Record approval and evidence in this handoff and the scorecard as each gate is closed. Dashboard design is a later approval in P5.
+3. As P2–P4 produce evidence, record which business questions the data supports and what the analysis shows. Use those outputs to propose the P5 dashboard scope for owner approval. [Evidence for the dashboard](methodology.md#evidence-for-the-dashboard)
+4. Update this handoff and the scorecard as each gate is closed.
 
 ## Checkpoint history
 
@@ -33,3 +34,4 @@ Work in small increments with a visible checkpoint. Show what changed, why it ma
 | 26 October 2026 | Proposed data grain and model quality gates recorded in `d7d2726`. |
 | 13 November 2026 | Profiled the pinned simulated source, recorded the Python-only scope, and added the documentation index, phase scorecard and session handoff. |
 | 13 November 2026 | Owner approved Power BI Desktop for P5. Recorded the change and the Python-to-report handoff. |
+| 13 November 2026 | Owner directed that data availability and analysis determine the project outline and proposed Power BI views. |

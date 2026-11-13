@@ -18,7 +18,7 @@ A portfolio case study on prioritising potentially fraudulent card transactions 
 
 A reproducible Python pipeline using pandas for ingestion, validation and feature preparation and scikit-learn for offline modelling. The evaluation compares a model with an amount-based baseline on chronological held-out data. Report fraud caught, legitimate transactions sent for review, and fraud-labelled transaction value captured under the same daily review limits.
 
-The approved P5 platform is Power BI Desktop. The report uses precomputed Python scores and daily ranks for the model and amount-based baseline. A reviewer can change daily review capacity, compare the two policies, inspect the queue and drill through to a transaction. The owner approves the dashboard design before it is built.
+The approved P5 platform is Power BI Desktop. The validated data and held-out results will determine which questions the report can answer and which views the owner reviews for approval. Candidate interactions include changing daily review capacity, comparing policies, inspecting the queue and drilling through to a transaction. Each needs a verified Python output and a data source suitable for the intended audience. [Evidence for the dashboard](docs/methodology.md#evidence-for-the-dashboard)
 
 The leading data source is the Fraud Detection Handbook's simulated transactions. The audit supports a simulated study. Model results, a working app and production performance evidence are future deliverables. Fraud-labelled transaction value is reported as exposure under review.
 
