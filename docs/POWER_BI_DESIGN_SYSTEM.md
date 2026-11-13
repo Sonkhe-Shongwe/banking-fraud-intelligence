@@ -17,7 +17,7 @@ This document is the working design contract for P5. It records the approved vis
 | Premium Banking Intelligence visual direction | Approved | Direction A |
 | Light, restrained, executive-grade appearance | Approved as part of Direction A | Owner's stated preference |
 | Exact palette and colour roles | Approved | Accepted as presented in P5 wireframe proposal v0.1 |
-| Font family and type scale | Approved | Segoe UI proposal accepted; local rendering validation remains an implementation test |
+| Font family and type scale | Approved | Segoe UI approved; local rendering validation remains an implementation test |
 | Canvas dimensions and grid | Approved | 16:9 1280 x 720 planning canvas and grid accepted; final rendering check remains an implementation test |
 | Exact page wireframes and chart selection | Approved | P5 wireframe proposal v0.1 accepted as presented |
 | KPI card construction, iconography and navigation treatment | Approved | Accepted as presented in P5 wireframe proposal v0.1 |
@@ -51,7 +51,7 @@ The audited source contains 1,754,155 simulated transactions from 1 April to 30 
 
 The source contains transaction ID, event timestamp, customer ID, terminal ID, amount, two elapsed-time fields, fraud label and fraud scenario. The September rank export adds a model decision score and four daily rank columns: amount and model ranks for the full population, and amount and model ranks for the amount-at-or-below-220 cohort.
 
-### Candidate measure definitions
+### Approved metric definitions
 
 | Display label | Definition | Required qualification |
 |---|---|---|
@@ -102,7 +102,7 @@ These values were approved as presented in P5 wireframe proposal v0.1 and are th
 
 Use slate blue consistently for the amount baseline and teal for logistic regression. These colours identify policies; they must not imply that one policy is always better. Use explicit signed differences and labels to show performance. Reserve amber and red for semantically meaningful attention and risk states, not decoration. Do not use amber as small text on a light surface; pair it with a sufficiently dark foreground.
 
-The candidate navy, slate, teal and secondary-text colours have strong contrast against the proposed light canvas. Every final text/background and icon/background pairing must still be checked in the actual report. Target WCAG 2.1 AA contrast of at least 4.5:1 for normal text and ensure meaningful graphical elements remain distinguishable without colour alone.
+The approved navy, slate, teal and secondary-text colours have strong contrast against the approved light canvas. Every final text/background and icon/background pairing must still be checked in the actual report. Target WCAG 2.1 AA contrast of at least 4.5:1 for normal text and ensure meaningful graphical elements remain distinguishable without colour alone.
 
 ### Approved typography hierarchy
 
@@ -190,7 +190,7 @@ The restricted cohort must use its independently recalculated rank columns. Do n
 
 ### Iconography
 
-Use one coherent outline-icon family, consistent stroke weight and a restrained size. Icons support labels; they never replace them. Do not use a bank logo or imply affiliation with a real bank. A simple text wordmark or small neutral mark may be explored later, but branding is not yet approved.
+Use one coherent outline-icon family, consistent stroke weight and a restrained size. Icons support labels; they never replace them. Do not use a bank logo or imply affiliation with a real bank. A neutral report title is sufficient; no real-bank logo, external brand affiliation or separate product branding is approved.
 
 ## 7. Approved interaction contract
 
@@ -250,7 +250,7 @@ The visual identity board generated during the 13 November 2026 design discussio
 Dribbble is an inspiration source, not an authority for analytical correctness or Power BI capability. Microsoft documentation governs platform behaviour and accessibility constraints.
 
 
-## 12. Research synthesis and wireframe proposal
+## 12. Research synthesis and approved wireframe specification
 
 The owner-approved detailed layout specification is recorded in [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md). It includes both page layouts, hierarchy, icon roles, number treatment, native Power BI interactions, accessibility checks and the approved aggregate overview table.
 

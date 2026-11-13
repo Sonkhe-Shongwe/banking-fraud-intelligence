@@ -40,7 +40,7 @@ Social analytics products also separate overview from detailed analysis. We can 
 
 Dribbble is an inspiration source, not an authority for analytical correctness. Microsoft documentation governs Power BI capabilities and accessibility constraints.
 
-## 3. Proposed visual identity
+## 3. Approved visual identity
 
 The owner-approved direction remains **A - Premium Banking Intelligence**, with a light, restrained and executive-grade appearance. The palette below was approved as presented and is implemented in the first theme increment.
 
@@ -263,7 +263,7 @@ Use a horizontal split bar or two aligned metric rows. Do not use a decorative d
 
 ### Proposed icon roles
 
-| Area | Candidate icon meaning |
+| Area | Approved icon role |
 |---|---|
 | Report identity | Neutral shield / analytics mark, not a bank logo |
 | Transactions KPI | Transaction or receipt |
@@ -289,7 +289,7 @@ Use one outline family and one consistent stroke weight. Icons are secondary to 
 
 ## 8. Power BI implementation feasibility
 
-The proposal intentionally favours native Power BI visuals and interactions:
+The approved specification favours native Power BI visuals and interactions:
 - Custom report theme JSON for report-wide colour, typography and visual defaults.
 - Native card visuals for headline values.
 - Native line chart with markers for the daily queue comparison and weekly overview.
@@ -333,7 +333,7 @@ The report should not load redundant transaction-level copies into the semantic 
 
 The owner reviewed and approved the following detailed design decisions as presented on 13 November 2026. No additional feedback or revisions were requested.
 
-| Decision | Current proposal | Owner status |
+| Approved design decision | Specification | Owner status |
 |---|---|---|
 | Light premium banking palette | Navy, slate blue, teal, white and cool neutrals | **Approved** |
 | Segoe UI type system | Proposed type hierarchy | **Approved** |
@@ -347,7 +347,7 @@ The owner reviewed and approved the following detailed design decisions as prese
 
 ### Approval record and implementation boundary
 
-**Owner decisions (13 November 2026): DESIGN APPROVED AS PRESENTED; IMPLEMENTATION AUTHORISED WITHIN SCOPE.** The owner approved the detailed visual identity, both page wireframes, component hierarchy, metric presentation, native Power BI interaction proposal and proposed aggregate overview data model. No revisions were requested.
+**Owner decisions (13 November 2026): DESIGN APPROVED AS PRESENTED; IMPLEMENTATION AUTHORISED WITHIN SCOPE.** The owner approved the detailed visual identity, both page wireframes, component hierarchy, metric presentation, approved native Power BI interaction contract and aggregate overview data model. No revisions were requested.
 
 The owner subsequently authorised implementation by saying “lets continue” on 13 November 2026. Implementation may proceed within this approved design and page scope. Do not add pages, introduce unapproved features or make material design changes without further approval. This does not authorise public publication or sharing of row-level data; publication clearance remains separate.
 
@@ -374,4 +374,4 @@ The owner subsequently authorised implementation by saying “lets continue” o
 
 ---
 
-**Design gate:** P5 remains at 0%. This is a documented proposal for owner review, not a built report, final theme or implementation acceptance.
+**Design gate:** D1 and D2 are approved. The theme and reporting-preparation foundation are committed, but P5 remains at 0% until local execution, Power BI Desktop import, report construction and acceptance evidence are verified. This specification is approved; it is not itself a built report.

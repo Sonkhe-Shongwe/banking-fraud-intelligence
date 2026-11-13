@@ -39,10 +39,10 @@ The page scope, visual identity, detailed tokens, both wireframes and interactio
 
 | Page | Intended purpose | Verified input | Design status |
 |---|---|---|---|
-| Fraud Overview | Show simulated transaction activity, fraud-labelled count/share and trends over the available period | Validated full transaction CSV | **Detailed design approved; implementation paused** |
-| Review Policy Comparison | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | **Detailed design approved; first build; implementation paused** |
+| Fraud Overview | Show simulated transaction activity, fraud-labelled count/share and trends over the available period | Validated full transaction CSV | **Detailed design approved; implementation foundation prepared** |
+| Review Policy Comparison | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | **Detailed design approved; first build after local data/theme checks** |
 
-The proposed metric contract, visual tokens and design gates are in the [Power BI design system](POWER_BI_DESIGN_SYSTEM.md).
+The approved metric contract, visual tokens and design gates are in the [Power BI design system](POWER_BI_DESIGN_SYSTEM.md).
 
 **Important data-language restrictions:**
 - Describe the data as simulated and the outcome as a retrospective fraud label.

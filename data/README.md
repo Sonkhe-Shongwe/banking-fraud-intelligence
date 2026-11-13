@@ -96,6 +96,13 @@ Copy-Item -LiteralPath '.\notebooks\04_fraud_holdout_evaluation.ipynb' `
   -Destination (Join-Path $runDir "04_fraud_holdout_evaluation-$stamp.ipynb")
 ```
 
+To preserve the P5 reporting charts and audit tables, use the same copy command with the Notebook 05 filename:
+
+```powershell
+Copy-Item -LiteralPath '.\notebooks\05_power_bi_data_preparation.ipynb' `
+  -Destination (Join-Path $runDir "05_power_bi_data_preparation-$stamp.ipynb")
+```
+
 Open the copy in VS Code, select your working Python 3.12 kernel, then run and save it there. All five notebooks can locate the repo from that folder. For links to project docs embedded in notebook text, use the original notebook under `notebooks/`. For a new run after another pull, make a fresh copy from the updated source. If you only need the CSV from P4, you can run the tracked notebook and close it without saving the notebook outputs.
 
 ### Recover a pull blocked by a notebook
