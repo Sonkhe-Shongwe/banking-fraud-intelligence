@@ -4,7 +4,7 @@
 
 **Project:** Banking Fraud Intelligence
 
-**Start with:** [Phase scorecard](PROJECT_STATUS_CURRENT.md) · [Documentation index](DOCUMENTATION_INDEX.md) · [Master continuation prompt](MASTER_CONTINUATION_PROMPT.md)
+**Start with:** [Phase scorecard](PROJECT_STATUS_CURRENT.md) · [Documentation index](DOCUMENTATION_INDEX.md) · [Power BI design system](POWER_BI_DESIGN_SYSTEM.md) · [Master continuation prompt](MASTER_CONTINUATION_PROMPT.md)
 
 ## Verified checkpoint
 
@@ -19,36 +19,61 @@
 | P3 baseline and model | Executed the [modelling notebook](../notebooks/03_fraud_model_validation.ipynb) in IPython. Fitted logistic regression with April–July only. Compared both August policies at both budgets in the full and restricted cohorts. Ten regression tests passed. [Frozen protocol](methodology.md#frozen-model-and-review-protocol) |
 | P4 held-out evaluation | The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reconciled all eight September comparisons. Ten regression tests passed. The owner confirmed the notebook saved 287,873 rows in Windows. The [export path fix](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/1a56a16a383f6d0b4181082b778ca1d12287c5a3) reproduced the same CSV byte for byte. |
 | Key risk | The simulator labels all amounts above 220 as fraud. The raw files lack label-confirmation timestamps. [Evaluation implications](data_sources.md#evaluation-implications) |
-| Delivery state | P1 is at 80%, P2 through P4 are at 100%, and overall progress is 72%. The P5 report scope awaits owner approval. |
+| Delivery state | P1 is at 80%, P2 through P4 are at 100%, and overall progress is 72%. P5 is approved in scope and design direction but has not started implementation. |
 
 ## Owner working agreement
 
-Work in small increments with a visible checkpoint. Show what changed, what was verified, and what the owner can open after pulling. Keep executed notebooks in the [local notebook runs folder](../data/README.md#save-notebook-runs-locally) so the tracked sources can receive updates. Dashboard scope, publication scope and other major changes require owner approval.
+Work in small increments with a visible checkpoint. Show what changed, what was verified, and what the owner can open after pulling. Keep executed notebooks in the [local notebook runs folder](../data/README.md#save-notebook-runs-locally) so the tracked sources can receive updates. The owner requires explicit approval before major design changes or unapproved implementation. Dashboard scope and publication scope are separate decisions.
+
+## Owner-approved P5 decisions
+
+1. Power BI Desktop is the report platform.
+2. The first report has two pages: **Fraud Overview** and **Review Policy Comparison**.
+3. Start the build with **Review Policy Comparison**.
+4. The approved design direction is **A — Premium Banking Intelligence**: light, restrained, sophisticated, professional and executive-grade.
+5. No drastic design or implementation change without the owner's approval.
+
+## P5 scope and design gate
+
+The page scope and overall visual direction are approved. Detailed design is not yet approved. The following remain proposals for review: palette, typography, canvas size, spacing/grid, exact page wireframes, chart types, KPI card treatment, iconography and interactions.
+
+| Page | Intended purpose | Verified input | Design status |
+|---|---|---|---|
+| Fraud Overview | Show simulated transaction activity, fraud-labelled count/share and trends over the available period | Validated full transaction CSV | Page approved; exact layout pending |
+| Review Policy Comparison | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | Page approved; first build; exact layout pending |
+
+The proposed metric contract, visual tokens and design gates are in the [Power BI design system](POWER_BI_DESIGN_SYSTEM.md).
+
+**Important data-language restrictions:**
+- Describe the data as simulated and the outcome as a retrospective fraud label.
+- Use fraud-labelled transaction value, not fraud loss prevented or money saved.
+- Do not display alerts reviewed, case resolution, turnaround time, geography, channel, product or customer-segment analysis; the source does not support those claims.
+- The logistic-regression decision score is not a calibrated probability.
+- For the at-or-below-220 cohort, use its independently recalculated rank columns, not the full-population ranks.
+- The visual concept board is a moodboard only. Its sample KPI values and fraud-pattern categories are placeholders and must not be copied into the report.
+
+### Current Power BI repository state
+
+At audited remote HEAD 6326968, the powerbi directory contains only .gitkeep. No PBIX, final theme JSON, DAX measure set or Power BI Desktop validation evidence exists. This is consistent with P5 at 0%.
+
+### Publication boundary
+
+Keep raw files, processed extracts, transaction-level rank exports and reports containing row-level records local. The source snapshot does not include a separate raw-data licence, and permission to redistribute derived artefacts has not been established. Resolve publication scope separately before portfolio release. [Source publication scope](data_sources.md#publication-scope)
 
 ## Resume here
 
-1. Use the existing `data/processed/september_review_ranks.csv` for the September comparison. To regenerate it, [run the held-out notebook](../data/README.md#run-the-held-out-evaluation) in the working Python 3.12 kernel.
-2. Review the [proposed P5 scope](#p5-scope-for-review). After scope approval, build the local Power BI report and reconcile its measures and filters against Python.
-3. Confirm which artefacts can be shared before publishing portfolio outputs. Keep raw data, transaction-level ranks, and reports that embed those rows local while publication terms are unresolved. [Publication scope](data_sources.md#publication-scope)
-
-## P5 scope for review
-
-The proposed first version has two dark-theme report pages. Power BI Desktop is approved. The page scope is a proposal, and the dark concept is a preview.
-
-| Page | Proposed content | Verified input |
-|---|---|---|
-| Fraud overview | Simulated transaction volume, fraud count and rate, date trend, and fraud-labelled value. Label the selected period and amount units. | Validated source CSV |
-| Review policy comparison | September holdout, 50 or 100 reviews per day, full or at-or-below-220 cohort, and side-by-side fraud caught, legitimate reviews, precision, recall and fraud-labelled value selected. | Local September rank CSV |
-
-Transaction-level queue and drillthrough are optional follow-up views. An August comparison would require a matching August reporting export and separate validation labeling. For the September page, reconcile all eight policy, cohort and capacity combinations and a representative date selection against Python. [Rank contract](data_model.md#september-review-rank-export) · [Evidence for the dashboard](methodology.md#evidence-for-the-dashboard)
+1. Review the [Power BI design system](POWER_BI_DESIGN_SYSTEM.md), starting with the proposed palette, typography and design acceptance gates.
+2. Develop and present exact wireframes for the two approved pages. Do not implement the theme or report until the owner approves the detailed design.
+3. After design approval, build Review Policy Comparison first, then Fraud Overview. Reconcile all eight September policy/cohort/capacity comparisons and representative date selections against Python.
+4. Keep P5 at 0% until the approved report has been built and verified in Power BI Desktop. Resolve publication permissions separately.
 
 ## Checkpoint history
 
 | Date | Checkpoint |
 |---|---|
-| 26 October 2026 | Proposed data grain and model quality gates recorded in `d7d2726`. |
+| 26 October 2026 | Proposed data grain and model quality gates recorded in d7d2726. |
 | 13 November 2026 | Profiled the pinned simulated source, recorded the Python-only scope, and added the documentation index, phase scorecard and session handoff. |
-| 13 November 2026 | Owner approved Power BI Desktop for P5. Recorded the change and the Python-to-report handoff. |
+| 13 November 2026 | Owner approved Power BI Desktop for P5. |
 | 13 November 2026 | Owner directed that data availability and analysis determine the project outline and proposed Power BI views. |
 | 13 November 2026 | Converted and checked the uploaded archive. Added a pull-and-run launcher for local CSV generation. |
 | 13 November 2026 | Added a reusable continuation prompt linked from the README, project instructions, documentation index and current status records. |
@@ -59,4 +84,6 @@ Transaction-level queue and drillthrough are optional follow-up views. An August
 | 13 November 2026 | Completed P2 with a notebook walkthrough, reusable feature code, verified chronological partitions and timestamp leakage checks on the pinned data. |
 | 13 November 2026 | Completed P3 with the amount baseline, logistic regression challenger, August validation notebook and frozen September evaluation protocol. |
 | 13 November 2026 | Completed P4 with the frozen September evaluation, eight reconciled queue comparisons and a local rank export for the proposed Power BI report. |
-| 13 November 2026 | Recorded Windows confirmation for P4, documented the local notebook-run workflow, and captured the proposed P5 scope for review. |
+| 13 November 2026 | Recorded Windows confirmation for P4 and documented the local notebook-run workflow. |
+| 13 November 2026 | Owner approved the two P5 report pages and the Premium Banking Intelligence light-theme direction. Detailed design tokens and wireframes remain subject to owner approval. |
+| 13 November 2026 | Audited remote main, corrected stale dark-theme handoff language, established the design system and recorded the P5 readiness audit. |
