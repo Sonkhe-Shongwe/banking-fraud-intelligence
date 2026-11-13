@@ -43,3 +43,13 @@ The validator parses timestamps and numeric types, checks the schema, missing fi
 ## Run the feature engineering notebook
 
 Open [02_fraud_feature_engineering.ipynb](../notebooks/02_fraud_feature_engineering.ipynb) in VS Code, select the same Python 3.12 kernel that ran the exploratory notebook, and choose **Run All**. It validates the local CSV, builds the history features in memory, and displays a synthetic example, a missing-history summary and a chronological split table. [Feature definitions and split rules](../docs/data_model.md#scoring-time-features-and-partitions)
+
+## Run the modelling notebook
+
+Open [03_fraud_model_validation.ipynb](../notebooks/03_fraud_model_validation.ipynb) with the Python 3.12 kernel that ran the first two notebooks. If this kernel still needs scikit-learn 1.8.0, run the following in a temporary notebook cell and restart the kernel after installation.
+
+```python
+%pip install scikit-learn==1.8.0
+```
+
+Choose **Run All** to rebuild the feature inputs, fit the model and display the August tables and chart. A fresh environment can use `requirements-notebook.txt` for all dependencies. [Frozen protocol](../docs/methodology.md#frozen-model-and-review-protocol)
