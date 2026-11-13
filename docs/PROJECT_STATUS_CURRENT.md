@@ -12,7 +12,7 @@
 | **P2 · Python data pipeline** | 20% | 0% | 0 | Repeatable load and validation, scoring-time feature preparation, chronological train/validation/test partitions, and checks for future information. |
 | **P3 · Baseline and model** | 20% | 0% | 0 | Amount-based baseline and at least one scikit-learn model, compared on validation data. Record and freeze the model and evaluation protocol before scoring the holdout. |
 | **P4 · Investigation policy and held-out results** | 20% | 0% | 0 | Compare model and baseline at the same daily review limits. Report fraud caught, legitimate reviews and fraud-labelled transaction value. Check results on amounts at or below 220. |
-| **P5 · Streamlit investigation demo** | 15% | 0% | 0 | Owner-approved design and a verified demo with a responsive review-capacity control, investigation queue and transaction detail view fed by precomputed scores. |
+| **P5 · Power BI Investigation Dashboard** | 15% | 0% | 0 | Owner-approved design and a report verified in Power BI Desktop. Changing daily review capacity updates the investigation queue and both policies' metrics from precomputed ranks. Transaction drillthrough and totals are checked against the Python export. |
 | **P6 · Portfolio release** | 10% | 0% | 0 | Verify from a fresh checkout and publish the approved README, reproduction instructions, results, limitations and walkthrough. |
 | **Overall** | **100%** | **12%** | **12** | |
 

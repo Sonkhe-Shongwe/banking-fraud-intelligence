@@ -19,7 +19,7 @@ One record represents one simulated transaction at its event time. The [source a
 1. Validated transactions with consistent types and documented treatment of zero amounts.
 2. Feature rows calculated using information available at each transaction's scoring time, with explicit rules for equal timestamps and any label feedback delay.
 3. Chronological training, validation and test partitions.
-4. Held-out scores keyed by transaction ID with event time, amount and evaluation outcome. Daily review ranks are calculated from those scores.
-5. Streamlit consumes the precomputed output for queue inspection and review-capacity simulation, subject to the approved publication scope.
+4. A held-out reporting export keyed by transaction ID, with event time, amount, evaluation outcome, model score and a precomputed daily rank for each policy. Use the same daily population for both ranks and resolve ties consistently.
+5. Power BI imports the export. The review-capacity selection filters by the appropriate daily rank and drives queue counts, policy comparisons and transaction drillthrough. Transaction-level exports and reports containing them stay local pending publication clearance.
 
 P2 verifies one row per transaction, unique keys, chronological boundaries and historical feature availability. P4 reconciles queue counts and monetary exposure to the held-out rows. [Methodology](methodology.md)
