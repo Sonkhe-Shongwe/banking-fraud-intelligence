@@ -4,6 +4,8 @@ A portfolio case study on prioritising potentially fraudulent card transactions 
 
 **Current checkpoint (13 November 2026): P1 at 80% · 12% overall.** The source is pinned, the raw data was profiled, and the Python-only scope is recorded. The publication scope for dataset-derived artefacts is open. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md)
 
+**Open the data locally:** Pull this repository and double-click **Prepare Transactions.cmd** on Windows. It downloads the pinned source if needed and produces one CSV. [Instructions](data/README.md)
+
 ## Start here
 
 | What you need | Where to look |

@@ -18,6 +18,8 @@
 
 Phase percentages track accepted evidence. Overall progress is the sum of each phase weight multiplied by its completion fraction. The current score is `15 × 0.80 = 12` points.
 
+The [local CSV conversion](../data/README.md#prepare-one-csv) is verified on the pinned input. P2's phase score is pending scoring-time feature preparation and chronological partition evidence.
+
 ## P1 checks
 
 Each check is worth 20% of P1.
