@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next decision:** Owner review of [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md). The two-page scope and Premium Banking Intelligence direction are approved; detailed tokens, layouts and interactions remain proposals. Publication scope remains a separate open gate. [Design system](POWER_BI_DESIGN_SYSTEM.md) · [P5 handoff](SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate)
+**Next decision:** Await the owner's separate explicit go-ahead to begin implementation. [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md), detailed design tokens and both page layouts were approved as presented on 13 November 2026. P5 remains at 0% until implementation evidence is produced. Publication scope remains a separate open gate. [Design system](POWER_BI_DESIGN_SYSTEM.md) · [P5 handoff](SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
@@ -12,7 +12,7 @@
 | **P2 · Python data pipeline** | 20% | **100%** | **20** | Repeatable load and validation, scoring-time feature preparation, chronological train/validation/test partitions, and checks for future information. |
 | **P3 · Baseline and model** | 20% | **100%** | **20** | Amount-based baseline and at least one scikit-learn model, compared on validation data. Record and freeze the model and evaluation protocol before scoring the holdout. |
 | **P4 · Investigation policy and held-out results** | 20% | **100%** | **20** | Compare model and baseline at the same daily review limits. Report fraud caught, legitimate reviews and fraud-labelled transaction value. Check results on amounts at or below 220. |
-| **P5 · Power BI Investigation Dashboard** | 15% | 0% | 0 | Obtain owner approval for the documented design tokens and [P5 wireframe proposal](P5_WIREFRAMES_PROPOSAL_v0.1.md); build the two approved pages in Power BI Desktop; reconcile all measures to Python; verify filters, navigation, accessibility and report behaviour. [Design system](POWER_BI_DESIGN_SYSTEM.md) |
+| **P5 · Power BI Investigation Dashboard** | 15% | 0% | 0 | Detailed design is approved. Await a separate explicit owner go-ahead; then build the two approved pages in Power BI Desktop, reconcile all measures to Python, and verify filters, navigation, accessibility and report behaviour. [Design system](POWER_BI_DESIGN_SYSTEM.md) |
 | **P6 · Portfolio release** | 10% | 0% | 0 | Verify from a fresh checkout and publish the approved README, reproduction instructions, results, limitations and walkthrough after publication scope is cleared. |
 | **Overall** | **100%** | **72%** | **72** | |
 
@@ -52,10 +52,11 @@ The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduc
 ## P5 decision and implementation status
 
 - **Approved:** Power BI Desktop; two pages (Fraud Overview and Review Policy Comparison); Premium Banking Intelligence light-theme direction; start with Review Policy Comparison.
-- **Pending owner approval:** exact palette, typography, canvas/grid, page wireframes, visual selection, KPI card treatment, icons and interactions.
+- **Approved by owner (13 November 2026):** exact palette, typography, canvas/grid, both page wireframes, visual selection, KPI card treatment, icons and interactions, as recorded in P5 wireframe proposal v0.1.
+- **Awaiting separate explicit owner go-ahead:** implementation of the theme JSON, data-preparation outputs and Power BI report.
 - **Not started:** final theme JSON, PBIX/report, DAX measure implementation, report reconciliation and desktop interaction testing.
 - **Separate open gate:** dataset-derived publication permissions. See [source publication scope](data_sources.md#publication-scope).
 
-P5 remains at 0% until its acceptance evidence is implemented and verified. Approval of scope and visual direction does not count as report completion.
+P5 remains at 0% until its acceptance evidence is implemented and verified. Design approval is recorded, but it does not count as report implementation or completion. Do not start implementation until the separate owner go-ahead is received.
 
 For a new conversation, use the [master continuation prompt](MASTER_CONTINUATION_PROMPT.md) to retrieve this scorecard and the current handoff.

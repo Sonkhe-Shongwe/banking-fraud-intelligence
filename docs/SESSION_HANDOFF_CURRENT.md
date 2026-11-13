@@ -39,8 +39,8 @@ The page scope and overall visual direction are approved. Detailed design is not
 
 | Page | Intended purpose | Verified input | Design status |
 |---|---|---|---|
-| Fraud Overview | Show simulated transaction activity, fraud-labelled count/share and trends over the available period | Validated full transaction CSV | Page approved; exact layout pending |
-| Review Policy Comparison | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | Page approved; first build; exact layout pending |
+| Fraud Overview | Show simulated transaction activity, fraud-labelled count/share and trends over the available period | Validated full transaction CSV | **Detailed design approved; implementation paused** |
+| Review Policy Comparison | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | **Detailed design approved; first build; implementation paused** |
 
 The proposed metric contract, visual tokens and design gates are in the [Power BI design system](POWER_BI_DESIGN_SYSTEM.md).
 
@@ -62,9 +62,9 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. Review [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md), including the two page layouts, metric hierarchy, controls, visual language and proposed data model.
-2. Owner to approve or revise the palette, typography, canvas, page layouts, chart choices and interaction contract. The proposal is non-binding; no theme or report has been implemented.
-3. After detailed design approval, create the approved theme and data-preparation outputs, then build Review Policy Comparison first and Fraud Overview second.
+1. The owner approved [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md) as presented on 13 November 2026. No revisions were requested; D1 design tokens and D2 page wireframes are approved.
+2. **Do not begin implementation yet.** The owner requested a separate explicit go-ahead before creating the theme, generating data-preparation outputs or modifying/building the Power BI report.
+3. Once that separate implementation go-ahead is received, create the approved theme and data-preparation outputs, then build Review Policy Comparison first and Fraud Overview second.
 4. Reconcile all eight September policy/cohort/capacity comparisons and representative date selections against Python. Test Power BI Desktop refresh, filters, navigation, accessibility and rendering.
 5. Keep P5 at 0% until the approved report has been built and verified in Power BI Desktop. Resolve publication permissions separately.
 
@@ -88,4 +88,5 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 | 13 November 2026 | Recorded Windows confirmation for P4 and documented the local notebook-run workflow. |
 | 13 November 2026 | Owner approved the two P5 report pages and the Premium Banking Intelligence light-theme direction. Detailed design tokens and wireframes remain subject to owner approval. |
 | 13 November 2026 | Researched corporate banking, Dribbble, LinkedIn and TikTok analytics interfaces; documented P5 wireframe proposal v0.1. No Power BI files or implementation artefacts were changed. |
+| 13 November 2026 | Owner approved P5 wireframe proposal v0.1 as presented, including detailed design tokens and both page layouts. Owner requested a separate explicit go-ahead before implementation; P5 remains at 0%. |
 | 13 November 2026 | Audited remote main, corrected stale dark-theme handoff language, established the design system and recorded the P5 readiness audit. |

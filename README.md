@@ -2,7 +2,7 @@
 
 A portfolio case study on prioritising potentially fraudulent card transactions when investigators can review only a fixed number each day. The main question is whether a risk model helps investigators find more fraud than an amount-based baseline at the same review capacity.
 
-**Current checkpoint (13 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The September review queues and local reporting export reconcile. P5's two-page scope and Premium Banking Intelligence visual direction are approved; detailed design tokens and page wireframes still require owner approval. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md)
+**Current checkpoint (13 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The September review queues and local reporting export reconcile. P5's two-page scope, Premium Banking Intelligence direction, detailed design tokens and both page wireframes are approved. Implementation is paused pending a separate explicit owner go-ahead. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md)
 
 Use the existing validated data/processed/transactions.csv if you already have it. For a fresh checkout, follow the Windows setup in the [local data guide](data/README.md#prepare-one-csv).
 

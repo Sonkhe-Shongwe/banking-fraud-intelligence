@@ -1,6 +1,6 @@
 # Power BI Design System | Banking Fraud Intelligence
 
-**Status:** Design direction approved. Detailed tokens, page wireframes and visual treatments are proposals pending owner approval.  
+**Status:** Detailed design approved by the owner on 13 November 2026. Implementation is paused pending a separate explicit owner go-ahead.  
 **Owner-approved direction:** A — Premium Banking Intelligence.  
 **Platform:** Power BI Desktop.  
 **Last reviewed:** 13 November 2026.
@@ -16,15 +16,15 @@ This document is the working design contract for P5. It records what has been ap
 | Begin implementation with Review Policy Comparison | Approved in principle | Owner accepted the proposed sequence |
 | Premium Banking Intelligence visual direction | Approved | Direction A |
 | Light, restrained, executive-grade appearance | Approved as part of Direction A | Owner's stated preference |
-| Exact palette and colour roles | Proposed | Requires review and approval |
-| Font family and type scale | Proposed | Requires review and local rendering check |
-| Canvas dimensions and grid | Proposed | Requires review in Power BI Desktop |
-| Exact page wireframes and chart selection | Pending | Must be shown for approval |
-| KPI card construction, iconography and navigation treatment | Proposed | Must be shown for approval |
+| Exact palette and colour roles | Approved | Accepted as presented in P5 wireframe proposal v0.1 |
+| Font family and type scale | Approved | Segoe UI proposal accepted; local rendering validation remains an implementation test |
+| Canvas dimensions and grid | Approved | 16:9 1280 x 720 planning canvas and grid accepted; final rendering check remains an implementation test |
+| Exact page wireframes and chart selection | Approved | P5 wireframe proposal v0.1 accepted as presented |
+| KPI card construction, iconography and navigation treatment | Approved | Accepted as presented in P5 wireframe proposal v0.1 |
 | Transaction-level queue or drillthrough | Not approved | Optional follow-up only |
 | Public release of dataset-derived artefacts | Open | Separate data-publication gate |
 
-**Approval boundary:** Do not create or modify the report, import a final theme, change page scope, add a new page, expose transaction-level data, or make another material design decision until the owner has approved the relevant proposal. Small documentation corrections that preserve these decisions are authorised.
+**Approval boundary:** The detailed design proposal is now approved. However, the owner explicitly requested a pause before implementation. Do not create or modify the report, generate the theme or data-preparation outputs, or begin Power BI implementation until a separate explicit owner go-ahead is received. Publication and row-level data exposure remain separately gated.
 
 ## 2. Product and analytical intent
 
@@ -41,7 +41,7 @@ The design must communicate evidence rather than imply a live banking operation.
 | **Fraud Overview** | What does fraud prevalence and transaction activity look like across the available simulated period? | Validated full transaction CSV |
 | **Review Policy Comparison** | At the same daily review capacity, how do amount ranking and logistic regression compare? | September held-out rank export |
 
-The Review Policy Comparison is the planned first build. Exact layouts remain subject to owner approval.
+The Review Policy Comparison is the approved first build. Both page layouts are approved in [P5 wireframe proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md). Implementation remains paused pending a separate explicit owner go-ahead.
 
 ## 3. Data contract and truthful metric language
 
@@ -219,8 +219,8 @@ Microsoft's Power BI accessibility guidance covers alternative text, tab order, 
 | Gate | Evidence required | Status |
 |---|---|---|
 | D0 — Direction | Premium Banking Intelligence, light-theme direction | Approved |
-| D1 — Design tokens | Palette, typography, spacing, icon and component rules | Proposed; owner review required |
-| D2 — Page wireframes | Exact layout and visual selection for both pages | Proposal v0.1 documented; owner approval pending |
+| D1 — Design tokens | Palette, typography, spacing, icon and component rules | **Approved by owner, 13 November 2026** |
+| D2 — Page wireframes | Exact layout and visual selection for both pages | **P5 wireframe proposal v0.1 approved by owner, 13 November 2026** |
 | D3 — Theme implementation | Theme JSON imported and inspected in Power BI Desktop | Not started |
 | D4 — Report implementation | Approved pages built with supported data only | Not started |
 | D5 — Analytical reconciliation | Power BI measures match Python for all eight September policy/cohort/capacity cases and representative date selections | Not started |
@@ -254,4 +254,4 @@ The external review compared corporate banking dashboard patterns on Dribbble wi
 
 Microsoft's current Power BI documentation confirms support for custom report themes, date and button slicers, 16:9 1280 x 720 canvas settings, grid alignment and accessibility features. These are implementation constraints, not permission to build the proposed design.
 
-**Current gate:** The wireframes and detailed tokens are proposals. The owner must approve or revise them before theme or report implementation. P5 remains at 0%.
+**Current gate:** D1 and D2 are approved. Implementation is deliberately paused until a separate explicit owner go-ahead. P5 remains at 0% because no theme, data-preparation output or Power BI report has been implemented or verified.

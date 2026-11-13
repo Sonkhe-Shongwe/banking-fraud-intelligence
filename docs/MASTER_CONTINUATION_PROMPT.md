@@ -16,7 +16,7 @@ At the start of each continuation session, verify the repository, active branch 
 2. docs/DOCUMENTATION_INDEX.md to locate the active records.
 3. docs/SESSION_HANDOFF_CURRENT.md for the last verified work, owner decisions and next action.
 4. docs/PROJECT_STATUS_CURRENT.md for P1–P6, phase weights and closure criteria.
-5. docs/POWER_BI_DESIGN_SYSTEM.md for approved design decisions, proposed tokens, metric language and design gates whenever P5 is involved.
+5. docs/POWER_BI_DESIGN_SYSTEM.md and docs/P5_WIREFRAMES_PROPOSAL_v0.1.md for approved detailed design decisions, metric language and design gates whenever P5 is involved.
 6. The relevant audit, methodology, data model, source audit or findings, plus the source files, tests and CI runs that exist for the selected task.
 
 Compare those records with recent commits and the working tree. Identify stale or conflicting claims and verify the exact revision before resolving them. Preserve historical decisions and test outcomes.
@@ -47,7 +47,7 @@ Treat permission to use Power BI as approval of the platform, and the approved t
 - Review Policy Comparison as the first page to build.
 - Direction A: Premium Banking Intelligence, with a light, restrained and executive-grade aesthetic.
 
-The detailed palette, typography, canvas/grid, wireframes, visual selection, KPI treatment, iconography and interactions are still proposals. Obtain explicit owner approval for those details before implementing them. Never make drastic design changes or implement unapproved visual decisions. A generated concept board is a moodboard only; its sample metrics are not project data.
+The owner approved the detailed palette, typography, canvas/grid, both page wireframes, visual selection, KPI treatment, iconography and interactions as presented in docs/P5_WIREFRAMES_PROPOSAL_v0.1.md on 13 November 2026. No revisions were requested. This is design approval only. The owner explicitly requested a separate go-ahead before implementation; do not create the theme, generate new data-preparation outputs or modify/build the Power BI report until that separate approval is received. Never make unapproved design changes. A generated concept board is a moodboard only; its sample metrics are not project data.
 
 Ask for explicit owner approval before a major change to scope, architecture, schedule or public data exposure. Apply one-off approvals only to the operation they cover. Publication permissions remain separate from design approval.
 

@@ -1,8 +1,8 @@
 # P5 Wireframe Proposal v0.1
 **Project:** Banking Fraud Intelligence  
 **Prepared:** 13 November 2026  
-**Status:** Non-binding design proposal for owner review  
-**Authority:** Research and wireframe proposal only. This document does not authorise Power BI implementation, final theme import, a change in page scope, or publication.
+**Status:** Owner-approved detailed design specification (13 November 2026); implementation not yet authorised  
+**Authority:** The owner approved this detailed design as presented, with no requested revisions. This confirms the palette, typography, canvas, page layouts, visual selection and interaction proposal. It does **not** authorise implementation: wait for a separate explicit owner go-ahead before creating the theme, data-preparation outputs or Power BI report. Publication remains a separate approval gate.
 
 ## 1. Design objective
 
@@ -331,23 +331,25 @@ The report should not load redundant transaction-level copies into the semantic 
 
 ## 10. Approval checklist
 
-The following decisions remain with the owner. Nothing in this proposal is final until accepted.
+The owner reviewed and approved the following detailed design decisions as presented on 13 November 2026. No additional feedback or revisions were requested.
 
 | Decision | Current proposal | Owner status |
 |---|---|---|
-| Light premium banking palette | Navy, slate blue, teal, white and cool neutrals | Pending |
-| Segoe UI type system | Proposed type hierarchy | Pending |
-| 16:9 1280 x 720 canvas | HD widescreen | Pending |
-| Compact top navigation | Two-page horizontal navigation | Pending |
-| Review Policy Comparison layout | Header, filters, three KPIs, daily trend, scenario matrix, scorecard and methodology footer | Pending |
-| Fraud Overview layout | Four KPIs, weekly trend, simulator-rule context, monthly summary and methodology footer | Pending |
-| Native Power BI slicers and visuals | Prefer native components over custom visuals | Pending |
-| Proposed aggregated Overview_Daily table | Generate from validated source in Python | Pending |
-| No transaction-level drillthrough | Keep first report focused on aggregate analysis | Pending |
+| Light premium banking palette | Navy, slate blue, teal, white and cool neutrals | **Approved** |
+| Segoe UI type system | Proposed type hierarchy | **Approved** |
+| 16:9 1280 x 720 canvas | HD widescreen | **Approved** |
+| Compact top navigation | Two-page horizontal navigation | **Approved** |
+| Review Policy Comparison layout | Header, filters, three KPIs, daily trend, scenario matrix, scorecard and methodology footer | **Approved** |
+| Fraud Overview layout | Four KPIs, weekly trend, simulator-rule context, monthly summary and methodology footer | **Approved** |
+| Native Power BI slicers and visuals | Prefer native components over custom visuals | **Approved** |
+| Proposed aggregated Overview_Daily table | Generate from validated source in Python | **Approved** |
+| No transaction-level drillthrough | Keep first report focused on aggregate analysis | **Approved** |
 
-### What approval will authorise
+### Approval record and implementation boundary
 
-Approval of the detailed design will authorise the next scoped P5 increment: create the theme JSON and the approved data-preparation outputs, then build the Review Policy Comparison page first. It will not authorise public publication or sharing of row-level data. Publication clearance remains separate.
+**Owner decision (13 November 2026): APPROVED AS PRESENTED.** The owner approved the detailed visual identity, both page wireframes, component hierarchy, metric presentation, native Power BI interaction proposal and proposed aggregate overview data model. No revisions were requested.
+
+This is approval of the design specification only. At the owner's instruction, do not begin implementation yet. A separate explicit go-ahead is required before creating or importing the theme JSON, generating new data-preparation outputs, modifying report files or building either page. This pause does not change the approved design. It also does not authorise public publication or sharing of row-level data; publication clearance remains separate.
 
 ## 11. Research references
 
