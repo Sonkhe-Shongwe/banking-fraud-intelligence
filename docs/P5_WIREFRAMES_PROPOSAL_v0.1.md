@@ -1,8 +1,8 @@
 # P5 Wireframe Proposal v0.1
 **Project:** Banking Fraud Intelligence  
 **Prepared:** 13 November 2026  
-**Status:** Owner-approved detailed design specification (13 November 2026); implementation not yet authorised  
-**Authority:** The owner approved this detailed design as presented, with no requested revisions. This confirms the palette, typography, canvas, page layouts, visual selection and interaction proposal. It does **not** authorise implementation: wait for a separate explicit owner go-ahead before creating the theme, data-preparation outputs or Power BI report. Publication remains a separate approval gate.
+**Status:** Owner-approved detailed design specification; implementation authorised within the approved scope (13 November 2026)  
+**Authority:** The owner approved this detailed design as presented, with no requested revisions, and subsequently authorised implementation by instructing us to continue. Implement only the approved palette, typography, canvas, page layouts, visual selection and interactions. Any scope expansion, major design change or publication of dataset-derived artefacts requires separate approval.
 
 ## 1. Design objective
 
@@ -42,11 +42,11 @@ Dribbble is an inspiration source, not an authority for analytical correctness. 
 
 ## 3. Proposed visual identity
 
-The owner-approved direction remains **A - Premium Banking Intelligence**, with a light, restrained and executive-grade appearance. The current proposed palette is retained for review; this proposal does not make it final.
+The owner-approved direction remains **A - Premium Banking Intelligence**, with a light, restrained and executive-grade appearance. The palette below was approved as presented and is implemented in the first theme increment.
 
 ### 3.1 Colour roles
 
-| Role | Candidate | Usage |
+| Role | Approved value | Usage |
 |---|---|---|
 | Main canvas | #F8FAFC | Cool, very light report background |
 | Card surface | #FFFFFF | KPI cards, charts and tables |
@@ -65,7 +65,7 @@ Policy colours identify the method, not whether its result is good or bad. Use a
 
 **Preferred family:** Segoe UI, for reliable Windows and Power BI rendering.
 
-| Element | Proposed size | Weight |
+| Element | Approved size | Weight |
 |---|---:|---|
 | Page title | 24-26 pt | Semibold |
 | Page subtitle | 10-11 pt | Regular |
@@ -90,7 +90,7 @@ Use consistent number formats, thousands separators and restrained decimal preci
 
 ## 4. Canvas and layout system
 
-**Proposed page size:** 16:9, 1280 x 720 (HD). Microsoft lists this as a standard widescreen canvas size. The final layout must be inspected in Power BI Desktop at the owner's normal display scaling.
+**Approved page size:** 16:9, 1280 x 720 (HD). Microsoft lists this as a standard widescreen canvas size. The final layout must be inspected in Power BI Desktop at the owner's normal display scaling.
 
 **Planning grid:** 12 columns, 24 px outer margins, 16 px gutters and an 8 px spacing rhythm. Use Power BI gridlines and snap-to-grid while arranging visuals.
 
@@ -106,11 +106,11 @@ The same title, navigation, filter and footer positions should be retained on bo
 
 ## 5. Page 2 wireframe - Review Policy Comparison
 
-**Build order:** First report page to implement after detailed design approval.
+**Build order:** First report page to implement under the approved P5 scope.
 
 **Question:** At the same daily review capacity, which ranking policy places more fraud-labelled transactions in the selected review queue?
 
-**Default state proposed:** All transactions, 50 reviews per day, full September 2018 holdout period.
+**Approved default state:** All transactions, 50 reviews per day, full September 2018 holdout period.
 
 ### 5.1 Layout sketch
 
@@ -146,11 +146,11 @@ The same title, navigation, filter and footer positions should be retained on bo
     │ is transaction amount, not loss prevented or money saved.               │
     └──────────────────────────────────────────────────────────────────────────┘
 
-The sketch is a layout proposal, not a screenshot or final pixel specification.
+The sketch is the approved layout blueprint. Visual placement, text wrapping and fit still require inspection in Power BI Desktop.
 
 ### 5.2 Component specification
 
-| Component | Proposed treatment | Purpose |
+| Component | Approved treatment | Purpose |
 |---|---|---|
 | Page header | Title, short decision question, simulated-data badge, two-page navigation | Establish identity and context immediately |
 | Cohort selector | Two-button slicer: All transactions / Amounts at or below 220 | Selects the eligible ranking population |
@@ -189,7 +189,7 @@ For context, each policy fills 1,500 review slots at 50/day across 30 days, or 3
 
 The model decision score must not be presented as a calibrated fraud probability.
 
-### 5.5 Interaction proposal
+### 5.5 Approved interaction contract
 
 1. Cohort and daily capacity button slicers update the KPI cards, daily trend and scorecard.
 2. Date range selection updates the selected-day count, total review slots, KPI cards, trend and scorecard.
@@ -347,9 +347,9 @@ The owner reviewed and approved the following detailed design decisions as prese
 
 ### Approval record and implementation boundary
 
-**Owner decision (13 November 2026): APPROVED AS PRESENTED.** The owner approved the detailed visual identity, both page wireframes, component hierarchy, metric presentation, native Power BI interaction proposal and proposed aggregate overview data model. No revisions were requested.
+**Owner decisions (13 November 2026): DESIGN APPROVED AS PRESENTED; IMPLEMENTATION AUTHORISED WITHIN SCOPE.** The owner approved the detailed visual identity, both page wireframes, component hierarchy, metric presentation, native Power BI interaction proposal and proposed aggregate overview data model. No revisions were requested.
 
-This is approval of the design specification only. At the owner's instruction, do not begin implementation yet. A separate explicit go-ahead is required before creating or importing the theme JSON, generating new data-preparation outputs, modifying report files or building either page. This pause does not change the approved design. It also does not authorise public publication or sharing of row-level data; publication clearance remains separate.
+The owner subsequently authorised implementation by saying “lets continue” on 13 November 2026. Implementation may proceed within this approved design and page scope. Do not add pages, introduce unapproved features or make material design changes without further approval. This does not authorise public publication or sharing of row-level data; publication clearance remains separate.
 
 ## 11. Research references
 

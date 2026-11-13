@@ -1,11 +1,11 @@
 # Power BI Design System | Banking Fraud Intelligence
 
-**Status:** Detailed design approved by the owner on 13 November 2026. Implementation is paused pending a separate explicit owner go-ahead.  
+**Status:** Detailed design approved; P5 implementation authorised within the approved scope on 13 November 2026. Current increment: theme and reporting-data preparation.  
 **Owner-approved direction:** A — Premium Banking Intelligence.  
 **Platform:** Power BI Desktop.  
 **Last reviewed:** 13 November 2026.
 
-This document is the working design contract for P5. It records what has been approved, what is proposed, what the available data can support, and the quality gates required before a report is accepted. It does not authorise implementation of unapproved layouts or design changes.
+This document is the working design contract for P5. It records the approved visual identity, page designs, data contract and quality gates. Implementation may proceed within this approved scope; any scope expansion or material design change still requires owner approval.
 
 ## 1. Decision register
 
@@ -24,7 +24,7 @@ This document is the working design contract for P5. It records what has been ap
 | Transaction-level queue or drillthrough | Not approved | Optional follow-up only |
 | Public release of dataset-derived artefacts | Open | Separate data-publication gate |
 
-**Approval boundary:** The detailed design proposal is now approved. However, the owner explicitly requested a pause before implementation. Do not create or modify the report, generate the theme or data-preparation outputs, or begin Power BI implementation until a separate explicit owner go-ahead is received. Publication and row-level data exposure remain separately gated.
+**Approval boundary:** The owner has authorised implementation within the approved two-page design. Do not add pages, alter the approved visual identity, introduce transaction-level drillthrough or publish dataset-derived artefacts without separate owner approval. Publication and row-level data exposure remain separately gated.
 
 ## 2. Product and analytical intent
 
@@ -41,7 +41,7 @@ The design must communicate evidence rather than imply a live banking operation.
 | **Fraud Overview** | What does fraud prevalence and transaction activity look like across the available simulated period? | Validated full transaction CSV |
 | **Review Policy Comparison** | At the same daily review capacity, how do amount ranking and logistic regression compare? | September held-out rank export |
 
-The Review Policy Comparison is the approved first build. Both page layouts are approved in [P5 wireframe proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md). Implementation remains paused pending a separate explicit owner go-ahead.
+The Review Policy Comparison is the approved first build. Both page layouts are approved in [P5 wireframe proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md). Implementation proceeds within that specification.
 
 ## 3. Data contract and truthful metric language
 
@@ -79,15 +79,15 @@ Do not display or imply:
 
 The source has no label-confirmation timestamp. Historical label use therefore depends on the documented feedback-delay assumption. The simulator labels every transaction above 220 as fraud; the at-or-below-220 comparison is a simulator-sensitivity cohort, not a proposed operational threshold. Keep TX_FRAUD_SCENARIO out of predictive inputs and out of the default executive view; it is a retrospective diagnostic field.
 
-## 4. Proposed visual identity
+## 4. Approved visual identity
 
 The approved direction is **Premium Banking Intelligence**: light, calm, precise, restrained, confident and executive-grade. It should feel like a considered internal banking analytics product, not a generic Power BI starter report.
 
-### Initial colour-token proposal
+### Approved colour tokens
 
-These are starting tokens for review, not final approved values.
+These values were approved as presented in P5 wireframe proposal v0.1 and are the source of truth for theme implementation.
 
-| Token | Candidate | Intended role |
+| Token | Approved value | Intended role |
 |---|---|---|
 | Primary navy | #0F172A | Page titles, key labels and strongest text |
 | Slate blue | #1E3A5F | Amount-baseline series and structural emphasis |
@@ -104,65 +104,69 @@ Use slate blue consistently for the amount baseline and teal for logistic regres
 
 The candidate navy, slate, teal and secondary-text colours have strong contrast against the proposed light canvas. Every final text/background and icon/background pairing must still be checked in the actual report. Target WCAG 2.1 AA contrast of at least 4.5:1 for normal text and ensure meaningful graphical elements remain distinguishable without colour alone.
 
-### Typography proposal
+### Approved typography hierarchy
 
-- Primary family: Segoe UI as the dependable Windows/Power BI baseline.
-- Optional alternative: Inter only if installed and verified on the owner's machine and in the exported report.
-- Page title: approximately 28–32 px.
-- Section heading: approximately 16–18 px.
-- KPI value: approximately 28–32 px.
-- KPI label: approximately 12–13 px.
-- Body and chart labels: approximately 12–14 px.
-- Footnotes and data definitions: approximately 10–11 px, never so small that they become unreadable.
+**Primary family:** Segoe UI, for reliable Windows and Power BI rendering.
 
-These are design targets. Final Power BI formatting values must be checked at the intended display size. Use tabular number styling where available, consistent decimal precision, thousands separators and explicit units. Do not add a currency symbol until the dataset's monetary unit is verified.
+| Element | Approved size | Weight |
+|---|---:|---|
+| Page title | 24–26 pt | Semibold |
+| Page subtitle | 10–11 pt | Regular |
+| KPI value | 26–30 pt | Semibold |
+| KPI label | 10–11 pt | Semibold |
+| Section title | 12–14 pt | Semibold |
+| Chart labels and table text | 9–11 pt | Regular |
+| Methodology note | 9–10 pt | Regular |
 
-### Layout and spacing proposal
+Use consistent number formats, thousands separators and restrained decimal precision. Do not add a currency symbol because the audited source does not establish a real currency unit. The Power BI theme sets report-wide text defaults; page titles, KPI values and individual components will be formatted to the approved hierarchy in Desktop.
 
-- Desktop-first 16:9 canvas; confirm the exact page size after a Power BI Desktop preview.
-- Use a consistent page header, clear page navigation and a compact filter area.
-- Use a 12-column layout as a planning grid, with approximately 24–32 px outer margins and 16–24 px gutters.
-- Use an 8 px spacing rhythm for consistent gaps and alignment.
-- Align KPI cards and chart edges to the same grid. Avoid arbitrary floating elements.
+### Approved layout and spacing
+
+- **Canvas:** 16:9, 1280 × 720 (HD).
+- **Planning grid:** 12 columns, 24 px outer margins, 16 px gutters and an 8 px spacing rhythm.
+- Keep a stable header and page navigation at the top, with the filter strip directly below.
+- Place headline measures below the filters, followed by the main analytical visual and supporting scorecard/context.
+- Align KPI cards, charts and table edges to the same grid. Avoid arbitrary floating elements.
 - Keep the highest-priority message in the upper-left reading path, then move from summary to comparison and supporting detail.
 - Prefer generous whitespace and subtle separators over heavy borders, stacked shadows or excessive rounded containers.
+- Retain the same title, navigation, filter and footer positions across both pages.
 
-The grid and measurements are proposals. They are not final until reviewed in Power BI Desktop at the intended screen resolution.
+The canvas and grid are approved. Final visual positioning, text wrapping and fit must still be inspected in Power BI Desktop at the owner's normal display scaling. The theme JSON does not set canvas dimensions or position visuals.
 
-## 5. Page design briefs
+## 5. Approved page designs
 
-These briefs define the intended analytical story. They are not final wireframes.
+The exact page layouts, hierarchy, components and default states are recorded in the [owner-approved P5 wireframe specification](P5_WIREFRAMES_PROPOSAL_v0.1.md).
 
 ### Page 1 — Fraud Overview
 
 **Purpose:** Establish the scale, prevalence and temporal pattern of the simulated dataset.
 
-Candidate components:
-- Page title and a visible **Simulated dataset** context label.
-- Date-range filter covering the audited period.
-- Four candidate KPI cards: transaction count, fraud-labelled transaction count, fraud-labelled share and fraud-labelled transaction value.
-- A time-series visual for fraud-labelled activity or share over time.
-- A supporting transaction-amount distribution visual, only if it adds a clear and defensible insight.
-- A compact source/methodology note that explains the retrospective label and selected period.
-
-Do not add product, channel, geography, merchant or customer-segment visuals because those dimensions are unavailable.
+Approved components:
+- Stable report header, two-page navigation and visible **Simulated data** context.
+- Date-range control covering 1 April to 30 September 2018.
+- Four KPI cards: transaction count, fraud-labelled transaction count, fraud-labelled share and coverage days.
+- Weekly fraud-labelled-share line chart with markers.
+- Simulator-rule context showing the fraud-label split above and at/below 220.
+- Six-month summary table with transaction volume, fraud labels and labelled share.
+- Visible methodology footer qualifying the retrospective labels and simulator rule.
 
 ### Page 2 — Review Policy Comparison
 
-**Purpose:** Compare two ranking policies under the same review capacity and eligible population.
+**Purpose:** Compare amount ranking and logistic regression under the same review capacity and eligible population.
 
-Candidate controls:
-- Daily review capacity: 50 or 100.
+Approved controls:
 - Cohort: all transactions or amounts at or below 220.
-- Date selection restricted to the September 2018 holdout period.
+- Daily review capacity: 50 or 100 reviews per day.
+- Date range restricted to September 2018.
 
-Candidate components:
-- Two clearly labelled policy identities: Amount baseline and Logistic regression.
-- Paired comparisons for fraud-labelled transactions selected, legitimate reviews, queue precision, cohort recall and fraud-labelled value selected.
-- A daily comparison trend to show whether the aggregate result is consistent across the selected dates.
-- A compact definition or methodology note explaining the capacity and denominator.
+Approved components:
+- Three headline KPI cards: amount baseline, logistic regression and model difference.
+- Daily queue-yield line chart with both policy series.
+- Fixed four-scenario September lift matrix.
+- Two-row policy scorecard with reviews selected, fraud-labelled transactions selected, legitimate reviews, queue precision, cohort recall and fraud-labelled value selected.
+- Visible simulated-data/methodology footer.
 
-For the restricted cohort, use the restricted rank columns. Do not apply the full-population rank columns after filtering the data to amounts at or below 220. The cohort-specific ranks are independently calculated.
+The restricted cohort must use its independently recalculated rank columns. Do not filter the full-population ranks and treat them as restricted-cohort ranks.
 
 ## 6. Chart and component language
 
@@ -188,7 +192,7 @@ For the restricted cohort, use the restricted rank columns. Do not apply the ful
 
 Use one coherent outline-icon family, consistent stroke weight and a restrained size. Icons support labels; they never replace them. Do not use a bank logo or imply affiliation with a real bank. A simple text wordmark or small neutral mark may be explored later, but branding is not yet approved.
 
-## 7. Interaction contract proposal
+## 7. Approved interaction contract
 
 | Interaction | Intended behaviour |
 |---|---|
@@ -221,7 +225,7 @@ Microsoft's Power BI accessibility guidance covers alternative text, tab order, 
 | D0 — Direction | Premium Banking Intelligence, light-theme direction | Approved |
 | D1 — Design tokens | Palette, typography, spacing, icon and component rules | **Approved by owner, 13 November 2026** |
 | D2 — Page wireframes | Exact layout and visual selection for both pages | **P5 wireframe proposal v0.1 approved by owner, 13 November 2026** |
-| D3 — Theme implementation | Theme JSON imported and inspected in Power BI Desktop | Not started |
+| D3 — Theme implementation | Approved theme JSON prepared in the repository; import and visual inspection in Power BI Desktop | Prepared; local Desktop verification pending |
 | D4 — Report implementation | Approved pages built with supported data only | Not started |
 | D5 — Analytical reconciliation | Power BI measures match Python for all eight September policy/cohort/capacity cases and representative date selections | Not started |
 | D6 — Interaction and accessibility | Filters, navigation, tooltips, keyboard order, contrast and labels tested | Not started |
@@ -248,10 +252,18 @@ Dribbble is an inspiration source, not an authority for analytical correctness o
 
 ## 12. Research synthesis and wireframe proposal
 
-The detailed non-binding layout proposal is recorded in [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md). It includes the two page layouts, proposed hierarchy, icon roles, number treatment, native Power BI interactions, accessibility checks and a proposed aggregate overview table.
+The owner-approved detailed layout specification is recorded in [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md). It includes both page layouts, hierarchy, icon roles, number treatment, native Power BI interactions, accessibility checks and the approved aggregate overview table.
 
 The external review compared corporate banking dashboard patterns on Dribbble with overview/detail navigation and period controls found in LinkedIn and TikTok analytics interfaces. The useful pattern is a stable page frame, concise KPI summary, readable trend and supporting detail. Social audience metrics, personal wallet components, decorative gauges and unsupported data dimensions are deliberately excluded.
 
-Microsoft's current Power BI documentation confirms support for custom report themes, date and button slicers, 16:9 1280 x 720 canvas settings, grid alignment and accessibility features. These are implementation constraints, not permission to build the proposed design.
+Microsoft's current Power BI documentation confirms support for custom report themes, date and button slicers, 16:9 1280 x 720 canvas settings, grid alignment and accessibility features. These are implementation constraints for the approved design.
 
-**Current gate:** D1 and D2 are approved. Implementation is deliberately paused until a separate explicit owner go-ahead. P5 remains at 0% because no theme, data-preparation output or Power BI report has been implemented or verified.
+**Current gate:** D1 and D2 are approved. The first implementation increment now includes the theme JSON and Notebook 05. D3 remains pending until the owner imports the theme in Power BI Desktop; P5 remains at 0% until report implementation and acceptance evidence are verified.
+
+
+## 13. Current implementation checkpoint
+
+- **Theme:** [Premium Banking Intelligence theme JSON](../powerbi/themes/Premium_Banking_Intelligence.json) created using documented Power BI theme properties for data colours, structural colours and text classes. JSON syntax is checked; import and rendering still require Power BI Desktop.
+- **Reporting preparation:** [Notebook 05](../notebooks/05_power_bi_data_preparation.ipynb) created to validate the full input and P4 rank export, build the daily Overview table and date dimension, inspect the temporal pattern, and reconcile all eight September comparisons.
+- **Local outputs:** Generated tables are written to data/processed/powerbi/, which is Git-ignored. Do not commit row-level or derived data.
+- **Current limitation:** No PBIX has been created or verified. The owner's Windows run of Notebook 05 and theme import remain the next acceptance checks.

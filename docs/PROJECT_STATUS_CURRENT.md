@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next decision:** Await the owner's separate explicit go-ahead to begin implementation. [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md), detailed design tokens and both page layouts were approved as presented on 13 November 2026. P5 remains at 0% until implementation evidence is produced. Publication scope remains a separate open gate. [Design system](POWER_BI_DESIGN_SYSTEM.md) · [P5 handoff](SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate)
+**Next checkpoint:** Pull the P5 foundation increment, run Notebook 05 on the local validated data, and import the approved theme in Power BI Desktop. The detailed design is approved and implementation is authorised within scope. P5 remains at 0% until report acceptance evidence is produced. Publication scope remains a separate open gate. [Design system](POWER_BI_DESIGN_SYSTEM.md) · [P5 handoff](SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
@@ -12,7 +12,7 @@
 | **P2 · Python data pipeline** | 20% | **100%** | **20** | Repeatable load and validation, scoring-time feature preparation, chronological train/validation/test partitions, and checks for future information. |
 | **P3 · Baseline and model** | 20% | **100%** | **20** | Amount-based baseline and at least one scikit-learn model, compared on validation data. Record and freeze the model and evaluation protocol before scoring the holdout. |
 | **P4 · Investigation policy and held-out results** | 20% | **100%** | **20** | Compare model and baseline at the same daily review limits. Report fraud caught, legitimate reviews and fraud-labelled transaction value. Check results on amounts at or below 220. |
-| **P5 · Power BI Investigation Dashboard** | 15% | 0% | 0 | Detailed design is approved. Await a separate explicit owner go-ahead; then build the two approved pages in Power BI Desktop, reconcile all measures to Python, and verify filters, navigation, accessibility and report behaviour. [Design system](POWER_BI_DESIGN_SYSTEM.md) |
+| **P5 · Power BI Investigation Dashboard** | 15% | 0% | 0 | Theme JSON and the P5 data-preparation notebook are prepared. Run the notebook and import the theme locally, then build the two approved pages in Power BI Desktop, reconcile all measures to Python, and verify filters, navigation, accessibility and report behaviour. [Design system](POWER_BI_DESIGN_SYSTEM.md) |
 | **P6 · Portfolio release** | 10% | 0% | 0 | Verify from a fresh checkout and publish the approved README, reproduction instructions, results, limitations and walkthrough after publication scope is cleared. |
 | **Overall** | **100%** | **72%** | **72** | |
 
@@ -53,10 +53,11 @@ The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduc
 
 - **Approved:** Power BI Desktop; two pages (Fraud Overview and Review Policy Comparison); Premium Banking Intelligence light-theme direction; start with Review Policy Comparison.
 - **Approved by owner (13 November 2026):** exact palette, typography, canvas/grid, both page wireframes, visual selection, KPI card treatment, icons and interactions, as recorded in P5 wireframe proposal v0.1.
-- **Awaiting separate explicit owner go-ahead:** implementation of the theme JSON, data-preparation outputs and Power BI report.
-- **Not started:** final theme JSON, PBIX/report, DAX measure implementation, report reconciliation and desktop interaction testing.
+- **Prepared in this increment:** theme JSON, Power BI setup guide and Notebook 05 for reporting data preparation and QA.
+- **Awaiting local verification:** Notebook 05 execution in Windows and theme import/rendering in Power BI Desktop.
+- **Not started:** PBIX/report construction, DAX measure implementation, report reconciliation and desktop interaction testing.
 - **Separate open gate:** dataset-derived publication permissions. See [source publication scope](data_sources.md#publication-scope).
 
-P5 remains at 0% until its acceptance evidence is implemented and verified. Design approval is recorded, but it does not count as report implementation or completion. Do not start implementation until the separate owner go-ahead is received.
+P5 remains at 0% until its acceptance evidence is implemented and verified. The foundation files are prepared, but local execution, theme import and report construction have not yet been accepted.
 
 For a new conversation, use the [master continuation prompt](MASTER_CONTINUATION_PROMPT.md) to retrieve this scorecard and the current handoff.

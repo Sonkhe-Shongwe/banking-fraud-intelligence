@@ -19,7 +19,7 @@
 | P3 baseline and model | Executed the [modelling notebook](../notebooks/03_fraud_model_validation.ipynb) in IPython. Fitted logistic regression with April–July only. Compared both August policies at both budgets in the full and restricted cohorts. Ten regression tests passed. [Frozen protocol](methodology.md#frozen-model-and-review-protocol) |
 | P4 held-out evaluation | The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reconciled all eight September comparisons. Ten regression tests passed. The owner confirmed the notebook saved 287,873 rows in Windows. The [export path fix](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/1a56a16a383f6d0b4181082b778ca1d12287c5a3) reproduced the same CSV byte for byte. |
 | Key risk | The simulator labels all amounts above 220 as fraud. The raw files lack label-confirmation timestamps. [Evaluation implications](data_sources.md#evaluation-implications) |
-| Delivery state | P1 is at 80%, P2 through P4 are at 100%, and overall progress is 72%. P5 is approved in scope and design direction but has not started implementation. |
+| Delivery state | P1 is at 80%, P2 through P4 are at 100%, and overall progress is 72%. P5 detailed design is approved and implementation is authorised within scope. The first theme/data-preparation increment is prepared; local Windows execution and Power BI Desktop import are pending. |
 
 ## Owner working agreement
 
@@ -35,7 +35,7 @@ Work in small increments with a visible checkpoint. Show what changed, what was 
 
 ## P5 scope and design gate
 
-The page scope and overall visual direction are approved. Detailed design is not yet approved. The following remain proposals for review: palette, typography, canvas size, spacing/grid, exact page wireframes, chart types, KPI card treatment, iconography and interactions.
+The page scope, visual identity, detailed tokens, both wireframes and interaction contract are approved. The owner authorised implementation by saying “lets continue” on 13 November 2026. Proceed only within the approved design and two-page scope.
 
 | Page | Intended purpose | Verified input | Design status |
 |---|---|---|---|
@@ -54,7 +54,7 @@ The proposed metric contract, visual tokens and design gates are in the [Power B
 
 ### Current Power BI repository state
 
-At audited remote HEAD 6326968, the powerbi directory contains only .gitkeep. No PBIX, final theme JSON, DAX measure set or Power BI Desktop validation evidence exists. This is consistent with P5 at 0%.
+The current implementation increment adds powerbi/themes/Premium_Banking_Intelligence.json, powerbi/README.md and notebooks/05_power_bi_data_preparation.ipynb. No PBIX or DAX measure set exists yet. The theme has not been imported in Power BI Desktop, and Notebook 05 still requires the owner's Windows run. P5 remains at 0% until accepted report evidence is produced.
 
 ### Publication boundary
 
@@ -62,11 +62,11 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. The owner approved [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md) as presented on 13 November 2026. No revisions were requested; D1 design tokens and D2 page wireframes are approved.
-2. **Do not begin implementation yet.** The owner requested a separate explicit go-ahead before creating the theme, generating data-preparation outputs or modifying/building the Power BI report.
-3. Once that separate implementation go-ahead is received, create the approved theme and data-preparation outputs, then build Review Policy Comparison first and Fraud Overview second.
-4. Reconcile all eight September policy/cohort/capacity comparisons and representative date selections against Python. Test Power BI Desktop refresh, filters, navigation, accessibility and rendering.
-5. Keep P5 at 0% until the approved report has been built and verified in Power BI Desktop. Resolve publication permissions separately.
+1. Pull the latest main commit. The approved design is recorded in [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md).
+2. Run [Notebook 05 — Power BI data preparation](../notebooks/05_power_bi_data_preparation.ipynb) after confirming that transactions.csv and the P4 september_review_ranks.csv exist. Keep the executed notebook copy under data/processed/notebook-runs/.
+3. Confirm the local outputs in data/processed/powerbi/: 183 Overview rows, 183 date rows, 287,873 September rank rows, four scenario rows and eight QA reconciliation rows.
+4. Import [the approved theme](../powerbi/themes/Premium_Banking_Intelligence.json) into Power BI Desktop and record the import result and installed Desktop version.
+5. After those checks, establish the semantic model and DAX measures, then build Review Policy Comparison first and Fraud Overview second. Keep publication clearance separate.
 
 ## Checkpoint history
 
@@ -88,5 +88,6 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 | 13 November 2026 | Recorded Windows confirmation for P4 and documented the local notebook-run workflow. |
 | 13 November 2026 | Owner approved the two P5 report pages and the Premium Banking Intelligence light-theme direction. Detailed design tokens and wireframes remain subject to owner approval. |
 | 13 November 2026 | Researched corporate banking, Dribbble, LinkedIn and TikTok analytics interfaces; documented P5 wireframe proposal v0.1. No Power BI files or implementation artefacts were changed. |
-| 13 November 2026 | Owner approved P5 wireframe proposal v0.1 as presented, including detailed design tokens and both page layouts. Owner requested a separate explicit go-ahead before implementation; P5 remains at 0%. |
+| 13 November 2026 | Owner approved P5 wireframe proposal v0.1 as presented, including detailed design tokens and both page layouts. |
+| 13 November 2026 | Owner authorised implementation within the approved P5 scope by instructing us to continue. Theme JSON and Notebook 05 prepared; Windows and Power BI Desktop checks remain pending. |
 | 13 November 2026 | Audited remote main, corrected stale dark-theme handoff language, established the design system and recorded the P5 readiness audit. |
