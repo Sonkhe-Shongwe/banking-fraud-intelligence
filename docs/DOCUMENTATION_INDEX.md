@@ -6,7 +6,7 @@
 | [Current project status](PROJECT_STATUS_CURRENT.md) | P1–P6 weights, progress, acceptance criteria and open gates |
 | [Current session handoff](SESSION_HANDOFF_CURRENT.md) | Latest verified checkpoint, owner decisions, limits and exact next action |
 | [Data source feasibility and audit](data_sources.md) | Pinned source, file evidence, dataset quality, leakage and publication scope |
-| [Acquisition notes](../data/README.md) | Local data location and source verification |
+| [Acquisition and validation notes](../data/README.md) | Local data location, source verification and pipeline input checks |
 | [Exploratory notebook](../notebooks/01_fraud_investigation_eda.ipynb) | Reproducible source audit, monthly fraud prevalence, review queue comparison and amount-rule sensitivity |
 | [Analytical data model](data_model.md) | Transaction grain, admissible fields and planned Python outputs |
 | [Methodology](methodology.md) | Chronological evaluation, daily review limits and the evidence required for dashboard views |

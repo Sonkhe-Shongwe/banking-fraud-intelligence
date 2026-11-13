@@ -27,3 +27,15 @@ Generate the local CSV first. Use Python 3.12 for the notebook environment. From
 ```
 
 Open [01_fraud_investigation_eda.ipynb](../notebooks/01_fraud_investigation_eda.ipynb) in VS Code with its Jupyter extension, select the `.venv` Python kernel and choose **Run All**. The notebook finds the CSV relative to the checkout and generates the tables and figures locally. The committed notebook has empty outputs while publication scope is open.
+
+## Validate the CSV for the pipeline
+
+From the repository root, run this with the same Python environment you used for the notebook, or one with `requirements-conversion.txt` installed.
+
+```powershell
+python src/validate_transactions.py
+```
+
+Use `--input "path\to\transactions.csv"` to validate a different copy. The default is `data/processed/transactions.csv`. The report shows rows read, ready and dropped, date coverage, fraud labels and retained zero amounts. The verified CSV passed with 1,754,155 rows ready, zero rows dropped and 42 zero-amount rows retained.
+
+The validator parses timestamps and numeric types, checks the schema, missing fields, ID integrity, amount validity, chronological order, elapsed-time fields and fraud label consistency. It exits with an error on invalid input and leaves the source file intact. The converter and source audit establish provenance and expected snapshot totals. [Source audit](../docs/data_sources.md#source-and-audit-evidence)

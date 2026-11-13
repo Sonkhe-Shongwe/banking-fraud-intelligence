@@ -16,7 +16,7 @@ One record represents one simulated transaction at its event time. The [source a
 
 ## Planned Python outputs
 
-1. Validated transactions with consistent types and documented treatment of zero amounts.
+1. [Validated transactions](../src/validate_transactions.py) with parsed timestamps and numeric types. The loader retains zero amounts, preserves source order and fails on invalid records. [Run the validator](../data/README.md#validate-the-csv-for-the-pipeline)
 2. Feature rows calculated using information available at each transaction's scoring time, with explicit rules for equal timestamps and any label feedback delay.
 3. Chronological training, validation and test partitions.
 4. A held-out reporting export keyed by transaction ID, with event time, amount, evaluation outcome, model score and a precomputed daily rank for each policy. Use the same daily population for both ranks and resolve ties consistently.
