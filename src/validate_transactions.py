@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+from collections.abc import Hashable
 from pathlib import Path
 from typing import cast
 import warnings
@@ -16,7 +17,7 @@ else:
 
 DATASET_START = pd.Timestamp("2018-04-01")
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S"
-SOURCE_DTYPES: dict[str, str] = dict.fromkeys(COLUMNS, "Int64")
+SOURCE_DTYPES: dict[Hashable, str] = {column: "Int64" for column in COLUMNS}
 SOURCE_DTYPES.update(TX_DATETIME="string", TX_AMOUNT="float64")
 
 
