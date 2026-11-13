@@ -2,7 +2,7 @@
 
 A portfolio case study on prioritising potentially fraudulent card transactions when investigators can review only a fixed number each day. The main question is whether a risk model helps investigators find more fraud than an amount-based baseline at the same review capacity.
 
-**Current checkpoint (13 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The September review queues and local reporting export reconcile. P5's two-page scope, Premium Banking Intelligence direction, detailed design tokens and both page wireframes are approved. Implementation is paused pending a separate explicit owner go-ahead. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md)
+**Current checkpoint (13 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The September review queues and local reporting export reconcile. P5's two-page scope, Premium Banking Intelligence direction, detailed design tokens and both page wireframes are approved. Implementation is authorised within scope; the first theme and data-preparation increment is now prepared. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md)
 
 Use the existing validated data/processed/transactions.csv if you already have it. For a fresh checkout, follow the Windows setup in the [local data guide](data/README.md#prepare-one-csv).
 
@@ -24,6 +24,9 @@ Use the existing validated data/processed/transactions.csv if you already have i
 | Feature engineering | [Feature engineering notebook](notebooks/02_fraud_feature_engineering.ipynb) |
 | Model validation | [Modelling notebook](notebooks/03_fraud_model_validation.ipynb) |
 | Held-out evaluation | [Held-out evaluation notebook](notebooks/04_fraud_holdout_evaluation.ipynb) |
+| Power BI data preparation and QA | [P5 reporting notebook](notebooks/05_power_bi_data_preparation.ipynb) |
+| Power BI theme | [Premium Banking Intelligence theme](powerbi/themes/Premium_Banking_Intelligence.json) |
+| Power BI setup and data model | [Power BI guide](powerbi/README.md) |
 | Model evaluation and investigation policy | [Methodology](docs/methodology.md) |
 | Actual evaluation results | [Findings](docs/findings.md) |
 
@@ -31,7 +34,7 @@ Use the existing validated data/processed/transactions.csv if you already have i
 
 A reproducible Python pipeline using pandas for ingestion, validation and feature preparation and scikit-learn for offline modelling. The evaluation compares a model with an amount-based baseline on chronological held-out data. Report fraud caught, legitimate transactions sent for review, and fraud-labelled transaction value captured under the same daily review limits.
 
-Power BI Desktop is the approved P5 platform. The two approved pages are **Fraud Overview** and **Review Policy Comparison**, with the latter planned as the first build. The approved visual direction is a light, premium banking-intelligence aesthetic. The detailed palette, typography, page layouts, chart selection and interactions remain subject to owner approval. No Power BI report or final theme has been implemented yet. [Design system](docs/POWER_BI_DESIGN_SYSTEM.md)
+Power BI Desktop is the approved P5 platform. The two approved pages are **Fraud Overview** and **Review Policy Comparison**, with the latter planned as the first build. The approved visual direction is a light, premium banking-intelligence aesthetic. The detailed palette, typography, page layouts, chart selection and interactions are approved. The theme JSON and reporting-data notebook are prepared; the PBIX and DAX measure layer are not yet built. [Design system](docs/POWER_BI_DESIGN_SYSTEM.md)
 
 The data source is the Fraud Detection Handbook's simulated transactions. The September evaluation and its limitations are documented in [Findings](docs/findings.md). Fraud-labelled transaction value is reported as exposure under review, not as loss prevented. Dataset-derived artefacts remain local until publication permissions are resolved.
 
@@ -39,6 +42,6 @@ The data source is the Fraud Detection Handbook's simulated transactions. The Se
 
 - data/ holds acquisition guidance. Raw and processed datasets are excluded from Git.
 - notebooks/ is for exploration, charts and model interpretation in Jupyter. src/ is for repeatable Python preparation, training, evaluation and exports. tests/ is for verification.
-- powerbi/ is reserved for the P5 report and its setup instructions. It currently contains only a placeholder.
+- powerbi/ contains the approved theme and setup guide. The PBIX/report will be built in the next P5 increment after local data and theme checks.
 - docs/ holds project status, handoff, design system, audit, source audit, methodology and findings.
 - reports/ and assets/ are reserved for approved shareable evidence and figures.

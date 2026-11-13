@@ -5,8 +5,8 @@
 | [Master continuation prompt](MASTER_CONTINUATION_PROMPT.md) | Copy-ready instructions for resuming the project in a new conversation |
 | [Current project status](PROJECT_STATUS_CURRENT.md) | P1–P6 weights, progress, acceptance criteria and open gates |
 | [Current session handoff](SESSION_HANDOFF_CURRENT.md) | Latest verified checkpoint, owner decisions, limits and exact next action |
-| [Power BI design system](POWER_BI_DESIGN_SYSTEM.md) | Approved visual direction, proposed design tokens, page briefs, metric language, interactions and design acceptance gates |
-| [P5 wireframe proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md) | Researched visual identity, exact non-binding page wireframes, KPI hierarchy, interactions, icon rules and proposed P5 data model |
+| [Power BI design system](POWER_BI_DESIGN_SYSTEM.md) | Approved visual identity, theme implementation, page briefs, metric language, interactions and design acceptance gates |
+| [P5 wireframe proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md) | Owner-approved visual identity, exact page wireframes, KPI hierarchy, interactions, icon rules and P5 data model |
 | [Project audit, 13 November 2026](PROJECT_AUDIT_2026-11-13.md) | Repository/documentation audit, findings, risks and remediation |
 | [Data source feasibility and audit](data_sources.md) | Pinned source, file evidence, dataset quality, leakage and publication scope |
 | [Local data and notebook workflow](../data/README.md) | Acquisition, validation, reproducible notebook runs and pull recovery |
@@ -15,6 +15,9 @@
 | [Feature engineering notebook](../notebooks/02_fraud_feature_engineering.ipynb) | Worked timestamp example, full feature build and chronological split verification |
 | [Modelling notebook](../notebooks/03_fraud_model_validation.ipynb) | Training, August validation, daily queue comparison and simulator sensitivity |
 | [Held-out evaluation notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) | September policy comparison and reconciled local rank export |
+| [Power BI data preparation notebook](../notebooks/05_power_bi_data_preparation.ipynb) | Daily Overview aggregation, date dimension, September rank validation, visual QA and local Power BI outputs |
+| [Power BI theme](../powerbi/themes/Premium_Banking_Intelligence.json) | Approved light Premium Banking Intelligence report theme |
+| [Power BI setup and model guide](../powerbi/README.md) | Local data imports, table grains, relationships and implementation boundaries |
 | [Analytical data model](data_model.md) | Transaction grain, admissible fields and planned Python outputs |
 | [Methodology](methodology.md) | Chronological evaluation, daily review limits and the evidence required for dashboard views |
 | [Findings](findings.md) | Actual August and September policy comparisons and their interpretation |

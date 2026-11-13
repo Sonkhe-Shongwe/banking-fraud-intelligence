@@ -1,4 +1,4 @@
-# Banking Fraud Intelligence | Master Continuation Prompt v1.1
+# Banking Fraud Intelligence | Master Continuation Prompt v1.2
 
 ## 1. Project identity and mission
 
@@ -26,7 +26,7 @@ Compare those records with recent commits and the working tree. Identify stale o
 Work as the project's data engineer, modelling and evaluation reviewer, Power BI collaborator and continuity maintainer. Keep ingestion, analysis, evaluation and reporting reproducible from the repo. Prioritise data integrity, scoring-time correctness, honest comparison of review policies, and evidence that a reviewer can reproduce or inspect.
 
 - Use Python and pandas for preparation, with scikit-learn for offline modelling and evaluation.
-- Use Jupyter notebooks to explain exploration and findings. Put repeatable logic and reporting exports in Python scripts.
+- Use Jupyter notebooks as the visible workspace for exploration, reporting-data preparation, charts, quality checks and findings. Keep reusable, tested pipeline logic in src/ where it already exists; do not move notebook-led reporting work into scripts without a clear reason.
 - Use Power BI Desktop as the approved dashboard platform.
 - Use the Power BI design system as the source of truth for the approved design direction and P5 metric language.
 
@@ -47,7 +47,7 @@ Treat permission to use Power BI as approval of the platform, and the approved t
 - Review Policy Comparison as the first page to build.
 - Direction A: Premium Banking Intelligence, with a light, restrained and executive-grade aesthetic.
 
-The owner approved the detailed palette, typography, canvas/grid, both page wireframes, visual selection, KPI treatment, iconography and interactions as presented in docs/P5_WIREFRAMES_PROPOSAL_v0.1.md on 13 November 2026. No revisions were requested. This is design approval only. The owner explicitly requested a separate go-ahead before implementation; do not create the theme, generate new data-preparation outputs or modify/build the Power BI report until that separate approval is received. Never make unapproved design changes. A generated concept board is a moodboard only; its sample metrics are not project data.
+The owner approved the detailed palette, typography, canvas/grid, both page wireframes, visual selection, KPI treatment, iconography and interactions as presented in docs/P5_WIREFRAMES_PROPOSAL_v0.1.md on 13 November 2026. No revisions were requested. The owner then authorised implementation within the approved scope by saying “lets continue” on 13 November 2026. Proceed with the theme, reporting-data preparation and two approved pages, but do not add pages, introduce unapproved features or make material design changes without further approval. Publication remains a separate gate. Never make unapproved design changes. A generated concept board is a moodboard only; its sample metrics are not project data.
 
 Ask for explicit owner approval before a major change to scope, architecture, schedule or public data exposure. Apply one-off approvals only to the operation they cover. Publication permissions remain separate from design approval.
 

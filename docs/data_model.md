@@ -42,3 +42,28 @@ The [P4 notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) writes one row
 | `tx_amount_rank_le_220`, `model_score_rank_le_220` | One-based daily ranks recalculated within the restricted cohort. Rows above 220 have blank restricted ranks. |
 
 The notebook reconciles counts and values when each rank is at or below 50 or 100. A consumer of restricted ranks must explicitly exclude blank ranks when applying the capacity filter. For a selected range of dates, calculate recall from the eligible fraud total across those dates and precision from the selected review count.
+
+
+## P5 Power BI reporting outputs
+
+[Notebook 05](../notebooks/05_power_bi_data_preparation.ipynb) creates the following local-only reporting tables after re-validating the source and the P4 rank export.
+
+| Output | Grain | Rows expected | Role |
+|---|---|---:|---|
+| Overview_Daily.csv | One row per source date | 183 | Daily activity, fraud labels, fraud-labelled value and simulator amount-boundary context |
+| DimDate.csv | One row per source date | 183 | Shared calendar, month and week attributes |
+| September_Ranks.csv | One row per September transaction | 287,873 | P4 policy ranks for the full and restricted cohorts |
+| September_Scenario_Lift.csv | One row per cohort and daily capacity | 4 | Fixed full-September comparison matrix |
+| September_Queue_Reconciliation_QA.csv | One row per policy, cohort and capacity | 8 | Local reconciliation evidence; not a report table |
+
+All files are written to data/processed/powerbi/, which is Git-ignored. The notebook also writes a local PowerBI_Data_Manifest.json containing input and output fingerprints. Do not commit these generated data files.
+
+### Power BI relationship contract
+
+- DimDate[Date] has a one-to-many, single-direction relationship to Overview_Daily[Date].
+- DimDate[Date] has a one-to-many, single-direction relationship to September_Ranks[Date].
+- September_Scenario_Lift remains disconnected so the four full-September reference scenarios are not changed by date or cohort slicers.
+- The QA reconciliation table is not loaded into the report.
+- TRANSACTION_ID and the technical rank columns are hidden from report consumers. No transaction-level drillthrough is included in the approved first release.
+
+The cohort and daily-capacity selector tables are disconnected report controls. Their DAX definitions and the measure layer are the next modelling increment after Notebook 05 and theme import have been checked in the owner's environment.

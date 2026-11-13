@@ -60,6 +60,28 @@ Choose **Run All** to rebuild the feature inputs, fit the model and display the 
 
 Open [04_fraud_holdout_evaluation.ipynb](../notebooks/04_fraud_holdout_evaluation.ipynb) with the same Python 3.12 kernel as the modelling notebook and choose **Run All**. It rebuilds the April–July fit, compares the September queues, and reconciles the aggregate metrics to the rows selected by each rank. It writes `data/processed/september_review_ranks.csv` after those checks pass. The export is local and ignored by Git. [Rank fields and grain](../docs/data_model.md#september-review-rank-export)
 
+## Prepare the Power BI reporting data
+
+Run this after Notebook 04 has generated the local september_review_ranks.csv export.
+
+1. Pull the latest repository changes.
+2. Open 05_power_bi_data_preparation.ipynb in VS Code.
+3. Select the same Python 3.12 kernel used for the earlier notebooks.
+4. Choose **Run All**.
+5. Review the input audit, monthly summary, weekly trend, simulator-boundary chart and eight-row P4 reconciliation.
+6. Confirm the output inventory and manifest at the end of the notebook.
+
+The notebook writes these local files to data/processed/powerbi/:
+
+- Overview_Daily.csv
+- DimDate.csv
+- September_Ranks.csv
+- September_Scenario_Lift.csv
+- September_Queue_Reconciliation_QA.csv (QA only; do not load into Power BI)
+- PowerBI_Data_Manifest.json
+
+The output folder is Git-ignored. Do not commit the generated CSVs or manifest. If the P4 rank export is missing, run 04_fraud_holdout_evaluation.ipynb first. See the Power BI setup guide at powerbi/README.md for the table contract and relationship plan.
+
 ## Save notebook runs locally
 
 The files under `notebooks/` are tracked source files. Running a notebook can add outputs and execution counts. Saving those changes can block a pull when the same notebook has an incoming update. A white dot on a VS Code tab indicates unsaved editor changes. Git's `M` marks changes already saved to disk.
@@ -74,7 +96,7 @@ Copy-Item -LiteralPath '.\notebooks\04_fraud_holdout_evaluation.ipynb' `
   -Destination (Join-Path $runDir "04_fraud_holdout_evaluation-$stamp.ipynb")
 ```
 
-Open the copy in VS Code, select your working Python 3.12 kernel, then run and save it there. All four notebooks can locate the repo from that folder. For links to project docs embedded in notebook text, use the original notebook under `notebooks/`. For a new run after another pull, make a fresh copy from the updated source. If you only need the CSV from P4, you can run the tracked notebook and close it without saving the notebook outputs.
+Open the copy in VS Code, select your working Python 3.12 kernel, then run and save it there. All five notebooks can locate the repo from that folder. For links to project docs embedded in notebook text, use the original notebook under `notebooks/`. For a new run after another pull, make a fresh copy from the updated source. If you only need the CSV from P4, you can run the tracked notebook and close it without saving the notebook outputs.
 
 ### Recover a pull blocked by a notebook
 
