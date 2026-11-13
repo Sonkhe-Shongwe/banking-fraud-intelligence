@@ -62,10 +62,11 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. Review the [Power BI design system](POWER_BI_DESIGN_SYSTEM.md), starting with the proposed palette, typography and design acceptance gates.
-2. Develop and present exact wireframes for the two approved pages. Do not implement the theme or report until the owner approves the detailed design.
-3. After design approval, build Review Policy Comparison first, then Fraud Overview. Reconcile all eight September policy/cohort/capacity comparisons and representative date selections against Python.
-4. Keep P5 at 0% until the approved report has been built and verified in Power BI Desktop. Resolve publication permissions separately.
+1. Review [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md), including the two page layouts, metric hierarchy, controls, visual language and proposed data model.
+2. Owner to approve or revise the palette, typography, canvas, page layouts, chart choices and interaction contract. The proposal is non-binding; no theme or report has been implemented.
+3. After detailed design approval, create the approved theme and data-preparation outputs, then build Review Policy Comparison first and Fraud Overview second.
+4. Reconcile all eight September policy/cohort/capacity comparisons and representative date selections against Python. Test Power BI Desktop refresh, filters, navigation, accessibility and rendering.
+5. Keep P5 at 0% until the approved report has been built and verified in Power BI Desktop. Resolve publication permissions separately.
 
 ## Checkpoint history
 
@@ -86,4 +87,5 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 | 13 November 2026 | Completed P4 with the frozen September evaluation, eight reconciled queue comparisons and a local rank export for the proposed Power BI report. |
 | 13 November 2026 | Recorded Windows confirmation for P4 and documented the local notebook-run workflow. |
 | 13 November 2026 | Owner approved the two P5 report pages and the Premium Banking Intelligence light-theme direction. Detailed design tokens and wireframes remain subject to owner approval. |
+| 13 November 2026 | Researched corporate banking, Dribbble, LinkedIn and TikTok analytics interfaces; documented P5 wireframe proposal v0.1. No Power BI files or implementation artefacts were changed. |
 | 13 November 2026 | Audited remote main, corrected stale dark-theme handoff language, established the design system and recorded the P5 readiness audit. |

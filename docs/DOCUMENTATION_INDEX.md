@@ -6,6 +6,7 @@
 | [Current project status](PROJECT_STATUS_CURRENT.md) | P1–P6 weights, progress, acceptance criteria and open gates |
 | [Current session handoff](SESSION_HANDOFF_CURRENT.md) | Latest verified checkpoint, owner decisions, limits and exact next action |
 | [Power BI design system](POWER_BI_DESIGN_SYSTEM.md) | Approved visual direction, proposed design tokens, page briefs, metric language, interactions and design acceptance gates |
+| [P5 wireframe proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md) | Researched visual identity, exact non-binding page wireframes, KPI hierarchy, interactions, icon rules and proposed P5 data model |
 | [Project audit, 13 November 2026](PROJECT_AUDIT_2026-11-13.md) | Repository/documentation audit, findings, risks and remediation |
 | [Data source feasibility and audit](data_sources.md) | Pinned source, file evidence, dataset quality, leakage and publication scope |
 | [Local data and notebook workflow](../data/README.md) | Acquisition, validation, reproducible notebook runs and pull recovery |

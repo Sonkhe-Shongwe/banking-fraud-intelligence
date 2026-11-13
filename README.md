@@ -15,6 +15,7 @@ Use the existing validated data/processed/transactions.csv if you already have i
 | What each phase delivers and how progress is earned | [Current phase scorecard](docs/PROJECT_STATUS_CURRENT.md) |
 | Latest checkpoint, decisions and next action | [Current session handoff](docs/SESSION_HANDOFF_CURRENT.md) |
 | Current Power BI visual direction and design rules | [Power BI design system](docs/POWER_BI_DESIGN_SYSTEM.md) |
+| Proposed P5 page layouts and detailed design review | [P5 wireframe proposal v0.1](docs/P5_WIREFRAMES_PROPOSAL_v0.1.md) |
 | Repository, continuity and P5 readiness review | [Project audit, 13 November 2026](docs/PROJECT_AUDIT_2026-11-13.md) |
 | Dataset revision, audit results and limitations | [Data source and feasibility audit](docs/data_sources.md) |
 | Local data and notebook workflow | [Local data guide](data/README.md) |

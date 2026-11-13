@@ -220,7 +220,7 @@ Microsoft's Power BI accessibility guidance covers alternative text, tab order, 
 |---|---|---|
 | D0 — Direction | Premium Banking Intelligence, light-theme direction | Approved |
 | D1 — Design tokens | Palette, typography, spacing, icon and component rules | Proposed; owner review required |
-| D2 — Page wireframes | Exact layout and visual selection for both pages | Pending |
+| D2 — Page wireframes | Exact layout and visual selection for both pages | Proposal v0.1 documented; owner approval pending |
 | D3 — Theme implementation | Theme JSON imported and inspected in Power BI Desktop | Not started |
 | D4 — Report implementation | Approved pages built with supported data only | Not started |
 | D5 — Analytical reconciliation | Power BI measures match Python for all eight September policy/cohort/capacity cases and representative date selections | Not started |
@@ -244,3 +244,14 @@ The visual identity board generated during the 13 November 2026 design discussio
 - [Dribbble — Banking dashboard design inspiration](https://dribbble.com/tags/banking-dashboard-design)
 
 Dribbble is an inspiration source, not an authority for analytical correctness or Power BI capability. Microsoft documentation governs platform behaviour and accessibility constraints.
+
+
+## 12. Research synthesis and wireframe proposal
+
+The detailed non-binding layout proposal is recorded in [P5 Wireframe Proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md). It includes the two page layouts, proposed hierarchy, icon roles, number treatment, native Power BI interactions, accessibility checks and a proposed aggregate overview table.
+
+The external review compared corporate banking dashboard patterns on Dribbble with overview/detail navigation and period controls found in LinkedIn and TikTok analytics interfaces. The useful pattern is a stable page frame, concise KPI summary, readable trend and supporting detail. Social audience metrics, personal wallet components, decorative gauges and unsupported data dimensions are deliberately excluded.
+
+Microsoft's current Power BI documentation confirms support for custom report themes, date and button slicers, 16:9 1280 x 720 canvas settings, grid alignment and accessibility features. These are implementation constraints, not permission to build the proposed design.
+
+**Current gate:** The wireframes and detailed tokens are proposals. The owner must approve or revise them before theme or report implementation. P5 remains at 0%.
