@@ -3,6 +3,7 @@
 import argparse
 import csv
 from pathlib import Path
+from typing import cast
 import warnings
 
 import pandas as pd
@@ -15,7 +16,7 @@ else:
 
 DATASET_START = pd.Timestamp("2018-04-01")
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S"
-SOURCE_DTYPES = dict.fromkeys(COLUMNS, "Int64")
+SOURCE_DTYPES: dict[str, str] = dict.fromkeys(COLUMNS, "Int64")
 SOURCE_DTYPES.update(TX_DATETIME="string", TX_AMOUNT="float64")
 
 
@@ -43,14 +44,13 @@ def load_transactions(path: Path = OUTPUT) -> pd.DataFrame:
         details = ", ".join(f"{column}: {count:,}" for column, count in missing[missing.gt(0)].items())
         raise ValueError(f"Missing values by column: {details}.")
 
-    event_time = pd.to_datetime(
-        transactions["TX_DATETIME"], format=TIMESTAMP_FORMAT, errors="coerce",
-    )
+    timestamp_column = cast(pd.Series, transactions["TX_DATETIME"])
+    event_time = pd.to_datetime(timestamp_column, format=TIMESTAMP_FORMAT, errors="coerce")
     if event_time.isna().any():
         raise ValueError(f"Invalid TX_DATETIME values: {event_time.isna().sum():,}.")
     transactions["TX_DATETIME"] = event_time
     elapsed = event_time - DATASET_START
-    identifiers = transactions[["TRANSACTION_ID", "CUSTOMER_ID", "TERMINAL_ID"]]
+    identifiers = cast(pd.DataFrame, transactions[["TRANSACTION_ID", "CUSTOMER_ID", "TERMINAL_ID"]])
     amounts = transactions["TX_AMOUNT"]
     labels = transactions["TX_FRAUD"]
     scenarios = transactions["TX_FRAUD_SCENARIO"]
@@ -83,7 +83,7 @@ def main():
     except (OSError, ValueError) as error:
         parser.exit(1, f"Validation failed for {options.input}:\n{error}\n")
 
-    event_time = transactions["TX_DATETIME"]
+    event_time = cast(pd.Series, transactions["TX_DATETIME"])
     rows = len(transactions)
     observed_days = event_time.dt.normalize().nunique()
     print(f"Validation passed: {options.input}")

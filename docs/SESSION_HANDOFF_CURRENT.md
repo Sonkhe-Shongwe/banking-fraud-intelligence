@@ -42,3 +42,4 @@ Work in small increments with a visible checkpoint. Show what changed, why it ma
 | 13 November 2026 | Added a reusable continuation prompt linked from the README, project instructions, documentation index and current status records. |
 | 13 November 2026 | Ran the first exploratory notebook on the verified CSV and recorded the exact local reproduction steps. |
 | 13 November 2026 | Owner confirmed the notebook ran in Windows. Verified the first P2 checkpoint by running the input validator on the full CSV and testing invalid inputs. |
+| 13 November 2026 | Addressed pandas type diagnostics reported in VS Code. Rechecked the validator and notebook cells with Pyright and reran both on the full CSV. |
