@@ -33,3 +33,5 @@ Each check is worth 20% of P1.
 | Resolve which derived artefacts can be published | Open | [Publication scope](data_sources.md#publication-scope) |
 
 Update this scorecard and the handoff together when evidence changes. P4 is complete when its evaluation is reproducible and reported, even if the model shows little or no lift.
+
+For a new conversation, use the [master continuation prompt](MASTER_CONTINUATION_PROMPT.md) to retrieve this scorecard and the current handoff from GitHub.

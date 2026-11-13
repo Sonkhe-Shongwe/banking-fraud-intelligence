@@ -5,3 +5,5 @@
 3. Obtain explicit owner approval before dashboard design or major changes to project scope, architecture, schedule or public data exposure. Follow the approval recorded for the current phase.
 4. Update the scorecard and handoff together when phase evidence or the next action changes. Advance percentages only when the listed acceptance checks are satisfied. Keep source profiling, held-out model results and simulated outcomes clearly labelled.
 5. Use the approved Python pipeline scope. Keep raw and processed source data outside Git. Record publication permissions and artefact scope before publishing dataset-derived outputs beyond the documented audit.
+
+For a new conversation, use the [master continuation prompt](docs/MASTER_CONTINUATION_PROMPT.md) with the current handoff and scorecard.

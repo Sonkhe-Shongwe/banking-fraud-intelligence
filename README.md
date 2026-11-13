@@ -10,6 +10,7 @@ A portfolio case study on prioritising potentially fraudulent card transactions 
 
 | What you need | Where to look |
 |---|---|
+| Resume the project in a new conversation | [Master continuation prompt](docs/MASTER_CONTINUATION_PROMPT.md) |
 | Status, plans and evidence in one place | [Documentation index](docs/DOCUMENTATION_INDEX.md) |
 | What each phase delivers and how progress is earned | [Current phase scorecard](docs/PROJECT_STATUS_CURRENT.md) |
 | Latest checkpoint, decisions and next action | [Current session handoff](docs/SESSION_HANDOFF_CURRENT.md) |
