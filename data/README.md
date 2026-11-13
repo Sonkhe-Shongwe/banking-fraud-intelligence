@@ -53,3 +53,7 @@ Open [03_fraud_model_validation.ipynb](../notebooks/03_fraud_model_validation.ip
 ```
 
 Choose **Run All** to rebuild the feature inputs, fit the model and display the August tables and chart. A fresh environment can use `requirements-notebook.txt` for all dependencies. [Frozen protocol](../docs/methodology.md#frozen-model-and-review-protocol)
+
+## Run the held-out evaluation
+
+Open [04_fraud_holdout_evaluation.ipynb](../notebooks/04_fraud_holdout_evaluation.ipynb) with the same Python 3.12 kernel as the modelling notebook and choose **Run All**. It rebuilds the April–July fit, compares the September queues, and reconciles the aggregate metrics to the rows selected by each rank. It writes `data/processed/september_review_ranks.csv` after those checks pass. The export is local and ignored by Git. [Rank fields and grain](../docs/data_model.md#september-review-rank-export)

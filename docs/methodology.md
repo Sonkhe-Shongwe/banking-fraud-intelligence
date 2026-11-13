@@ -1,6 +1,6 @@
 # Banking Fraud Intelligence methodology
 
-The decision is which transactions an investigator should review when daily review capacity is limited. The unit of analysis is one transaction at its scoring time. The source has been [profiled](data_sources.md), and the August validation is reproducible in the [modelling notebook](../notebooks/03_fraud_model_validation.ipynb). September evaluation is pending.
+The decision is which transactions an investigator should review when daily review capacity is limited. The unit of analysis is one transaction at its scoring time. The source has been [profiled](data_sources.md). The [modelling notebook](../notebooks/03_fraud_model_validation.ipynb) reproduces August validation, and the [held-out evaluation notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduces September results.
 
 1. **Prepare in Python.** Validate transaction keys, timestamps and amounts. Build features from information available at scoring time. Define how equal timestamps and any simulated label delay affect the available history.
 2. **Partition chronologically.** Use earlier data for training, later data for validation and the latest held-out period for final evaluation. Use validation for model selection and freeze the protocol before scoring the holdout.
@@ -35,4 +35,4 @@ The business question guides exploration. For each candidate view, record the qu
 | Which transactions enter the queue for a given day and capacity? | Unique transaction IDs, event times and verified ranks. Transaction-level rows must be available for the intended audience. | A dated review queue and transaction drillthrough when the detail is available. |
 | How quickly are alerts confirmed or resolved? | Alert, confirmation or resolution timestamps from an appropriate source. The current snapshot has none of these. | Reconsider this question only if those events become available. |
 
-The initial audit confirms simulated transaction history and fraud labels. P2–P4 must still establish which comparisons are reliable, including how much the simulator's amount rule influences the results. A public report can show approved evidence and must label any illustrative data separately from measured results. [Source audit](data_sources.md)
+The September evaluation verifies the capacity comparisons in both eligible cohorts and reconciles the local transaction ranks. The source is simulated and lacks alert and resolution timestamps. A public report can show approved evidence and must label any illustrative data separately from measured results. [Source audit](data_sources.md) · [Findings](findings.md)

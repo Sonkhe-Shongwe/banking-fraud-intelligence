@@ -10,8 +10,9 @@
 | [Exploratory notebook](../notebooks/01_fraud_investigation_eda.ipynb) | Reproducible source audit, monthly fraud prevalence, review queue comparison and amount-rule sensitivity |
 | [Feature engineering notebook](../notebooks/02_fraud_feature_engineering.ipynb) | Worked timestamp example, full feature build and chronological split verification |
 | [Modelling notebook](../notebooks/03_fraud_model_validation.ipynb) | Training, August validation, daily queue comparison and simulator sensitivity |
+| [Held-out evaluation notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) | September policy comparison and reconciled local rank export |
 | [Analytical data model](data_model.md) | Transaction grain, admissible fields and planned Python outputs |
 | [Methodology](methodology.md) | Chronological evaluation, daily review limits and the evidence required for dashboard views |
-| [Findings](findings.md) | Held-out results and interpretation when available |
+| [Findings](findings.md) | How to reproduce and interpret the September results |
 
 For a new conversation, copy the master continuation prompt. It directs the session to the live handoff and scorecard. For a project review, start with the [README](../README.md) and the audit evidence.

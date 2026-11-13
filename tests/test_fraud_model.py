@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from src.fraud_model import compare_review_queues, fit_ranker, score_transactions
+from src.review_export import build_rank_export
 from src.transaction_features import MODEL_FEATURES
 
 
@@ -46,3 +47,11 @@ class FraudModelTests(unittest.TestCase):
         self.assertEqual(restricted["Recall"], 1.0)
         self.assertEqual(model["Fraud caught"], 2)
         self.assertEqual(len(precision), 4)
+
+        export = build_rank_export(scored.iloc[::-1]).set_index("TRANSACTION_ID")
+        self.assertEqual(export.loc[50, "tx_amount_rank_all"], 51)
+        self.assertEqual(export.loc[50, "tx_amount_rank_le_220"], 50)
+        self.assertEqual(export.loc[50, "model_score_rank_all"], 1)
+        self.assertEqual(export.loc[103, "tx_amount_rank_all"], 1)
+        self.assertTrue(pd.isna(export.loc[0, "tx_amount_rank_le_220"]))
+        self.assertTrue(pd.isna(export.loc[0, "model_score_rank_le_220"]))
