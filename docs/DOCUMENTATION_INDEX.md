@@ -6,8 +6,10 @@
 | [Current project status](PROJECT_STATUS_CURRENT.md) | P1–P6 weights, progress, acceptance criteria and open gates |
 | [Current session handoff](SESSION_HANDOFF_CURRENT.md) | Latest verified checkpoint, owner decisions, limits and exact next action |
 | [Power BI design system](POWER_BI_DESIGN_SYSTEM.md) | Approved visual identity, theme implementation, page briefs, metric language, interactions and design acceptance gates |
-| [P5 wireframe proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md) | Owner-approved visual identity, exact page wireframes, KPI hierarchy, interactions, icon rules and P5 data model |
-| [Project audit, 13 November 2026](PROJECT_AUDIT_2026-11-13.md) | Repository/documentation audit, findings, risks and remediation |
+| [Fraud Triage design proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) | Dark preview decisions for the comparison page and the remaining Desktop acceptance checks |
+| [P5 wireframe proposal v0.1](P5_WIREFRAMES_PROPOSAL_v0.1.md) | Original owner-approved light design for both pages |
+| [Documentation audit, 14 November 2026](PROJECT_AUDIT_2026-11-14.md) | Current repository audit, corrections and open evidence |
+| [Project audit, 13 November 2026](PROJECT_AUDIT_2026-11-13.md) | Historical snapshot before detailed design approval and Power BI implementation |
 | [Data source feasibility and audit](data_sources.md) | Pinned source, file evidence, dataset quality, leakage and publication scope |
 | [Local data and notebook workflow](../data/README.md) | Acquisition, validation, reproducible notebook runs and pull recovery |
 | [P5 page scope](SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate) | Approved pages, verified inputs and outstanding design decisions |
@@ -18,7 +20,7 @@
 | [Power BI data preparation notebook](../notebooks/05_power_bi_data_preparation.ipynb) | Daily Overview aggregation, date dimension, September rank validation, visual QA and local Power BI outputs |
 | [Power BI theme](../powerbi/themes/Premium_Banking_Intelligence.json) | Approved light Premium Banking Intelligence report theme |
 | [Power BI setup and model guide](../powerbi/README.md) | Local data imports, table grains, relationships and implementation boundaries |
-| [Analytical data model](data_model.md) | Transaction grain, admissible fields and planned Python outputs |
+| [Analytical data model](data_model.md) | Transaction grain, admissible fields, pipeline outputs and model tables |
 | [Methodology](methodology.md) | Chronological evaluation, daily review limits and the evidence required for dashboard views |
 | [Findings](findings.md) | Actual August and September policy comparisons and their interpretation |
 

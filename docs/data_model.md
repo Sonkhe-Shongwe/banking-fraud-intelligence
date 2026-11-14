@@ -14,7 +14,7 @@ One record represents one simulated transaction at its event time. The [source a
 | `TX_FRAUD` | Outcome for model fitting and evaluation subject to label timing. |
 | `TX_FRAUD_SCENARIO` | Evaluation diagnostic describing the simulator outcome. Excluded from prediction inputs. |
 
-## Planned Python outputs
+## Python outputs
 
 1. [Validated transactions](../src/validate_transactions.py) with parsed timestamps and numeric types. The loader retains zero amounts, preserves source order and fails on invalid records. [Run the validator](../data/README.md#validate-the-csv-for-the-pipeline)
 2. [Scoring-time feature rows](#scoring-time-features-and-partitions) calculated from the current amount and strictly earlier transaction activity.
@@ -66,4 +66,4 @@ All files are written to data/processed/powerbi/, which is Git-ignored. The note
 - The QA reconciliation table is not loaded into the report.
 - TRANSACTION_ID and the technical rank columns are hidden from report consumers. No transaction-level drillthrough is included in the approved first release.
 
-The cohort and daily-capacity selector tables are disconnected report controls. Their DAX definitions and the measure layer are the next modelling increment after Notebook 05 and theme import have been checked in the owner's environment.
+The cohort, daily-capacity and policy selector tables are disconnected report controls. The [TMDL script](../powerbi/review_policy_model.tmdl) defines those tables and the comparison measures. The [Desktop DAX reconciliation](SESSION_HANDOFF_CURRENT.md#current-power-bi-repository-state) verified the comparison measures against the Python reference.

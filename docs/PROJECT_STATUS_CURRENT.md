@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next checkpoint:** Apply the formatting update to the existing local Power BI Project and verify scorecard readability and filter behaviour in Desktop. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
+**Next checkpoint.** Review Fraud Triage for Desktop implementation or verify the existing light layout update in Desktop. P5 remains at 0% pending accepted report evidence. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
@@ -59,7 +59,8 @@ The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduc
 - **Owner reported:** Date table marked and report saved locally.
 - **Passed in Desktop:** Review Policy Comparison model application, four imported table row counts, all six metrics in each of the eight full-September comparisons and one restricted single-day check.
 - **Awaiting local verification:** Calendar sorting, Desktop version, theme rendering, Fraud Overview measure reconciliation and report interactions.
-- **Observed in Desktop:** The first three cards display 589, 592 and +3. Final card formatting and desktop interaction checks are pending.
+- **Observed in Desktop:** The first light page build displayed 589, 592 and +3, both policy lines and the four fixed reference values. The layout polish and report interactions still need a Desktop check.
+- **Design proposal:** Fraud Triage is the latest comparison-page preview. [Proposed design and acceptance checks](FRAUD_TRIAGE_DESIGN_PROPOSAL.md)
 - **Separate open gate:** dataset-derived publication permissions. See [source publication scope](data_sources.md#publication-scope).
 
 P5 remains at 0% pending verified report implementation and acceptance.

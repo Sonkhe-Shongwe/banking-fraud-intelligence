@@ -1,4 +1,4 @@
-# Banking Fraud Intelligence | Master Continuation Prompt v1.2
+# Banking Fraud Intelligence | Master Continuation Prompt v1.3
 
 ## 1. Project identity and mission
 
@@ -16,7 +16,7 @@ At the start of each continuation session, verify the repository, active branch 
 2. docs/DOCUMENTATION_INDEX.md to locate the active records.
 3. docs/SESSION_HANDOFF_CURRENT.md for the last verified work, owner decisions and next action.
 4. docs/PROJECT_STATUS_CURRENT.md for P1–P6, phase weights and closure criteria.
-5. docs/POWER_BI_DESIGN_SYSTEM.md and docs/P5_WIREFRAMES_PROPOSAL_v0.1.md for approved detailed design decisions, metric language and design gates whenever P5 is involved.
+5. For P5, read docs/POWER_BI_DESIGN_SYSTEM.md for the approved design and metric language. Read docs/FRAUD_TRIAGE_DESIGN_PROPOSAL.md for the latest comparison-page preview and its Desktop acceptance checks.
 6. The relevant audit, methodology, data model, source audit or findings, plus the source files, tests and CI runs that exist for the selected task.
 
 Compare those records with recent commits and the working tree. Identify stale or conflicting claims and verify the exact revision before resolving them. Preserve historical decisions and test outcomes.
@@ -47,7 +47,7 @@ Treat permission to use Power BI as approval of the platform, and the approved t
 - Review Policy Comparison as the first page to build.
 - Direction A: Premium Banking Intelligence, with a light, restrained and executive-grade aesthetic.
 
-The owner approved the detailed palette, typography, canvas/grid, both page wireframes, visual selection, KPI treatment, iconography and interactions as presented in docs/P5_WIREFRAMES_PROPOSAL_v0.1.md on 13 November 2026. No revisions were requested. The owner then authorised implementation within the approved scope by saying “lets continue” on 13 November 2026. Proceed with the theme, reporting-data preparation and two approved pages, but do not add pages, introduce unapproved features or make material design changes without further approval. Publication remains a separate gate. Never make unapproved design changes. A generated concept board is a moodboard only; its sample metrics are not project data.
+The owner approved the original light design in docs/P5_WIREFRAMES_PROPOSAL_v0.1.md and authorised implementation within that scope on 13 November 2026. Use the current handoff for later preview decisions and approval status. On 14 November the owner directed revisions to the Fraud Triage preview. Approval to carry the consolidated dark design into Power BI Desktop is a separate decision. The earlier light moodboard contains placeholder values. Use verified analytical results for report development.
 
 Ask for explicit owner approval before a major change to scope, architecture, schedule or public data exposure. Apply one-off approvals only to the operation they cover. Publication permissions remain separate from design approval.
 
@@ -180,6 +180,7 @@ Research and proposals are not implementation approval. Present material alterna
 | docs/PROJECT_STATUS_CURRENT.md | P1–P6 evidence, weights, percentages and closure criteria |
 | docs/DOCUMENTATION_INDEX.md | Links to the authoritative documents and entry points |
 | docs/POWER_BI_DESIGN_SYSTEM.md | Approved design decisions, proposed tokens, page briefs, metric contract and design gates |
+| docs/FRAUD_TRIAGE_DESIGN_PROPOSAL.md | Latest comparison-page design proposal and Desktop acceptance criteria |
 | docs/PROJECT_AUDIT_*.md | Dated audit findings, evidence, risks and remediation |
 | docs/data_sources.md and data/README.md | Dataset provenance, audit, acquisition and publication boundaries |
 | docs/data_model.md, docs/methodology.md and docs/findings.md | Data contracts, evaluation protocol and actual analytical results |

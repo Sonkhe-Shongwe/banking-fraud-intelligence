@@ -5,6 +5,8 @@
 **Audit type:** Documentation, analytical continuity, P5 readiness and repository governance review  
 **Scope limitation:** This audit inspected the remote GitHub main branch. It did not inspect the owner's current local working tree or execute the local Power BI Desktop application.
 
+This is a historical snapshot. See the [14 November documentation audit](PROJECT_AUDIT_2026-11-14.md) for the later Power BI and design-review status.
+
 ## 1. Executive verdict
 
 The analytical foundation is documented and the project is correctly positioned at 72% overall, with P1 at 80% and P2–P4 complete. The P4 September rank export has been generated and confirmed by the owner in Windows.

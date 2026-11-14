@@ -4,6 +4,8 @@
 **Status:** Owner-approved detailed design specification; implementation authorised within the approved scope (13 November 2026)  
 **Authority:** The owner approved this detailed design as presented, with no requested revisions, and subsequently authorised implementation by instructing us to continue. Implement only the approved palette, typography, canvas, page layouts, visual selection and interactions. Any scope expansion, major design change or publication of dataset-derived artefacts requires separate approval.
 
+For the later comparison-page review, see the [Fraud Triage design proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md).
+
 ## 1. Design objective
 
 Create a premium, executive-grade fraud intelligence report that feels like a carefully designed banking analytics product rather than a default Power BI canvas. The interface should be visually rich through hierarchy, spacing, typography, meaningful icons, aligned components and deliberate interactions, not through decorative clutter.

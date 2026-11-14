@@ -35,12 +35,12 @@ Work in small increments with a visible checkpoint. Show what changed, what was 
 
 ## P5 scope and design gate
 
-The page scope, visual identity, detailed tokens, both wireframes and interaction contract are approved. The owner authorised implementation by saying “lets continue” on 13 November 2026. Proceed only within the approved design and two-page scope.
+The original light design and the two-page scope were approved on 13 November 2026. On 14 November the owner requested a darker preview and directed changes to its brand, title, methodology placement and slicer order. The [Fraud Triage proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) records the latest preview for the same comparison page. The consolidated redesign awaits a Desktop implementation decision.
 
 | Page | Intended purpose | Verified input | Design status |
 |---|---|---|---|
 | Fraud Overview | Show simulated transaction activity, fraud-labelled count/share and trends over the available period | Validated full transaction CSV | **Detailed design approved; implementation foundation prepared** |
-| Review Policy Comparison | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | **Detailed design approved; first build after local data/theme checks** |
+| Review Policy Comparison | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | **First light build observed in Desktop. Light polish and the Fraud Triage proposal have separate verification steps.** |
 
 The approved metric contract, visual tokens and design gates are in the [Power BI design system](POWER_BI_DESIGN_SYSTEM.md).
 
@@ -63,11 +63,13 @@ The [Power BI guide](../powerbi/README.md) records the import and relationship c
 | P5.2 daily Overview reconciliation | Passed in Linux and Windows | The earlier ad hoc audit flagged six metrics due to pandas index alignment. The corrected command `python -m src.reconcile_powerbi_overview` matched all seven metrics across 183 dates in the pinned-source Linux reproduction and in the owner's Windows run after pulling [`1cce1e1`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/1cce1e1a481685f4ba3ec1cc02a9e006bd29619c). The owner supplied the terminal result on 14 November 2026. |
 | Theme schema | Passed | The committed theme passed Microsoft's Power BI report theme JSON schema 2.159. |
 | Power BI Desktop theme import | Passed | On 14 November 2026 the owner imported the approved theme into a blank report in Windows Power BI Desktop. The screenshot shows the app confirming the file was added successfully. Desktop build number and theme rendering on visuals are unverified. |
-| Power BI base model | Observed in Desktop | The owner's 14 November screenshot shows four reporting tables, two active one-to-many relationships with single-direction indicators from `DimDate`, and `September_Scenario_Lift` disconnected. Loaded row counts and date-table marking still need verification. |
+| Power BI base model | Observed in Desktop | The owner's 14 November screenshot shows four reporting tables, two active one-to-many relationships from `DimDate` and a disconnected `September_Scenario_Lift`. The DAX check below verified the loaded row counts. The owner reported marking `DimDate` as the date table. |
 | Review Policy Comparison model and DAX reconciliation | Passed | In Windows Power BI Desktop on 14 November, the owner applied [`eb9be80`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/eb9be801d26764aa72dc2214cd6fd045f697e8b3) and ran `powerbi/review_policy_checks.dax`. The query returned 183 calendar rows, 183 Overview rows, 287,873 ranks and four scenarios. All 48 metric values across eight full-September comparisons agreed with the pinned Python QA reference at report precision. The restricted 1 September check returned one day, 50 slots per policy, eight baseline, nine model and +1. |
 | TMDL editor diagnostics | Observed | The editor displayed name-resolution diagnostics after Apply. The Desktop DAX query resolved and evaluated the new tables and measures. |
 | Review Policy Comparison cards | Default values passed | The owner's 14 November Desktop screenshot shows the three native cards with 589 for the amount baseline, 592 for logistic regression and +3 model difference. Two labels are clipped and the cards need alignment. Canvas dimensions, final styling and filter behaviour still need verification. |
 | Comparison page build at `5fed1b8` | Opened in Desktop | The owner's Windows run applied the layout and saved a backup. Desktop showed the three correct default cards, both policy lines and four fixed reference values. The chart subtitle used generated measure names, the matrix columns were cramped and the second scorecard row clipped. The 100/day interaction is pending. |
+| Light layout polish at `438bd22` | Desktop check open | The [builder](../powerbi/build_review_policy_page.py) supports updating its existing comparison page. The update targets chart labelling, matrix readability and both scorecard rows. |
+| Fraud Triage design preview | Reviewed in conversation | The owner requested a standalone logo and placed slicers above the result cards. The dark proposal records those decisions and its typography, chart and metric-help treatment. The preview used reconciled September aggregates. Desktop implementation and validation are open. [Design proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) |
 
 The reported P5.1 audit passed five file-integrity and nine structural checks on the owner's exports. In the Linux reproduction, hashes, schemas and row counts matched the generated manifest for all five CSVs. The corrected P5.2 audit rejected a changed count and a changed value in disposable copies. The source and original Overview hashes remained identical, and all ten existing regression tests passed.
 
@@ -77,9 +79,9 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. [Run the updated comparison page builder](../powerbi/README.md#9-build-the-comparison-page-from-the-saved-project) on the existing local Power BI Project copy. It preserves the KPI bindings and slicer selections and backs up the prior page.
-2. Reopen the project in Desktop and check the scorecard, chart labels, reference matrix and 50/day and 100/day results. Add navigation and reset controls after the comparison layout is verified. Record the Desktop version when available.
-3. Finish calendar label sorting before building and reconciling Fraud Overview.
+1. For the redesign, review the [Fraud Triage proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md). After approval to apply it in Desktop, adapt the existing comparison page and run the proposal's acceptance checks.
+2. For the current light build, [run the layout polish](../powerbi/README.md#9-build-the-comparison-page-from-the-saved-project) on the saved project copy. Check both scorecard rows, short chart labels, fixed reference values and 50/day and 100/day results in Desktop. Record the Desktop version.
+3. Complete calendar label sorting, then build and reconcile Fraud Overview. Verify navigation and reset controls on the two-page report.
 
 ## Checkpoint history
 
@@ -111,3 +113,4 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 | 14 November 2026 | Windows Power BI Desktop applied the comparison model and passed all three DAX query result sets. |
 | 14 November 2026 | Owner screenshot confirmed the three Review Policy Comparison cards display the expected default values. |
 | 14 November 2026 | Prepared a local PBIR page builder. The Python fixture run on Linux verified preview, apply, original-page backup, repeat-run protection, binding preservation and layout bounds. The page and visual JSON passed Microsoft's PBIR schemas. The owner needs to run and inspect the result in Desktop. |
+| 14 November 2026 | Recorded the first Desktop layout and the subsequent light polish. Captured the darker Fraud Triage preview and the owner-requested title, logo, methodology and slicer placement decisions in the design proposal. [Documentation audit](PROJECT_AUDIT_2026-11-14.md) |

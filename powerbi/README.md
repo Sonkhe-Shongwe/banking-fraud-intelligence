@@ -3,7 +3,9 @@
 **Project:** Banking Fraud Intelligence  
 **Approved design:** Premium Banking Intelligence, light theme  
 **Platform:** Power BI Desktop  
-**Current checkpoint:** Review Policy Comparison reconciliation and default card values verified in Power BI Desktop
+**Current checkpoint:** Review Policy Comparison measures reconciled and the first light layout opened in Power BI Desktop. The light layout polish awaits a Desktop check.
+
+This guide applies to the approved light build. The [Fraud Triage design proposal](../docs/FRAUD_TRIAGE_DESIGN_PROPOSAL.md) records the dark preview and its separate Desktop acceptance checks.
 
 ## 1. First local setup
 

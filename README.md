@@ -1,10 +1,10 @@
 # Banking Fraud Intelligence
 
-A portfolio case study on prioritising potentially fraudulent card transactions when investigators can review only a fixed number each day. The main question is whether a risk model helps investigators find more fraud than an amount-based baseline at the same review capacity.
+A portfolio case study on prioritising potentially fraudulent card transactions under a fixed daily review limit. It compares how many fraud-labelled transactions a risk model and an amount-based baseline select at the same review capacity.
 
-**Current checkpoint (14 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The Review Policy Comparison page opened in Power BI Desktop and displayed the expected default results. A layout update is ready for verification on the existing local Power BI Project. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md#resume-here)
+**Current checkpoint (14 November 2026).** Overall progress is 72%. The Review Policy Comparison measures reconciled and the first page build displayed the expected default results in Power BI Desktop. The light layout polish awaits a Desktop check. Fraud Triage is the latest design proposal for the same page. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md#resume-here)
 
-Use the existing validated data/processed/transactions.csv if you already have it. For a fresh checkout, follow the Windows setup in the [local data guide](data/README.md#prepare-one-csv).
+Use the existing validated `data/processed/transactions.csv` if you already have it. For a fresh checkout, follow the Windows setup in the [local data guide](data/README.md#prepare-one-csv).
 
 ## Start here
 
@@ -15,8 +15,8 @@ Use the existing validated data/processed/transactions.csv if you already have i
 | What each phase delivers and how progress is earned | [Current phase scorecard](docs/PROJECT_STATUS_CURRENT.md) |
 | Latest checkpoint, decisions and next action | [Current session handoff](docs/SESSION_HANDOFF_CURRENT.md) |
 | Current Power BI visual direction and design rules | [Power BI design system](docs/POWER_BI_DESIGN_SYSTEM.md) |
-| Proposed P5 page layouts and detailed design review | [P5 wireframe proposal v0.1](docs/P5_WIREFRAMES_PROPOSAL_v0.1.md) |
-| Repository, continuity and P5 readiness review | [Project audit, 13 November 2026](docs/PROJECT_AUDIT_2026-11-13.md) |
+| Latest design preview and Desktop acceptance criteria | [Fraud Triage design proposal](docs/FRAUD_TRIAGE_DESIGN_PROPOSAL.md) |
+| Latest documentation audit and findings | [Documentation audit, 14 November 2026](docs/PROJECT_AUDIT_2026-11-14.md) |
 | Dataset revision, audit results and limitations | [Data source and feasibility audit](docs/data_sources.md) |
 | Local data and notebook workflow | [Local data guide](data/README.md) |
 | P5 page scope and verified inputs | [Current session handoff](docs/SESSION_HANDOFF_CURRENT.md#p5-scope-and-design-gate) |
@@ -34,7 +34,7 @@ Use the existing validated data/processed/transactions.csv if you already have i
 
 A reproducible Python pipeline using pandas for ingestion, validation and feature preparation and scikit-learn for offline modelling. The evaluation compares a model with an amount-based baseline on chronological held-out data. Report fraud caught, legitimate transactions sent for review, and fraud-labelled transaction value captured under the same daily review limits.
 
-Power BI Desktop is the approved P5 platform. The two approved pages are **Fraud Overview** and **Review Policy Comparison**, with the latter planned as the first build. The approved visual direction is a light, premium banking-intelligence aesthetic. The detailed palette, typography, page layouts, chart selection and interactions are approved. The theme JSON and reporting-data notebook are prepared; the PBIX and DAX measure layer are not yet built. [Design system](docs/POWER_BI_DESIGN_SYSTEM.md)
+Power BI Desktop is the approved P5 platform. The two approved pages are **Fraud Overview** and **Review Policy Comparison**. The comparison page has a local report build, reconciled measures and a repeatable page builder. Fraud Overview still needs its report visuals and Desktop verification. [Design system](docs/POWER_BI_DESIGN_SYSTEM.md) · [Power BI guide](powerbi/README.md)
 
 The data source is the Fraud Detection Handbook's simulated transactions. The September evaluation and its limitations are documented in [Findings](docs/findings.md). Fraud-labelled transaction value is reported as exposure under review, not as loss prevented. Dataset-derived artefacts remain local until publication permissions are resolved.
 
@@ -42,6 +42,6 @@ The data source is the Fraud Detection Handbook's simulated transactions. The Se
 
 - data/ holds acquisition guidance. Raw and processed datasets are excluded from Git.
 - notebooks/ is for exploration, charts and model interpretation in Jupyter. src/ is for repeatable Python preparation, training, evaluation and exports. tests/ is for verification.
-- powerbi/ contains the approved theme and setup guide. The local report model is set up and the comparison measures reconcile. Visuals are the next P5 increment.
+- powerbi/ contains the approved theme, comparison measure script, DAX checks, page builder and Desktop guide.
 - docs/ holds project status, handoff, design system, audit, source audit, methodology and findings.
 - reports/ and assets/ are reserved for approved shareable evidence and figures.
