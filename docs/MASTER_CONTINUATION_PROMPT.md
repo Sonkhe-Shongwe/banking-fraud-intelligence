@@ -47,7 +47,7 @@ Treat permission to use Power BI as approval of the platform, and the approved t
 - Review Policy Comparison as the first page to build.
 - Direction A: Premium Banking Intelligence, with a light, restrained and executive-grade aesthetic.
 
-The owner approved the original light design in docs/P5_WIREFRAMES_PROPOSAL_v0.1.md and authorised implementation within that scope on 13 November 2026. Use the current handoff for later preview decisions and approval status. On 14 November the owner directed revisions to the Fraud Triage preview. Approval to carry the consolidated dark design into Power BI Desktop is a separate decision. The earlier light moodboard contains placeholder values. Use verified analytical results for report development.
+The owner approved the original light design in docs/P5_WIREFRAMES_PROPOSAL_v0.1.md on 13 November 2026. On 14 November the owner authorised implementing the dark Fraud Triage design for the existing comparison page. Use the current handoff for implementation evidence and open Desktop checks. The earlier light moodboard contains placeholder values. Use verified analytical results for report development.
 
 Ask for explicit owner approval before a major change to scope, architecture, schedule or public data exposure. Apply one-off approvals only to the operation they cover. Publication permissions remain separate from design approval.
 

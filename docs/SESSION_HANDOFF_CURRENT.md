@@ -35,12 +35,12 @@ Work in small increments with a visible checkpoint. Show what changed, what was 
 
 ## P5 scope and design gate
 
-The original light design and the two-page scope were approved on 13 November 2026. On 14 November the owner requested a darker preview and directed changes to its brand, title, methodology placement and slicer order. The [Fraud Triage proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) records the latest preview for the same comparison page. The consolidated redesign awaits a Desktop implementation decision.
+The original light design and the two-page scope were approved on 13 November 2026. On 14 November the owner requested a darker preview and directed changes to its brand, title, methodology placement and slicer order. After the documentation audit, the owner authorised implementing [Fraud Triage](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) as the comparison page. The builder is ready for Desktop verification.
 
 | Page | Intended purpose | Verified input | Design status |
 |---|---|---|---|
 | Fraud Overview | Show simulated transaction activity, fraud-labelled count/share and trends over the available period | Validated full transaction CSV | **Detailed design approved; implementation foundation prepared** |
-| Review Policy Comparison | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | **First light build observed in Desktop. Light polish and the Fraud Triage proposal have separate verification steps.** |
+| Fraud Triage | Compare amount ranking and logistic regression at 50 or 100 reviews/day, across all transactions or amounts at or below 220 | Local September rank CSV | **Light comparison observed in Desktop. Dark Fraud Triage builder verified against fixtures and ready for Desktop checks.** |
 
 The approved metric contract, visual tokens and design gates are in the [Power BI design system](POWER_BI_DESIGN_SYSTEM.md).
 
@@ -69,7 +69,8 @@ The [Power BI guide](../powerbi/README.md) records the import and relationship c
 | Review Policy Comparison cards | Default values passed | The owner's 14 November Desktop screenshot shows the three native cards with 589 for the amount baseline, 592 for logistic regression and +3 model difference. Two labels are clipped and the cards need alignment. Canvas dimensions, final styling and filter behaviour still need verification. |
 | Comparison page build at `5fed1b8` | Opened in Desktop | The owner's Windows run applied the layout and saved a backup. Desktop showed the three correct default cards, both policy lines and four fixed reference values. The chart subtitle used generated measure names, the matrix columns were cramped and the second scorecard row clipped. The 100/day interaction is pending. |
 | Light layout polish at `438bd22` | Desktop check open | The [builder](../powerbi/build_review_policy_page.py) supports updating its existing comparison page. The update targets chart labelling, matrix readability and both scorecard rows. |
-| Fraud Triage design preview | Reviewed in conversation | The owner requested a standalone logo and placed slicers above the result cards. The dark proposal records those decisions and its typography, chart and metric-help treatment. The preview used reconciled September aggregates. Desktop implementation and validation are open. [Design proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) |
+| Fraud Triage design preview | Implementation authorised | The owner requested a standalone logo and slicers above the result cards, then approved continuing after the documentation audit. The preview used reconciled September aggregates. [Design specification](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) |
+| Fraud Triage builder | Passed in Linux fixtures | Python 3.12.14 verified the upgrade from the light and three-card layouts, no-write preview, filter preservation, layout bounds, logo registration, backups, rerun safety and rollback after an injected failure. Fourteen generated PBIR JSON files passed Microsoft schema validation, and all ten existing Python regression tests passed. Desktop rendering and interaction checks remain open. [Desktop instructions](../powerbi/README.md#10-apply-and-verify-fraud-triage) |
 
 The reported P5.1 audit passed five file-integrity and nine structural checks on the owner's exports. In the Linux reproduction, hashes, schemas and row counts matched the generated manifest for all five CSVs. The corrected P5.2 audit rejected a changed count and a changed value in disposable copies. The source and original Overview hashes remained identical, and all ten existing regression tests passed.
 
@@ -79,8 +80,8 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. For the redesign, review the [Fraud Triage proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md). After approval to apply it in Desktop, adapt the existing comparison page and run the proposal's acceptance checks.
-2. For the current light build, [run the layout polish](../powerbi/README.md#9-build-the-comparison-page-from-the-saved-project) on the saved project copy. Check both scorecard rows, short chart labels, fixed reference values and 50/day and 100/day results in Desktop. Record the Desktop version.
+1. Pull `main` and [apply Fraud Triage](../powerbi/README.md#10-apply-and-verify-fraud-triage) to the saved local Power BI Project.
+2. Record the Desktop build number and verify visual rendering, the four monthly scenarios, the restricted single-day slice, keyboard access to the Help tooltip and the fixed reference values.
 3. Complete calendar label sorting, then build and reconcile Fraud Overview. Verify navigation and reset controls on the two-page report.
 
 ## Checkpoint history

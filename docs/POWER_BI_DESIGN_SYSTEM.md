@@ -7,7 +7,7 @@
 
 This document is the working design contract for P5. It records the approved visual identity, page designs, data contract and quality gates. Implementation may proceed within this approved scope; any scope expansion or material design change still requires owner approval.
 
-The [Fraud Triage design proposal](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) records the dark preview requested during review of the comparison page and the checks needed for a Desktop implementation.
+The [Fraud Triage design](FRAUD_TRIAGE_DESIGN_PROPOSAL.md) records the later authorised dark direction for the comparison page. Its builder is ready for Desktop verification. The sections below document the original light baseline and the shared metric and interaction rules.
 
 ## 1. Decision register
 
@@ -228,7 +228,7 @@ Microsoft's Power BI accessibility guidance covers alternative text, tab order, 
 | D1 — Design tokens | Palette, typography, spacing, icon and component rules | **Approved by owner, 13 November 2026** |
 | D2 — Page wireframes | Exact layout and visual selection for both pages | **P5 wireframe proposal v0.1 approved by owner, 13 November 2026** |
 | D3 — Theme implementation | Approved theme JSON prepared in the repository; import and visual inspection in Power BI Desktop | Schema 2.159 and Desktop import passed. Rendering on visuals pending. |
-| D4 — Report implementation | Approved pages built with supported data only | In progress. The first light comparison page opened in Desktop with the verified default results. Layout polish and Fraud Overview remain open. |
+| D4 — Report implementation | Approved pages built with supported data only | In progress. The light comparison page opened in Desktop. The dark Fraud Triage builder passed fixture and schema checks. Desktop verification and Fraud Overview remain open. |
 | D5 — Analytical reconciliation | Power BI measures match Python for all eight September policy/cohort/capacity cases and representative date selections | Comparison measures passed all eight full-September cases and the restricted single-day check in Desktop. Fraud Overview and visual-context checks are pending. |
 | D6 — Interaction and accessibility | Filters, navigation, tooltips, keyboard order, contrast and labels tested | Not started |
 | D7 — Owner acceptance | Owner reviews the actual report and approves the result | Not started |

@@ -1,6 +1,6 @@
 # Fraud Triage design proposal
 
-**Recorded 14 November 2026.** This is the current design preview for the existing Review Policy Comparison page. The owner requested the changes below during review. The consolidated design still awaits approval for Power BI implementation and validation in Desktop. The [approved light design](POWER_BI_DESIGN_SYSTEM.md) is the current implementation baseline.
+**Recorded 14 November 2026.** The owner authorised implementing this design after the documentation audit. The builder now supports the dark Fraud Triage page. Validation in Power BI Desktop is open. [Run the build and Desktop checks](../powerbi/README.md#10-apply-and-verify-fraud-triage)
 
 ## Page design
 
@@ -30,4 +30,4 @@ The preview uses the verified September aggregates. Its default values are 589 b
 
 For the portfolio, frame the page as a comparison of review policies under constrained capacity. Present September as a held-out result and retain the [August validation context](findings.md#august-validation-context) when discussing model performance.
 
-Once the owner approves the consolidated design for Desktop, map it onto the existing comparison page and its verified measures. Check the logo and type rendering, the default and 100/day results, both restricted scenarios, a single-day date slice, the fixed reference values, keyboard access to controls and definitions, and the visibility of both scorecard rows. Record the results in the [handoff](SESSION_HANDOFF_CURRENT.md). Fraud Overview remains the second page in the [approved scope](POWER_BI_DESIGN_SYSTEM.md#approved-page-scope). [Publication scope](data_sources.md#publication-scope) stays separate.
+The builder maps the design onto the existing comparison page and its verified measures. It uses native slicers and a fixed reference matrix. Separate slicer icons and the selected scenario highlight are preview details awaiting Desktop follow-up. Check the logo and type rendering, the default and 100/day results, both restricted scenarios, a single-day date slice, the fixed reference values, keyboard access to controls and definitions, and the visibility of both scorecard rows. Record the results in the [handoff](SESSION_HANDOFF_CURRENT.md). Fraud Overview remains in the [approved two-page scope](POWER_BI_DESIGN_SYSTEM.md#approved-page-scope). [Publication scope](data_sources.md#publication-scope)

@@ -3,9 +3,9 @@
 **Project:** Banking Fraud Intelligence  
 **Approved design:** Premium Banking Intelligence, light theme  
 **Platform:** Power BI Desktop  
-**Current checkpoint:** Review Policy Comparison measures reconciled and the first light layout opened in Power BI Desktop. The light layout polish awaits a Desktop check.
+**Current checkpoint.** Review Policy Comparison measures reconciled in Power BI Desktop. The dark Fraud Triage page builder is ready for the [Desktop check](#10-apply-and-verify-fraud-triage).
 
-This guide applies to the approved light build. The [Fraud Triage design proposal](../docs/FRAUD_TRIAGE_DESIGN_PROPOSAL.md) records the dark preview and its separate Desktop acceptance checks.
+Sections 1–9 document the original light build. [Fraud Triage design](../docs/FRAUD_TRIAGE_DESIGN_PROPOSAL.md)
 
 ## 1. First local setup
 
@@ -157,3 +157,24 @@ Keep the report local while dataset-derived publication permissions are open.
 4. Change capacity to 100/day. With the same cohort and date range, the cards should show **622, 632, +10**. The matrix should retain its four fixed results. Navigation and reset controls are tracked for the next report increment.
 
 For a no-write check, run the command without `--apply`. If Desktop rejects the edited page, close the project and restore the page from the printed backup or reopen the original PBIX. Save and test the project locally under the ignored `data/processed/` path.
+
+## 10. Apply and verify Fraud Triage
+
+1. Pull `main`. Save and close the existing local Power BI Project in Desktop. From the repository root, run the preview command.
+
+   ```powershell
+   python powerbi/build_review_policy_page.py "data/processed/Banking Fraud Intelligence.Report" --design fraud-triage
+   ```
+
+2. Once preview passes, apply the update.
+
+   ```powershell
+   python powerbi/build_review_policy_page.py "data/processed/Banking Fraud Intelligence.Report" --design fraud-triage --apply
+   ```
+
+   The builder accepts the original three-card page, the complete light page or an earlier Fraud Triage build. It keeps the existing measures and saved slicer selections, registers the logo from the repository, and prints the backup location.
+
+3. Reopen the `.pbip` in Desktop and select **Fraud Triage**. Confirm that the logo appears, the title and numbers render legibly, the slicers sit above the cards, the daily chart has a visible zero line and tooltips, and both scorecard rows fit. Open the scorecard's native Help tooltip and check it with the keyboard. Confirm that both custom fonts render on this Desktop installation.
+4. With all dates in September selected, check all transactions at 50/day (**589 baseline, 592 model, +3**) and at 100/day (**622, 632, +10**). Then check amounts at or below 220 at 50/day (**74, 77, +3**) and 100/day (**101, 110, +9**). Finally, use 1 September with the restricted cohort at 50/day (**8, 9, +1**). The reference matrix must retain all four full-month results.
+
+The first build uses native slicer controls and a fixed reference matrix. The preview's separate slicer icons and selected-cell highlight are visual follow-ups. If the build fails to open, close Desktop and restore the page folder at its original path from `original-page` and restore `definition/report.json` from `original-report.json` in the same backup directory. If the backup contains `logo-added.txt`, remove only the file named there from `StaticResources/RegisteredResources`. The original PBIX is also a recovery point if you created the project as a copy.

@@ -2,7 +2,7 @@
 
 A portfolio case study on prioritising potentially fraudulent card transactions under a fixed daily review limit. It compares how many fraud-labelled transactions a risk model and an amount-based baseline select at the same review capacity.
 
-**Current checkpoint (14 November 2026).** Overall progress is 72%. The Review Policy Comparison measures reconciled and the first page build displayed the expected default results in Power BI Desktop. The light layout polish awaits a Desktop check. Fraud Triage is the latest design proposal for the same page. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md#resume-here)
+**Current checkpoint (14 November 2026).** Overall progress is 72%. The comparison measures reconciled in Power BI Desktop. The dark Fraud Triage page builder passed fixture and schema checks and is ready to apply to the local project. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md#resume-here)
 
 Use the existing validated `data/processed/transactions.csv` if you already have it. For a fresh checkout, follow the Windows setup in the [local data guide](data/README.md#prepare-one-csv).
 
