@@ -1,0 +1,152 @@
+createOrReplace
+
+	table 'Review Cohort'
+
+		column Cohort
+			dataType: string
+			summarizeBy: none
+			sourceColumn: Cohort
+
+		partition 'Review Cohort' = m
+			mode: import
+			source =
+					#table(type table [Cohort = text], {{"All transactions"}, {"Amounts at or below 220"}})
+
+	table 'Review Capacity'
+
+		column DailyCapacity
+			dataType: int64
+			summarizeBy: none
+			sourceColumn: DailyCapacity
+
+		partition 'Review Capacity' = m
+			mode: import
+			source =
+					Table.TransformColumnTypes(#table({"DailyCapacity"}, {{50}, {100}}), {{"DailyCapacity", Int64.Type}})
+
+	table 'Review Policy'
+
+		column Policy
+			dataType: string
+			summarizeBy: none
+			sourceColumn: Policy
+
+		partition 'Review Policy' = m
+			mode: import
+			source =
+					#table(type table [Policy = text], {{"Amount baseline"}, {"Logistic regression"}})
+
+	ref table September_Ranks
+
+		measure 'Reviews Selected' =
+				VAR RestrictedCohort = SELECTEDVALUE ( 'Review Cohort'[Cohort], "All transactions" ) = "Amounts at or below 220"
+				VAR DailyCapacity = SELECTEDVALUE ( 'Review Capacity'[DailyCapacity], 50 )
+				VAR Policy = SELECTEDVALUE ( 'Review Policy'[Policy] )
+				VAR ModelPolicy = Policy = "Logistic regression"
+				VAR SelectedRows =
+				    FILTER (
+				        'September_Ranks',
+				        VAR DailyRank =
+				            SWITCH (
+				                TRUE (),
+				                RestrictedCohort && ModelPolicy, 'September_Ranks'[model_score_rank_le_220],
+				                RestrictedCohort, 'September_Ranks'[tx_amount_rank_le_220],
+				                ModelPolicy, 'September_Ranks'[model_score_rank_all],
+				                'September_Ranks'[tx_amount_rank_all]
+				            )
+				        RETURN
+				            DailyRank >= 1 && DailyRank <= DailyCapacity
+				    )
+				RETURN
+				    IF ( NOT ISBLANK ( Policy ), COALESCE ( COUNTROWS ( SelectedRows ), 0 ) )
+			formatString: #,##0
+
+		measure 'Fraud-labelled Selected' =
+				VAR RestrictedCohort = SELECTEDVALUE ( 'Review Cohort'[Cohort], "All transactions" ) = "Amounts at or below 220"
+				VAR DailyCapacity = SELECTEDVALUE ( 'Review Capacity'[DailyCapacity], 50 )
+				VAR Policy = SELECTEDVALUE ( 'Review Policy'[Policy] )
+				VAR ModelPolicy = Policy = "Logistic regression"
+				VAR SelectedRows =
+				    FILTER (
+				        'September_Ranks',
+				        VAR DailyRank =
+				            SWITCH (
+				                TRUE (),
+				                RestrictedCohort && ModelPolicy, 'September_Ranks'[model_score_rank_le_220],
+				                RestrictedCohort, 'September_Ranks'[tx_amount_rank_le_220],
+				                ModelPolicy, 'September_Ranks'[model_score_rank_all],
+				                'September_Ranks'[tx_amount_rank_all]
+				            )
+				        RETURN
+				            DailyRank >= 1 && DailyRank <= DailyCapacity
+				    )
+				RETURN
+				    IF ( NOT ISBLANK ( Policy ), COALESCE ( SUMX ( SelectedRows, 'September_Ranks'[TX_FRAUD] ), 0 ) )
+			formatString: #,##0
+
+		measure 'Fraud-labelled Value Selected' =
+				VAR RestrictedCohort = SELECTEDVALUE ( 'Review Cohort'[Cohort], "All transactions" ) = "Amounts at or below 220"
+				VAR DailyCapacity = SELECTEDVALUE ( 'Review Capacity'[DailyCapacity], 50 )
+				VAR Policy = SELECTEDVALUE ( 'Review Policy'[Policy] )
+				VAR ModelPolicy = Policy = "Logistic regression"
+				VAR SelectedRows =
+				    FILTER (
+				        'September_Ranks',
+				        VAR DailyRank =
+				            SWITCH (
+				                TRUE (),
+				                RestrictedCohort && ModelPolicy, 'September_Ranks'[model_score_rank_le_220],
+				                RestrictedCohort, 'September_Ranks'[tx_amount_rank_le_220],
+				                ModelPolicy, 'September_Ranks'[model_score_rank_all],
+				                'September_Ranks'[tx_amount_rank_all]
+				            )
+				        RETURN
+				            DailyRank >= 1 && DailyRank <= DailyCapacity
+				    )
+				RETURN
+				    IF ( NOT ISBLANK ( Policy ), COALESCE (
+				        SUMX ( FILTER ( SelectedRows, 'September_Ranks'[TX_FRAUD] = 1 ), 'September_Ranks'[TX_AMOUNT] ),
+				        0
+				    ) )
+			formatString: #,##0.00
+
+		measure 'Legitimate Reviews' = IF ( HASONEVALUE ( 'Review Policy'[Policy] ), [Reviews Selected] - [Fraud-labelled Selected] )
+			formatString: #,##0
+
+		measure 'Queue Precision' = DIVIDE ( [Fraud-labelled Selected], [Reviews Selected] )
+			formatString: 0.0%
+
+		measure 'Eligible Fraud Labels' =
+				VAR RestrictedCohort = SELECTEDVALUE ( 'Review Cohort'[Cohort], "All transactions" ) = "Amounts at or below 220"
+				RETURN
+				    IF (
+				        RestrictedCohort,
+				        CALCULATE (
+				            SUM ( 'September_Ranks'[TX_FRAUD] ),
+				            KEEPFILTERS ( 'September_Ranks'[TX_AMOUNT] <= 220 )
+				        ),
+				        SUM ( 'September_Ranks'[TX_FRAUD] )
+				    )
+			formatString: #,##0
+
+		measure 'Cohort Recall' = DIVIDE ( [Fraud-labelled Selected], [Eligible Fraud Labels] )
+			formatString: 0.0%
+
+		measure 'Amount Baseline Fraud-labelled Selected' = CALCULATE ( [Fraud-labelled Selected], 'Review Policy'[Policy] = "Amount baseline" )
+			formatString: #,##0
+
+		measure 'Logistic Regression Fraud-labelled Selected' = CALCULATE ( [Fraud-labelled Selected], 'Review Policy'[Policy] = "Logistic regression" )
+			formatString: #,##0
+
+		measure 'Model Difference' = [Logistic Regression Fraud-labelled Selected] - [Amount Baseline Fraud-labelled Selected]
+			formatString: +0;-0;0
+
+		measure 'Selected September Days' =
+				CALCULATE (
+				    COUNTROWS ( 'DimDate' ),
+				    KEEPFILTERS ( DATESBETWEEN ( 'DimDate'[Date], DATE ( 2018, 9, 1 ), DATE ( 2018, 9, 30 ) ) )
+				)
+			formatString: #,##0
+
+		measure 'Review Slots per Policy' = [Selected September Days] * SELECTEDVALUE ( 'Review Capacity'[DailyCapacity], 50 )
+			formatString: #,##0

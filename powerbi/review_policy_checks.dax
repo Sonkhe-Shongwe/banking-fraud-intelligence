@@ -1,0 +1,36 @@
+EVALUATE
+ROW (
+    "CalendarRows", COUNTROWS ( 'DimDate' ),
+    "OverviewRows", COUNTROWS ( 'Overview_Daily' ),
+    "SeptemberRankRows", COUNTROWS ( 'September_Ranks' ),
+    "ScenarioRows", COUNTROWS ( 'September_Scenario_Lift' )
+)
+
+EVALUATE
+SUMMARIZECOLUMNS (
+    'Review Cohort'[Cohort],
+    'Review Capacity'[DailyCapacity],
+    'Review Policy'[Policy],
+    DATESBETWEEN ( 'DimDate'[Date], DATE ( 2018, 9, 1 ), DATE ( 2018, 9, 30 ) ),
+    "ReviewsSelected", [Reviews Selected],
+    "FraudLabelledSelected", [Fraud-labelled Selected],
+    "LegitimateReviews", [Legitimate Reviews],
+    "QueuePrecision", [Queue Precision],
+    "CohortRecall", [Cohort Recall],
+    "FraudLabelledValueSelected", [Fraud-labelled Value Selected]
+)
+ORDER BY 'Review Cohort'[Cohort], 'Review Capacity'[DailyCapacity], 'Review Policy'[Policy]
+
+EVALUATE
+CALCULATETABLE (
+    ROW (
+        "Days", [Selected September Days],
+        "SlotsPerPolicy", [Review Slots per Policy],
+        "AmountBaseline", [Amount Baseline Fraud-labelled Selected],
+        "LogisticRegression", [Logistic Regression Fraud-labelled Selected],
+        "ModelDifference", [Model Difference]
+    ),
+    DATESBETWEEN ( 'DimDate'[Date], DATE ( 2018, 9, 1 ), DATE ( 2018, 9, 1 ) ),
+    TREATAS ( { "Amounts at or below 220" }, 'Review Cohort'[Cohort] ),
+    TREATAS ( { 50 }, 'Review Capacity'[DailyCapacity] )
+)

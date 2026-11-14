@@ -2,7 +2,7 @@
 
 A portfolio case study on prioritising potentially fraudulent card transactions when investigators can review only a fixed number each day. The main question is whether a risk model helps investigators find more fraud than an amount-based baseline at the same review capacity.
 
-**Current checkpoint (14 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The Overview reconciliation passed on Windows, and Power BI Desktop imported the approved light theme. All four reporting tables are visible in Desktop Model view. The next step is to mark `DimDate` as the date table. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md#resume-here)
+**Current checkpoint (14 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The Overview reconciliation passed on Windows, and Power BI Desktop imported the approved light theme. All four reporting tables are visible in Desktop Model view. The Review Policy Comparison model script is ready for Desktop preview and reconciliation. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md#resume-here)
 
 Use the existing validated data/processed/transactions.csv if you already have it. For a fresh checkout, follow the Windows setup in the [local data guide](data/README.md#prepare-one-csv).
 

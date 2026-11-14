@@ -54,7 +54,7 @@ The approved metric contract, visual tokens and design gates are in the [Power B
 
 ### Current Power BI repository state
 
-The [Power BI guide](../powerbi/README.md) records the import and relationship contract. No PBIX or DAX measure set exists yet. P5 remains at 0% pending accepted report evidence.
+The [Power BI guide](../powerbi/README.md) records the import and relationship contract. The owner reported marking `DimDate` as the date table and saving locally. The Review Policy Comparison model script and reconciliation query are prepared. P5 remains at 0% pending accepted report evidence.
 
 | Check | Status | Evidence |
 |---|---|---|
@@ -74,9 +74,9 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. Mark `DimDate` as a date table using `DimDate[Date]` and save the report locally.
-2. Verify loaded row counts and calendar label sort order in the [Power BI setup guide](../powerbi/README.md#4-field-handling). Record the Desktop version when available and inspect theme rendering once visuals exist.
-3. Establish the DAX measures, then build Review Policy Comparison first and Fraud Overview second.
+1. Open the saved report and [preview and apply the review policy script](../powerbi/README.md#7-apply-and-check-the-review-policy-measures).
+2. Run the linked Desktop reconciliation query. It checks the four row counts, eight full-September comparisons and one restricted single-day result. Finish calendar label sorting before building the Overview visuals.
+3. After the Desktop results reconcile to Python, build Review Policy Comparison first and Fraud Overview second. Record the Desktop version when available and inspect theme rendering once visuals exist.
 
 ## Checkpoint history
 
@@ -104,3 +104,4 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 | 14 November 2026 | Recorded the owner's Notebook 05 outputs, reproduced the reporting export from the pinned source, fixed the P5.2 reconciliation and checked the light theme against Microsoft's schema. |
 | 14 November 2026 | Owner screenshots confirmed P5.2 passed in Windows and the approved light theme imported in Power BI Desktop. |
 | 14 November 2026 | Owner screenshot confirmed four Power BI reporting tables and two date relationships in Model view. |
+| 14 November 2026 | Prepared one script for the Review Policy Comparison controls and measures. On Linux, pandas 2.2.3 reproduced all six QA metrics in all eight cases from the 287,873 local September ranks generated at `017f90c` from the pinned source `6e67dbd0a3bfe0d7ec33abc4bce5f37cd4ff0d6a`. A restricted 1 September test selected 50 reviews per policy, with 8 baseline and 9 model fraud labels. Desktop script execution and reconciliation remain pending. |

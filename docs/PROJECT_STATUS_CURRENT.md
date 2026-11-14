@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next checkpoint:** Mark `DimDate` as the date table, verify the loaded row counts and finish calendar sorting before creating measures. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
+**Next checkpoint:** Preview and apply the Review Policy Comparison model script in Desktop, then run the reconciliation query. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
@@ -56,8 +56,10 @@ The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduc
 - **Verified:** Notebook 05 generated the expected local files. The Linux reproduction matched all eight September comparisons, and the corrected Overview audit matched seven daily metrics across 183 dates. The theme passed Microsoft's schema check.
 - **Verified in Windows:** All seven Overview metrics matched across 183 dates. Power BI Desktop confirmed the theme import.
 - **Observed in Desktop:** Four reporting tables, two active single-direction relationships from `DimDate` and a disconnected scenario table.
-- **Awaiting local verification:** Loaded row counts, date-table marking, calendar sorting, Desktop version and theme rendering on visuals.
-- **Not started:** Report visuals, DAX measure implementation, report reconciliation and desktop interaction testing.
+- **Owner reported:** Date table marked and report saved locally.
+- **Prepared:** Review Policy Comparison model script and Desktop reconciliation query. The calculation rules reproduced the eight Python QA results and one restricted single-day check.
+- **Awaiting local verification:** Script application, loaded row counts, measure reconciliation, calendar sorting, Desktop version and theme rendering on visuals.
+- **Not started:** Report visuals and desktop interaction testing.
 - **Separate open gate:** dataset-derived publication permissions. See [source publication scope](data_sources.md#publication-scope).
 
 P5 remains at 0% pending verified report implementation and acceptance.

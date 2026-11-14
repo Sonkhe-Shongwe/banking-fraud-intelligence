@@ -44,7 +44,7 @@ Additional rules:
 - Mark DimDate as the report's date table, using DimDate[Date].
 - Keep September_Scenario_Lift disconnected. It is a fixed full-September reference and must not change when the report date range or cohort selector changes.
 - Do not create a relationship between Overview_Daily and September_Ranks.
-- Cohort and daily-capacity selectors will be disconnected tables defined in the DAX increment.
+- The review cohort, capacity and policy tables in the measure script stay disconnected.
 
 ## 4. Field handling
 
@@ -105,5 +105,14 @@ Build Review Policy Comparison first. Do not add pages, transaction-level drillt
 
 - Prepared: approved theme JSON, Notebook 05 and this setup guide.
 - Verified: Notebook 05 outputs, the corrected Overview check on the owner's Windows checkout and the approved theme import in Power BI Desktop. Model view shows all four reporting tables and both date relationships. Mark `DimDate` as the date table, then check the loaded row counts and calendar sort order.
-- Pending: saved local report, final model checks, DAX measures and visuals.
+- Prepared: [Review Policy Comparison measures](review_policy_model.tmdl) and [Desktop reconciliation query](review_policy_checks.dax). Desktop application and reconciliation are pending.
+
+## 7. Apply and check the review policy measures
+
+1. Open the saved local report. In **TMDL view**, paste the contents of [review_policy_model.tmdl](review_policy_model.tmdl) into a new script tab and click **Preview**.
+2. Check that the preview adds three disconnected tables (Review Cohort, Review Capacity and Review Policy) and measures under September_Ranks. The four existing table definitions and their relationships should remain intact. Click **Apply** once the preview matches.
+3. In **DAX query view**, paste [review_policy_checks.dax](review_policy_checks.dax) and click **Run**. If the new selector tables are unprocessed, use **Home → Refresh** before rerunning the checks.
+4. The three result sets should show row counts of **183, 183, 287,873 and 4** in the query's column order, the eight full-September comparisons, and a one-day check for 1 September with the restricted cohort at 50/day. The one-day check should show **1 day, 50 slots per policy, 8 baseline, 9 model and +1**. Compare all six metrics for the eight full-September rows to the local `September_Queue_Reconciliation_QA.csv` at display precision. The full-month default is **589 baseline, 592 model and +3**.
+
+The script uses the existing four daily rank fields, including the independently recalculated restricted ranks. The policy scorecard uses Review Policy[Policy] as its row field. For the report slicers, use single select for cohort and capacity and set the default to All transactions and 50 reviews per day.
 - Publication remains separate: generated reporting data stays local until dataset-derived publication permissions are resolved.
