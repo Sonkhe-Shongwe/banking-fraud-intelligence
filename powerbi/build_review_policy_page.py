@@ -19,6 +19,7 @@ SLATE = "#1E3A5F"
 TEAL = "#0F766E"
 SECONDARY = "#475569"
 BORDER = "#CBD5E1"
+MUTED = "#EEF2F7"
 CARD_SPECS = (
     ("Amount Baseline Fraud-labelled Selected", "Amount baseline", SLATE, 24),
     ("Logistic Regression Fraud-labelled Selected", "Logistic regression", TEAL, 440),
@@ -57,7 +58,7 @@ def projection(entity, name, label, kind="Column", *, aggregate=False):
     if aggregate:
         expression = {"Aggregation": {"Expression": expression, "Function": 0}}
         query_ref = f"Sum({query_ref})"
-    return {"field": expression, "queryRef": query_ref, "nativeQueryRef": label}
+    return {"field": expression, "queryRef": query_ref, "nativeQueryRef": label, "displayName": label}
 
 
 def measure(name, label):
@@ -68,7 +69,7 @@ def position(x, y, width, height, order):
     return {"x": x, "y": y, "width": width, "height": height, "z": order, "tabOrder": order}
 
 
-def container(title=None):
+def container(title=None, subtitle=None):
     result = {
         "background": formatting(show=literal("true"), color=colour("#FFFFFF"), transparency=literal("0D")),
         "border": formatting(show=literal("true"), color=colour(BORDER), radius=literal("8D")),
@@ -77,6 +78,12 @@ def container(title=None):
         result["title"] = formatting(
             show=literal("true"), text=literal(f"'{title}'"), fontColor=colour(NAVY),
             fontFamily=literal("'Segoe UI Semibold'"), fontSize=literal("12D"),
+        )
+        result["subTitle"] = formatting(show=literal("false"))
+    if subtitle:
+        result["subTitle"] = formatting(
+            show=literal("true"), text=literal(f"'{subtitle}'"),
+            fontColor=colour(SECONDARY), fontSize=literal("10D"),
         )
     return result
 
@@ -126,20 +133,22 @@ def matching_cards(visual_files):
     cards = {}
     for path in visual_files:
         content = read_json(path)
-        query = content.get("visual", {}).get("query", {}).get("queryState", {})
-        for role in ("Data", "Values"):
-            projections = query.get(role, {}).get("projections", [])
-            if len(projections) != 1:
-                continue
-            binding = projections[0].get("field", {}).get("Measure", {})
-            entity = binding.get("Expression", {}).get("SourceRef", {}).get("Entity")
-            name = binding.get("Property")
-            if entity == RANKS and name in {spec[0] for spec in CARD_SPECS}:
-                if name in cards:
-                    raise ValueError(f"More than one card uses {name}.")
-                cards[name] = path
-    if len(cards) != 3 or len(visual_files) != 3:
-        raise ValueError("Expected the saved page with exactly the three verified KPI cards.")
+        body = content.get("visual", {})
+        role = {"cardVisual": "Data", "card": "Values"}.get(body.get("visualType"))
+        if role is None:
+            continue
+        projections = body.get("query", {}).get("queryState", {}).get(role, {}).get("projections", [])
+        if len(projections) != 1:
+            continue
+        binding = projections[0].get("field", {}).get("Measure", {})
+        entity = binding.get("Expression", {}).get("SourceRef", {}).get("Entity")
+        name = binding.get("Property")
+        if entity == RANKS and name in {spec[0] for spec in CARD_SPECS}:
+            if name in cards:
+                raise ValueError(f"More than one card uses {name}.")
+            cards[name] = path
+    if len(cards) != 3:
+        raise ValueError("Could not identify the three verified KPI cards.")
     return cards
 
 
@@ -155,7 +164,7 @@ def format_cards(cards):
         binding = body["query"]["queryState"][role]["projections"][0]
         binding["nativeQueryRef"] = label
         binding["displayName"] = label
-        content["position"] = position(x, 184, 400, 96, order)
+        content["position"] = position(x, 176, 400, 96, order)
         body.setdefault("visualContainerObjects", {}).update(container())
         objects = body.setdefault("objects", {})
         if kind == "cardVisual":
@@ -173,12 +182,12 @@ def supporting_visuals():
     baseline = measure(CARD_SPECS[0][0], CARD_SPECS[0][1])
     model = measure(CARD_SPECS[1][0], CARD_SPECS[1][1])
     date = projection("DimDate", "Date", "Date")
-    line = visual("bfiDailyYield", "lineChart", (24, 296, 816, 216, 20),
+    line = visual("bfiDailyYield", "lineChart", (24, 288, 816, 208, 20),
                   roles={"Category": [date], "Y": [baseline, model]},
                   objects={
-                      "legend": formatting(show=literal("true")),
+                      "legend": formatting(show=literal("true"), showTitle=literal("false")),
                       "lineStyles": [
-                          {"properties": {"showMarker": literal("true")}},
+                          {"properties": {"showMarker": literal("true"), "markerSize": literal("4D")}},
                           {"properties": {"lineStyle": literal("'dashed'")},
                            "selector": {"metadata": model["queryRef"]}},
                       ],
@@ -191,16 +200,29 @@ def supporting_visuals():
         "sort": [{"field": date["field"], "direction": "Ascending"}], "isDefaultSort": False,
     }
     scenario = "September_Scenario_Lift"
-    matrix = visual("bfiScenarioLift", "pivotTable", (856, 296, 400, 216, 21),
+    table_style = {
+        "grid": formatting(rowPadding=literal("4D"), gridVertical=literal("false"),
+                           gridHorizontal=literal("true"), gridHorizontalColor=colour(MUTED)),
+        "columnHeaders": formatting(fontSize=literal("10D"), backColor=colour(MUTED),
+                                    fontColor=colour(NAVY), bold=literal("true"),
+                                    autoSizeColumnWidth=literal("true"),
+                                    columnAdjustment=literal("'growToFit'")),
+        "values": formatting(fontSize=literal("11D"), fontColorPrimary=colour(NAVY),
+                             fontColorSecondary=colour(NAVY), backColorPrimary=colour("#FFFFFF"),
+                             backColorSecondary=colour("#F8FAFC")),
+    }
+    matrix = visual("bfiScenarioLift", "pivotTable", (856, 288, 400, 208, 21),
                     roles={
                         "Rows": [projection(scenario, "Cohort", "Eligible cohort")],
                         "Columns": [projection(scenario, "DailyCapacity", "Reviews/day")],
                         "Values": [projection(scenario, "ModelDifference", "Model difference", aggregate=True)],
-                    }, objects={"subTotals": formatting(rowSubtotals=literal("false"), columnSubtotals=literal("false")),
+                    }, objects={**table_style,
+                                "rowHeaders": formatting(fontSize=literal("11D"), fontColor=colour(NAVY)),
+                                "subTotals": formatting(rowSubtotals=literal("false"), columnSubtotals=literal("false")),
                                 "grandTotals": formatting(rowGrandTotals=literal("false"), columnGrandTotals=literal("false"))},
-                    style=container("Full-September reference"))
+                    style=container("Full-September reference", "Additional fraud labels selected by the model"))
     scorecard = visual(
-        "bfiScorecard", "tableEx", (24, 528, 1232, 144, 22),
+        "bfiScorecard", "tableEx", (24, 512, 1232, 160, 22),
         roles={"Values": [
             projection("Review Policy", "Policy", "Policy"),
             measure("Reviews Selected", "Reviews"),
@@ -210,21 +232,21 @@ def supporting_visuals():
             measure("Cohort Recall", "Cohort recall"),
             measure("Fraud-labelled Value Selected", "Fraud-labelled value selected"),
         ]},
-        objects={"total": formatting(totals=literal("false"))},
+        objects={**table_style, "total": formatting(totals=literal("false"))},
         style=container("Policy scorecard"),
     )
     return [
         text_box("bfiHeader", (24, 16, 840, 64, 1),
-                 (PAGE_NAME, 24, NAVY, True),
-                 ("Which policy selects more fraud-labelled transactions at the same daily review limit?",
-                  11, SECONDARY, False)),
+                 (PAGE_NAME, 26, NAVY, True),
+                 ("Fraud-labelled transactions selected at equal daily review limits", 11, SECONDARY, False)),
         text_box("bfiSimulated", (1032, 24, 224, 32, 2), ("Simulated data", 11, TEAL, True)),
         choice_slicer("bfiCohort", "Eligible cohort", "Review Cohort", "Cohort",
-                      "'All transactions'", (24, 80, 400, 80, 3)),
+                      "'All transactions'", (24, 80, 400, 88, 3)),
         choice_slicer("bfiCapacity", "Reviews per day", "Review Capacity", "DailyCapacity",
-                      "50L", (440, 80, 296, 80, 4)),
-        visual("bfiPeriod", "slicer", (752, 80, 504, 96, 5), roles={"Values": [date]},
-               objects={"data": formatting(mode=literal("'Between'"))}, style=container("September 2018")),
+                      "50L", (440, 80, 296, 88, 4)),
+        visual("bfiPeriod", "slicer", (752, 80, 504, 88, 5), roles={"Values": [date]},
+               objects={"data": formatting(mode=literal("'Between'")),
+                        "header": formatting(show=literal("false"))}, style=container("September 2018")),
         line, matrix, scorecard,
         text_box("bfiMethodology", (24, 680, 1232, 24, 23),
                  ("Simulated holdout. Labels are retrospective. Selected value sums the amounts of selected fraud-labelled transactions.",
@@ -234,15 +256,47 @@ def supporting_visuals():
 
 def build_page(page_path, staged_path):
     page = read_json(page_path / "page.json")
-    cards = matching_cards(sorted(page_path.glob("visuals/*/visual.json")))
-    updates = format_cards(cards)
     new_visuals = supporting_visuals()
+    visual_files = sorted(page_path.glob("visuals/*/visual.json"))
+    managed = {item["name"] for item in new_visuals}
+    existing = {path.parent.name: path for path in visual_files if path.parent.name in managed}
+    cards = matching_cards([path for path in visual_files if path not in existing.values()])
+    updates = format_cards(cards)
+    if len(visual_files) != len(cards) + len(existing) or (existing and existing.keys() != managed):
+        raise ValueError("Expected the original three-card page or the complete page generated by this builder.")
+    for item in new_visuals:
+        path = existing.get(item["name"])
+        if path is None:
+            continue
+        original = read_json(path)
+        body = original["visual"]
+        updated = item["visual"]
+        if original["name"] != item["name"] or body["visualType"] != updated["visualType"]:
+            raise ValueError(f"Unexpected visual in {path.parent.name}.")
+        original["position"] = item["position"]
+        body.setdefault("visualContainerObjects", {}).update(updated.get("visualContainerObjects", {}))
+        projections_by_ref = {
+            entry["queryRef"]: entry
+            for role in updated.get("query", {}).get("queryState", {}).values()
+            for entry in role["projections"]
+        }
+        for role in body.get("query", {}).get("queryState", {}).values():
+            for entry in role.get("projections", []):
+                new_projection = projections_by_ref.get(entry["queryRef"])
+                if new_projection:
+                    entry["displayName"] = new_projection["displayName"]
+                    entry["nativeQueryRef"] = new_projection["nativeQueryRef"]
+        new_objects = updated.get("objects", {}).copy()
+        if item["name"] in {"bfiCohort", "bfiCapacity", "bfiPeriod"}:
+            new_objects.pop("general", None)
+        body.setdefault("objects", {}).update(new_objects)
+        updates[path] = original
     original_interactions = page.get("visualInteractions", [])
     excluded = {
         (source, "bfiScenarioLift") for source in ("bfiCohort", "bfiCapacity", "bfiPeriod", "bfiDailyYield")
     }
     excluded.update(("bfiScenarioLift", item["name"]) for item in new_visuals if item["name"] != "bfiScenarioLift")
-    excluded.update(("bfiScenarioLift", item["name"]) for item in updates.values())
+    excluded.update(("bfiScenarioLift", read_json(path)["name"]) for path in cards.values())
     page["visualInteractions"] = [
         interaction for interaction in original_interactions
         if (interaction["source"], interaction["target"]) not in excluded
@@ -250,22 +304,27 @@ def build_page(page_path, staged_path):
     # Restrict the shared calendar on this page while keeping the date slicer interactive.
     filters = page.setdefault("filterConfig", {}).setdefault("filters", [])
     date_field = field("DimDate", "Date")
-    if any(item.get("field") == date_field for item in filters):
-        raise ValueError("The page already has a DimDate date filter. Preserve it and inspect it before applying.")
-    filters.append({
-        "name": uuid4().hex[:20], "field": date_field, "type": "Advanced", "isLockedInViewMode": True,
-        "filter": filter_for("DimDate", {"Between": {
-            "Expression": field("DimDate", "Date", alias="f"),
-            "LowerBound": {"Literal": {"Value": "datetime'2018-09-01T00:00:00.0000000'"}},
-            "UpperBound": {"Literal": {"Value": "datetime'2018-09-30T00:00:00.0000000'"}},
-        }}),
-    })
+    date_filter = filter_for("DimDate", {"Between": {
+        "Expression": field("DimDate", "Date", alias="f"),
+        "LowerBound": {"Literal": {"Value": "datetime'2018-09-01T00:00:00.0000000'"}},
+        "UpperBound": {"Literal": {"Value": "datetime'2018-09-30T00:00:00.0000000'"}},
+    }})
+    matching_filters = [item for item in filters if item.get("field") == date_field]
+    if not existing and not matching_filters:
+        filters.append({
+            "name": uuid4().hex[:20], "field": date_field, "type": "Advanced", "isLockedInViewMode": True,
+            "filter": date_filter,
+        })
+    elif not existing or len(matching_filters) != 1:
+        raise ValueError("Unexpected page date filters. Inspect the saved report before applying.")
     page.update(width=1280, height=720, displayOption="FitToPage")
     shutil.copytree(page_path, staged_path)
     write_json(staged_path / "page.json", page)
     for path, content in updates.items():
         write_json(staged_path / path.relative_to(page_path), content)
     for item in new_visuals:
+        if item["name"] in existing:
+            continue
         target = staged_path / "visuals" / item["name"] / "visual.json"
         target.parent.mkdir()
         write_json(target, item)
@@ -296,7 +355,7 @@ def main():
         try:
             build_page(page, staged)
             if not args.apply:
-                print("Preview passed: ready to format three cards and add nine supporting visuals.")
+                print("Preview passed: ready to apply the comparison page layout.")
                 return
             backup = with_backup / "original-page"
             page.rename(backup)

@@ -67,6 +67,7 @@ The [Power BI guide](../powerbi/README.md) records the import and relationship c
 | Review Policy Comparison model and DAX reconciliation | Passed | In Windows Power BI Desktop on 14 November, the owner applied [`eb9be80`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/eb9be801d26764aa72dc2214cd6fd045f697e8b3) and ran `powerbi/review_policy_checks.dax`. The query returned 183 calendar rows, 183 Overview rows, 287,873 ranks and four scenarios. All 48 metric values across eight full-September comparisons agreed with the pinned Python QA reference at report precision. The restricted 1 September check returned one day, 50 slots per policy, eight baseline, nine model and +1. |
 | TMDL editor diagnostics | Observed | The editor displayed name-resolution diagnostics after Apply. The Desktop DAX query resolved and evaluated the new tables and measures. |
 | Review Policy Comparison cards | Default values passed | The owner's 14 November Desktop screenshot shows the three native cards with 589 for the amount baseline, 592 for logistic regression and +3 model difference. Two labels are clipped and the cards need alignment. Canvas dimensions, final styling and filter behaviour still need verification. |
+| Comparison page build at `5fed1b8` | Opened in Desktop | The owner's Windows run applied the layout and saved a backup. Desktop showed the three correct default cards, both policy lines and four fixed reference values. The chart subtitle used generated measure names, the matrix columns were cramped and the second scorecard row clipped. The 100/day interaction is pending. |
 
 The reported P5.1 audit passed five file-integrity and nine structural checks on the owner's exports. In the Linux reproduction, hashes, schemas and row counts matched the generated manifest for all five CSVs. The corrected P5.2 audit rejected a changed count and a changed value in disposable copies. The source and original Overview hashes remained identical, and all ten existing regression tests passed.
 
@@ -76,8 +77,8 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. [Save a local Power BI Project copy and run the comparison page builder](../powerbi/README.md#9-build-the-comparison-page-from-the-saved-project). The builder preserves the verified KPI bindings and keeps a backup of the original page.
-2. Reopen the project in Desktop and verify the page, default values, filter responses and fixed matrix. Add navigation and reset controls after the initial page is verified. Record the Desktop version when available.
+1. [Run the updated comparison page builder](../powerbi/README.md#9-build-the-comparison-page-from-the-saved-project) on the existing local Power BI Project copy. It preserves the KPI bindings and slicer selections and backs up the prior page.
+2. Reopen the project in Desktop and check the scorecard, chart labels, reference matrix and 50/day and 100/day results. Add navigation and reset controls after the comparison layout is verified. Record the Desktop version when available.
 3. Finish calendar label sorting before building and reconciling Fraud Overview.
 
 ## Checkpoint history

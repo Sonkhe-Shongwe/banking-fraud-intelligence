@@ -144,14 +144,14 @@ Keep the report local while dataset-derived publication permissions are open.
 
 ## 9. Build the comparison page from the saved project
 
-1. In Power BI Desktop, save the current report. Choose **File → Save As → Power BI Project** and save the copy as `data\processed\Banking Fraud Intelligence.pbip` inside this repository. Keep the original PBIX. Close the project in Power BI Desktop before applying the page layout.
-2. From the repository root, run the command below with the Python environment used for the reporting work. The [script](build_review_policy_page.py) checks the three existing card bindings and stages the new page before swapping it into the local project. The original page is kept in the backup directory printed by the script.
+1. If you already have `data\processed\Banking Fraud Intelligence.pbip`, save and close it in Power BI Desktop. For first-time setup, choose **File → Save As → Power BI Project** from the existing PBIX and save the copy at that path.
+2. From the repository root, run the command below with the Python environment used for the reporting work. The [script](build_review_policy_page.py) builds the original three-card page or updates its own complete comparison layout in place. It preserves existing slicer selections on updates and keeps the prior page in the printed backup directory.
 
    ```powershell
    python powerbi/build_review_policy_page.py "data/processed/Banking Fraud Intelligence.Report" --apply
    ```
 
-3. Open the `.pbip` in Desktop. Check that the page opens at 1280 × 720, the three card labels fit, and the default values are **589, 592, +3**. The page includes the header, cohort and capacity controls, September date range, daily chart, fixed September matrix, scorecard and methodology note.
-4. Change the capacity to 100/day. With all transactions and the full month selected, the cards should show **622, 632, +10**. The fixed matrix should retain all four results. The initial build still needs Desktop checks for slicer selection, chart formatting, scorecard readability and keyboard behaviour. Navigation and reset controls are tracked for the next report increment.
+3. Open the `.pbip` in Desktop. Check that both scorecard rows are fully visible, the line chart uses short policy labels and the matrix has readable spacing and headers. With all transactions, the full September date range and 50/day selected, the cards should show **589, 592, +3**.
+4. Change capacity to 100/day. With the same cohort and date range, the cards should show **622, 632, +10**. The matrix should retain its four fixed results. Navigation and reset controls are tracked for the next report increment.
 
 For a no-write check, run the command without `--apply`. If Desktop rejects the edited page, close the project and restore the page from the printed backup or reopen the original PBIX. Save and test the project locally under the ignored `data/processed/` path.

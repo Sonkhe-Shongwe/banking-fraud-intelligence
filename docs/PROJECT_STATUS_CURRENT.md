@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next checkpoint:** Run the comparison page builder against a local Power BI Project copy and verify rendering and filters in Desktop. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
+**Next checkpoint:** Apply the formatting update to the existing local Power BI Project and verify scorecard readability and filter behaviour in Desktop. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
