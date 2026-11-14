@@ -3,7 +3,7 @@
 **Project:** Banking Fraud Intelligence  
 **Approved design:** Premium Banking Intelligence, light theme  
 **Platform:** Power BI Desktop  
-**Current checkpoint:** Windows Overview reconciliation and Desktop theme import verified
+**Current checkpoint:** Four reporting tables and two date relationships visible in Power BI Desktop
 
 ## 1. First local setup
 
@@ -104,6 +104,6 @@ Build Review Policy Comparison first. Do not add pages, transaction-level drillt
 ## 6. Current implementation boundary
 
 - Prepared: approved theme JSON, Notebook 05 and this setup guide.
-- Verified: Notebook 05 outputs, the corrected Overview check on the owner's Windows checkout and the approved theme import in Power BI Desktop. The next step is to load `DimDate.csv` and verify its 183 rows and date type before loading the other three tables.
-- Not yet created: PBIX, semantic model, DAX measure set or finished visuals.
+- Verified: Notebook 05 outputs, the corrected Overview check on the owner's Windows checkout and the approved theme import in Power BI Desktop. Model view shows all four reporting tables and both date relationships. Mark `DimDate` as the date table, then check the loaded row counts and calendar sort order.
+- Pending: saved local report, final model checks, DAX measures and visuals.
 - Publication remains separate: generated reporting data stays local until dataset-derived publication permissions are resolved.

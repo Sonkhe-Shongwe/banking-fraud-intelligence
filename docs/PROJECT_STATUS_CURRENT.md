@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next checkpoint:** Load the four approved reporting tables in Power BI Desktop and verify their types and relationships. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
+**Next checkpoint:** Mark `DimDate` as the date table, verify the loaded row counts and finish calendar sorting before creating measures. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
@@ -55,8 +55,9 @@ The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduc
 - **Approved by owner (13 November 2026):** exact palette, typography, canvas/grid, both page wireframes, visual selection, KPI card treatment, icons and interactions, as recorded in P5 wireframe proposal v0.1.
 - **Verified:** Notebook 05 generated the expected local files. The Linux reproduction matched all eight September comparisons, and the corrected Overview audit matched seven daily metrics across 183 dates. The theme passed Microsoft's schema check.
 - **Verified in Windows:** All seven Overview metrics matched across 183 dates. Power BI Desktop confirmed the theme import.
-- **Awaiting local verification:** Desktop version, visual rendering and semantic model setup.
-- **Not started:** PBIX/report construction, DAX measure implementation, report reconciliation and desktop interaction testing.
+- **Observed in Desktop:** Four reporting tables, two active single-direction relationships from `DimDate` and a disconnected scenario table.
+- **Awaiting local verification:** Loaded row counts, date-table marking, calendar sorting, Desktop version and theme rendering on visuals.
+- **Not started:** Report visuals, DAX measure implementation, report reconciliation and desktop interaction testing.
 - **Separate open gate:** dataset-derived publication permissions. See [source publication scope](data_sources.md#publication-scope).
 
 P5 remains at 0% pending verified report implementation and acceptance.

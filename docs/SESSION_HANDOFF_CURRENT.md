@@ -19,7 +19,7 @@
 | P3 baseline and model | Executed the [modelling notebook](../notebooks/03_fraud_model_validation.ipynb) in IPython. Fitted logistic regression with April–July only. Compared both August policies at both budgets in the full and restricted cohorts. Ten regression tests passed. [Frozen protocol](methodology.md#frozen-model-and-review-protocol) |
 | P4 held-out evaluation | The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reconciled all eight September comparisons. Ten regression tests passed. The owner confirmed the notebook saved 287,873 rows in Windows. The [export path fix](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/1a56a16a383f6d0b4181082b778ca1d12287c5a3) reproduced the same CSV byte for byte. |
 | Key risk | The simulator labels all amounts above 220 as fraud. The raw files lack label-confirmation timestamps. [Evaluation implications](data_sources.md#evaluation-implications) |
-| Delivery state | P1 is at 80%, P2 through P4 are at 100%, and overall progress is 72%. P5 detailed design is approved and implementation is authorised within scope. Notebook 05 generated the local outputs. The Windows Overview audit and Desktop theme import passed. The next application check is loading the reporting tables. |
+| Delivery state | P1 is at 80%, P2 through P4 are at 100%, and overall progress is 72%. P5 detailed design is approved and implementation is authorised within scope. Notebook 05 generated the local outputs. The Windows Overview audit and Desktop theme import passed. All four reporting tables and both date relationships are visible in Desktop Model view. |
 
 ## Owner working agreement
 
@@ -63,7 +63,8 @@ The [Power BI guide](../powerbi/README.md) records the import and relationship c
 | P5.2 daily Overview reconciliation | Passed in Linux and Windows | The earlier ad hoc audit flagged six metrics due to pandas index alignment. The corrected command `python -m src.reconcile_powerbi_overview` matched all seven metrics across 183 dates in the pinned-source Linux reproduction and in the owner's Windows run after pulling [`1cce1e1`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/1cce1e1a481685f4ba3ec1cc02a9e006bd29619c). The owner supplied the terminal result on 14 November 2026. |
 | Theme schema | Passed | The committed theme passed Microsoft's Power BI report theme JSON schema 2.159. |
 | Power BI Desktop theme import | Passed | On 14 November 2026 the owner imported the approved theme into a blank report in Windows Power BI Desktop. The screenshot shows the app confirming the file was added successfully. Desktop build number and theme rendering on visuals are unverified. |
-| Power BI model and report | Not tested | Table loads, relationships, measures, visuals and report interactions still need Desktop evidence. |
+| Power BI base model | Observed in Desktop | The owner's 14 November screenshot shows four reporting tables, two active one-to-many relationships with single-direction indicators from `DimDate`, and `September_Scenario_Lift` disconnected. Loaded row counts and date-table marking still need verification. |
+| Power BI measures and report | Not tested | Measures, visuals and report interactions still need Desktop evidence. |
 
 The reported P5.1 audit passed five file-integrity and nine structural checks on the owner's exports. In the Linux reproduction, hashes, schemas and row counts matched the generated manifest for all five CSVs. The corrected P5.2 audit rejected a changed count and a changed value in disposable copies. The source and original Overview hashes remained identical, and all ten existing regression tests passed.
 
@@ -73,8 +74,8 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. Continue in the themed Power BI Desktop report. Load `data/processed/powerbi/DimDate.csv` first and verify 183 rows with `Date` typed as Date. Use the existing Notebook 05 outputs.
-2. Load the three remaining approved tables and create the relationships in the [Power BI setup guide](../powerbi/README.md#2-tables-to-load). Record the Desktop version when available and inspect theme rendering once visuals exist.
+1. Mark `DimDate` as a date table using `DimDate[Date]` and save the report locally.
+2. Verify loaded row counts and calendar label sort order in the [Power BI setup guide](../powerbi/README.md#4-field-handling). Record the Desktop version when available and inspect theme rendering once visuals exist.
 3. Establish the DAX measures, then build Review Policy Comparison first and Fraud Overview second.
 
 ## Checkpoint history
@@ -102,3 +103,4 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 | 13 November 2026 | Audited remote main, corrected stale dark-theme handoff language, established the design system and recorded the P5 readiness audit. |
 | 14 November 2026 | Recorded the owner's Notebook 05 outputs, reproduced the reporting export from the pinned source, fixed the P5.2 reconciliation and checked the light theme against Microsoft's schema. |
 | 14 November 2026 | Owner screenshots confirmed P5.2 passed in Windows and the approved light theme imported in Power BI Desktop. |
+| 14 November 2026 | Owner screenshot confirmed four Power BI reporting tables and two date relationships in Model view. |
