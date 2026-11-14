@@ -3,12 +3,12 @@
 **Project:** Banking Fraud Intelligence  
 **Approved design:** Premium Banking Intelligence, light theme  
 **Platform:** Power BI Desktop  
-**Current checkpoint:** Theme and reporting-data preparation foundation
+**Current checkpoint:** Reporting outputs verified, Desktop import pending
 
 ## 1. First local setup
 
 1. Pull the repository.
-2. Run Notebook 05 — Power BI data preparation. It writes the approved import tables to the Git-ignored data/processed/powerbi/ folder.
+2. Use the existing Notebook 05 outputs in `data/processed/powerbi/`. If they are missing, follow the [Notebook 05 run guide](../data/README.md#prepare-the-power-bi-reporting-data). From the repository root, run `python -m src.reconcile_powerbi_overview` with the working Python environment. This read-only check compares all seven daily Overview metrics against the validated source and should report 183 matching dates.
 3. In Power BI Desktop, create a blank report.
 4. On the **Design** ribbon, choose **Import theme** and select the Premium Banking Intelligence JSON in themes/.
 5. Confirm that Power BI reports a successful import. Record the installed Power BI Desktop version and inspect the default text and series colours.
@@ -104,6 +104,6 @@ Build Review Policy Comparison first. Do not add pages, transaction-level drillt
 ## 6. Current implementation boundary
 
 - Prepared: approved theme JSON, Notebook 05 and this setup guide.
-- Pending local checks: run Notebook 05 in the owner's Windows Python environment and import/inspect the theme in Power BI Desktop.
+- Verified: Notebook 05 outputs and the theme schema. The corrected Overview check passed on the pinned-source reproduction. Run it on the owner's existing CSVs, then import and inspect the theme in Power BI Desktop.
 - Not yet created: PBIX, semantic model, DAX measure set or finished visuals.
 - Publication remains separate: generated reporting data stays local until dataset-derived publication permissions are resolved.

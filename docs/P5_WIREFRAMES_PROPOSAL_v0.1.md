@@ -374,4 +374,4 @@ The owner subsequently authorised implementation by saying “lets continue” o
 
 ---
 
-**Design gate:** D1 and D2 are approved. The theme and reporting-preparation foundation are committed, but P5 remains at 0% until local execution, Power BI Desktop import, report construction and acceptance evidence are verified. This specification is approved; it is not itself a built report.
+**Design gate:** D1 and D2 are approved. Notebook 05 generated the reporting outputs. The [current handoff](SESSION_HANDOFF_CURRENT.md#resume-here) records the local checks before report construction and acceptance.
