@@ -3,7 +3,7 @@
 **Project:** Banking Fraud Intelligence  
 **Approved design:** Premium Banking Intelligence, light theme  
 **Platform:** Power BI Desktop  
-**Current checkpoint:** Reporting outputs verified, Desktop import pending
+**Current checkpoint:** Windows Overview reconciliation and Desktop theme import verified
 
 ## 1. First local setup
 
@@ -104,6 +104,6 @@ Build Review Policy Comparison first. Do not add pages, transaction-level drillt
 ## 6. Current implementation boundary
 
 - Prepared: approved theme JSON, Notebook 05 and this setup guide.
-- Verified: Notebook 05 outputs and the theme schema. The corrected Overview check passed on the pinned-source reproduction. Run it on the owner's existing CSVs, then import and inspect the theme in Power BI Desktop.
+- Verified: Notebook 05 outputs, the corrected Overview check on the owner's Windows checkout and the approved theme import in Power BI Desktop. The next step is to load `DimDate.csv` and verify its 183 rows and date type before loading the other three tables.
 - Not yet created: PBIX, semantic model, DAX measure set or finished visuals.
 - Publication remains separate: generated reporting data stays local until dataset-derived publication permissions are resolved.

@@ -2,7 +2,7 @@
 
 A portfolio case study on prioritising potentially fraudulent card transactions when investigators can review only a fixed number each day. The main question is whether a risk model helps investigators find more fraud than an amount-based baseline at the same review capacity.
 
-**Current checkpoint (14 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** Notebook 05 generated the reporting outputs, and the corrected Overview reconciliation passed on the pinned source. The next checks are to run the reconciliation on the owner's CSVs and import the approved light theme in Power BI Desktop. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md#resume-here)
+**Current checkpoint (14 November 2026): P1 at 80% · P2 through P4 at 100% · 72% overall.** The Overview reconciliation passed on Windows, and Power BI Desktop imported the approved light theme. The next step is to load the reporting tables and verify the data model. [Phase scorecard](docs/PROJECT_STATUS_CURRENT.md) · [Resume here](docs/SESSION_HANDOFF_CURRENT.md#resume-here)
 
 Use the existing validated data/processed/transactions.csv if you already have it. For a fresh checkout, follow the Windows setup in the [local data guide](data/README.md#prepare-one-csv).
 
@@ -42,6 +42,6 @@ The data source is the Fraud Detection Handbook's simulated transactions. The Se
 
 - data/ holds acquisition guidance. Raw and processed datasets are excluded from Git.
 - notebooks/ is for exploration, charts and model interpretation in Jupyter. src/ is for repeatable Python preparation, training, evaluation and exports. tests/ is for verification.
-- powerbi/ contains the approved theme and setup guide. The PBIX/report will be built in the next P5 increment after local data and theme checks.
+- powerbi/ contains the approved theme and setup guide. The PBIX/report will be built in the next P5 increment after the reporting tables are loaded and verified.
 - docs/ holds project status, handoff, design system, audit, source audit, methodology and findings.
 - reports/ and assets/ are reserved for approved shareable evidence and figures.

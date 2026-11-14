@@ -225,7 +225,7 @@ Microsoft's Power BI accessibility guidance covers alternative text, tab order, 
 | D0 — Direction | Premium Banking Intelligence, light-theme direction | Approved |
 | D1 — Design tokens | Palette, typography, spacing, icon and component rules | **Approved by owner, 13 November 2026** |
 | D2 — Page wireframes | Exact layout and visual selection for both pages | **P5 wireframe proposal v0.1 approved by owner, 13 November 2026** |
-| D3 — Theme implementation | Approved theme JSON prepared in the repository; import and visual inspection in Power BI Desktop | Schema 2.159 passed. Desktop import and rendering pending. |
+| D3 — Theme implementation | Approved theme JSON prepared in the repository; import and visual inspection in Power BI Desktop | Schema 2.159 and Desktop import passed. Rendering on visuals pending. |
 | D4 — Report implementation | Approved pages built with supported data only | Not started |
 | D5 — Analytical reconciliation | Power BI measures match Python for all eight September policy/cohort/capacity cases and representative date selections | Not started |
 | D6 — Interaction and accessibility | Filters, navigation, tooltips, keyboard order, contrast and labels tested | Not started |
@@ -258,12 +258,12 @@ The external review compared corporate banking dashboard patterns on Dribbble wi
 
 Microsoft's current Power BI documentation confirms support for custom report themes, date and button slicers, 16:9 1280 x 720 canvas settings, grid alignment and accessibility features. These are implementation constraints for the approved design.
 
-**Current gate:** D1 and D2 are approved. The first implementation increment now includes the theme JSON and Notebook 05. D3 remains pending until the owner imports the theme in Power BI Desktop; P5 remains at 0% until report implementation and acceptance evidence are verified.
+**Current gate:** D1 and D2 are approved. The first implementation increment now includes the theme JSON and Notebook 05. D3 still requires visual inspection in Power BI Desktop; P5 remains at 0% until report implementation and acceptance evidence are verified.
 
 
 ## 13. Current implementation checkpoint
 
-- **Theme:** [Premium Banking Intelligence theme JSON](../powerbi/themes/Premium_Banking_Intelligence.json) created using documented Power BI theme properties for data colours, structural colours and text classes. JSON syntax is checked; import and rendering still require Power BI Desktop.
+- **Theme:** [Premium Banking Intelligence theme JSON](../powerbi/themes/Premium_Banking_Intelligence.json) created using documented Power BI theme properties for data colours, structural colours and text classes. Schema validation and Desktop import passed. Visual rendering awaits inspection.
 - **Reporting preparation:** [Notebook 05](../notebooks/05_power_bi_data_preparation.ipynb) created to validate the full input and P4 rank export, build the daily Overview table and date dimension, inspect the temporal pattern, and reconcile all eight September comparisons.
 - **Local outputs:** Generated tables are written to data/processed/powerbi/, which is Git-ignored. Do not commit row-level or derived data.
-- **Current checkpoint:** Notebook 05 produced the expected local outputs. The [handoff](SESSION_HANDOFF_CURRENT.md#resume-here) records the evidence and the remaining local Overview and theme import checks.
+- **Current checkpoint:** Notebook 05 produced the expected local outputs. The [handoff](SESSION_HANDOFF_CURRENT.md#resume-here) records the evidence and the Windows checks and the next table-load step.
