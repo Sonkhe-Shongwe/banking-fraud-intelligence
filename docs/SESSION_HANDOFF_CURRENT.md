@@ -65,7 +65,8 @@ The [Power BI guide](../powerbi/README.md) records the import and relationship c
 | Power BI Desktop theme import | Passed | On 14 November 2026 the owner imported the approved theme into a blank report in Windows Power BI Desktop. The screenshot shows the app confirming the file was added successfully. Desktop build number and theme rendering on visuals are unverified. |
 | Power BI base model | Observed in Desktop | The owner's 14 November screenshot shows four reporting tables, two active one-to-many relationships with single-direction indicators from `DimDate`, and `September_Scenario_Lift` disconnected. Loaded row counts and date-table marking still need verification. |
 | Review Policy Comparison model and DAX reconciliation | Passed | In Windows Power BI Desktop on 14 November, the owner applied [`eb9be80`](https://github.com/Sonkhe-Shongwe/banking-fraud-intelligence/commit/eb9be801d26764aa72dc2214cd6fd045f697e8b3) and ran `powerbi/review_policy_checks.dax`. The query returned 183 calendar rows, 183 Overview rows, 287,873 ranks and four scenarios. All 48 metric values across eight full-September comparisons agreed with the pinned Python QA reference at report precision. The restricted 1 September check returned one day, 50 slots per policy, eight baseline, nine model and +1. |
-| Power BI report visuals | Not tested | The TMDL editor displayed name-resolution diagnostics after Apply. The DAX query resolved and evaluated the new tables and measures. Report visuals, theme rendering and interactions still need Desktop evidence. |
+| TMDL editor diagnostics | Observed | The editor displayed name-resolution diagnostics after Apply. The Desktop DAX query resolved and evaluated the new tables and measures. |
+| Review Policy Comparison cards | Default values passed | The owner's 14 November Desktop screenshot shows the three native cards with 589 for the amount baseline, 592 for logistic regression and +3 model difference. Two labels are clipped and the cards need alignment. Canvas dimensions, final styling and filter behaviour still need verification. |
 
 The reported P5.1 audit passed five file-integrity and nine structural checks on the owner's exports. In the Linux reproduction, hashes, schemas and row counts matched the generated manifest for all five CSVs. The corrected P5.2 audit rejected a changed count and a changed value in disposable copies. The source and original Overview hashes remained identical, and all ten existing regression tests passed.
 
@@ -75,7 +76,7 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. Save the verified model locally and [build the three Review Policy Comparison cards](../powerbi/README.md#8-build-the-review-policy-kpi-row).
+1. [Format and align the three Review Policy Comparison cards](../powerbi/README.md#8-build-the-review-policy-kpi-row) in the saved local report.
 2. Finish the comparison visuals and test slicers, navigation, theme rendering and accessibility in Desktop. Record the Desktop version when available.
 3. Finish calendar label sorting before building and reconciling Fraud Overview.
 
@@ -107,3 +108,4 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 | 14 November 2026 | Owner screenshot confirmed four Power BI reporting tables and two date relationships in Model view. |
 | 14 November 2026 | Prepared one script for the Review Policy Comparison controls and measures. On Linux, pandas 2.2.3 reproduced all six QA metrics in all eight cases from the 287,873 local September ranks generated at `017f90c` from the pinned source `6e67dbd0a3bfe0d7ec33abc4bce5f37cd4ff0d6a`. A restricted 1 September test selected 50 reviews per policy, with 8 baseline and 9 model fraud labels. Desktop script execution and reconciliation remain pending. |
 | 14 November 2026 | Windows Power BI Desktop applied the comparison model and passed all three DAX query result sets. |
+| 14 November 2026 | Owner screenshot confirmed the three Review Policy Comparison cards display the expected default values. |

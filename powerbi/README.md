@@ -3,7 +3,7 @@
 **Project:** Banking Fraud Intelligence  
 **Approved design:** Premium Banking Intelligence, light theme  
 **Platform:** Power BI Desktop  
-**Current checkpoint:** Review Policy Comparison model and reconciliation passed in Power BI Desktop
+**Current checkpoint:** Review Policy Comparison reconciliation and default card values verified in Power BI Desktop
 
 ## 1. First local setup
 
@@ -126,6 +126,15 @@ The script uses the existing four daily rank fields, including the independently
 | Logistic regression | `Logistic Regression Fraud-labelled Selected` | 592 |
 | Model difference | `Model Difference` | +3 |
 
-3. Place the cards side by side in that order, with room above for the header and filter strip. Save and verify all three callouts. The measures default to the full cohort at 50 reviews per day and `September_Ranks` contains only September.
+3. In each card's **Build visual** pane, open the menu for its measure and choose **Rename for this visual**. Use the Card title in the table above as the visible label.
+4. In **Format visual → General → Properties**, use the positions below on the 1280 × 720 canvas. Width and height are in pixels. These positions follow the approved 24 px margins and 16 px gutters and leave room above for the header and filter strip.
+
+| Card | Horizontal | Vertical | Width | Height |
+|---|---:|---:|---:|---:|
+| Amount baseline | 24 | 184 | 400 | 96 |
+| Logistic regression | 440 | 184 | 400 | 96 |
+| Model difference | 856 | 184 | 400 | 96 |
+
+5. Save and verify the complete labels and callouts. The measures default to the full cohort at 50 reviews per day and `September_Ranks` contains only September.
 
 Keep the report local while dataset-derived publication permissions are open.

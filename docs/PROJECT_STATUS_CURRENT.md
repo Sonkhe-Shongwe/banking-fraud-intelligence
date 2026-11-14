@@ -4,7 +4,7 @@
 
 **Overall progress:** 72% · **Latest completed phase:** P4 at 100% · **P1:** 80%
 
-**Next checkpoint:** Build the Review Policy Comparison KPI row in Desktop using the verified model. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
+**Next checkpoint:** Format and align the three verified Review Policy Comparison cards. P5 remains at 0% pending accepted report evidence. Publication scope remains a separate open gate. [Run evidence and next steps](SESSION_HANDOFF_CURRENT.md#resume-here)
 
 | Phase | Weight | Complete | Points earned | Evidence required to close |
 |---|---:|---:|---:|---|
@@ -59,7 +59,7 @@ The [held-out notebook](../notebooks/04_fraud_holdout_evaluation.ipynb) reproduc
 - **Owner reported:** Date table marked and report saved locally.
 - **Passed in Desktop:** Review Policy Comparison model application, four imported table row counts, all six metrics in each of the eight full-September comparisons and one restricted single-day check.
 - **Awaiting local verification:** Calendar sorting, Desktop version, theme rendering, Fraud Overview measure reconciliation and report interactions.
-- **Not started:** Report visuals and desktop interaction testing.
+- **Observed in Desktop:** The first three cards display 589, 592 and +3. Final card formatting and desktop interaction checks are pending.
 - **Separate open gate:** dataset-derived publication permissions. See [source publication scope](data_sources.md#publication-scope).
 
 P5 remains at 0% pending verified report implementation and acceptance.
