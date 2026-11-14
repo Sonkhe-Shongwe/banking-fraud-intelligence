@@ -76,8 +76,8 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 
 ## Resume here
 
-1. [Format and align the three Review Policy Comparison cards](../powerbi/README.md#8-build-the-review-policy-kpi-row) in the saved local report.
-2. Finish the comparison visuals and test slicers, navigation, theme rendering and accessibility in Desktop. Record the Desktop version when available.
+1. [Save a local Power BI Project copy and run the comparison page builder](../powerbi/README.md#9-build-the-comparison-page-from-the-saved-project). The builder preserves the verified KPI bindings and keeps a backup of the original page.
+2. Reopen the project in Desktop and verify the page, default values, filter responses and fixed matrix. Add navigation and reset controls after the initial page is verified. Record the Desktop version when available.
 3. Finish calendar label sorting before building and reconciling Fraud Overview.
 
 ## Checkpoint history
@@ -109,3 +109,4 @@ Keep raw files, processed extracts, transaction-level rank exports and reports c
 | 14 November 2026 | Prepared one script for the Review Policy Comparison controls and measures. On Linux, pandas 2.2.3 reproduced all six QA metrics in all eight cases from the 287,873 local September ranks generated at `017f90c` from the pinned source `6e67dbd0a3bfe0d7ec33abc4bce5f37cd4ff0d6a`. A restricted 1 September test selected 50 reviews per policy, with 8 baseline and 9 model fraud labels. Desktop script execution and reconciliation remain pending. |
 | 14 November 2026 | Windows Power BI Desktop applied the comparison model and passed all three DAX query result sets. |
 | 14 November 2026 | Owner screenshot confirmed the three Review Policy Comparison cards display the expected default values. |
+| 14 November 2026 | Prepared a local PBIR page builder. The Python fixture run on Linux verified preview, apply, original-page backup, repeat-run protection, binding preservation and layout bounds. The page and visual JSON passed Microsoft's PBIR schemas. The owner needs to run and inspect the result in Desktop. |

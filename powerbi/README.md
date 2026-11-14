@@ -115,7 +115,10 @@ Build Review Policy Comparison first. Do not add pages, transaction-level drillt
 4. The three result sets should show row counts of **183, 183, 287,873 and 4** in the query's column order, the eight full-September comparisons, and a one-day check for 1 September with the restricted cohort at 50/day. The one-day check should show **1 day, 50 slots per policy, 8 baseline, 9 model and +1**. Compare all six metrics for the eight full-September rows to the local `September_Queue_Reconciliation_QA.csv` at display precision. The full-month default is **589 baseline, 592 model and +3**.
 
 The script uses the existing four daily rank fields, including the independently recalculated restricted ranks. The policy scorecard uses Review Policy[Policy] as its row field. For the report slicers, use single select for cohort and capacity and set the default to All transactions and 50 reviews per day.
+
 ## 8. Build the Review Policy KPI row
+
+For the existing three-card report, use the [automated page build](#9-build-the-comparison-page-from-the-saved-project). The steps below also document the card bindings and grid.
 
 1. Save the verified report locally. In **Report view**, rename the first page **Review Policy Comparison** and set the canvas to 1280 × 720.
 2. Add three native **Card** visuals. Find the measures below under `September_Ranks` and add one to each card. Use the matching card title.
@@ -138,3 +141,17 @@ The script uses the existing four daily rank fields, including the independently
 5. Save and verify the complete labels and callouts. The measures default to the full cohort at 50 reviews per day and `September_Ranks` contains only September.
 
 Keep the report local while dataset-derived publication permissions are open.
+
+## 9. Build the comparison page from the saved project
+
+1. In Power BI Desktop, save the current report. Choose **File → Save As → Power BI Project** and save the copy as `data\processed\Banking Fraud Intelligence.pbip` inside this repository. Keep the original PBIX. Close the project in Power BI Desktop before applying the page layout.
+2. From the repository root, run the command below with the Python environment used for the reporting work. The [script](build_review_policy_page.py) checks the three existing card bindings and stages the new page before swapping it into the local project. The original page is kept in the backup directory printed by the script.
+
+   ```powershell
+   python powerbi/build_review_policy_page.py "data/processed/Banking Fraud Intelligence.Report" --apply
+   ```
+
+3. Open the `.pbip` in Desktop. Check that the page opens at 1280 × 720, the three card labels fit, and the default values are **589, 592, +3**. The page includes the header, cohort and capacity controls, September date range, daily chart, fixed September matrix, scorecard and methodology note.
+4. Change the capacity to 100/day. With all transactions and the full month selected, the cards should show **622, 632, +10**. The fixed matrix should retain all four results. The initial build still needs Desktop checks for slicer selection, chart formatting, scorecard readability and keyboard behaviour. Navigation and reset controls are tracked for the next report increment.
+
+For a no-write check, run the command without `--apply`. If Desktop rejects the edited page, close the project and restore the page from the printed backup or reopen the original PBIX. Save and test the project locally under the ignored `data/processed/` path.
